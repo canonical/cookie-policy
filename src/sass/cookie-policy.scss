@@ -1,0 +1,8 @@
+// Settings
+@import 'settings-colors';
+
+// Patterns
+@import 'patterns-notification';
+
+// Include all the CSS
+@include p-notification;

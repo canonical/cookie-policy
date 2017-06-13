@@ -1,0 +1,43 @@
+@mixin p-notification {
+  .p-notification--cookie-policy {
+    background-color: $color-x-light;
+    border: 0;
+    border-color: $color-mid-dark;
+    border-radius: .125rem;
+    border-style: solid;
+    border-top-width: 3px;
+    box-sizing: border-box;
+    box-shadow: 0 1px 5px 1px rgba($color-x-dark, .2);
+    font-size: 1rem;
+    margin-bottom: 1rem * 1.5;
+    overflow: hidden;
+    padding: .625rem;
+    text-align: center;
+    bottom: 0;
+    left: .75rem;
+    right: .75rem;
+    position: fixed;
+    width: auto;
+    z-index: 2;
+
+    .p-notification {
+      &__content {
+        text-align: left;
+        margin: 0;
+        padding-right: 1.5rem;
+        line-height: 1.5;
+      }
+
+      &__close {
+        background-image: url(https://assets.ubuntu.com/v1/66542f40-close.svg);
+        background-size: 1rem;
+        height: 1rem;
+        position: absolute;
+        right: .75rem;
+        text-indent: -99999px;
+        top: .75rem;
+        width: 1rem;
+      }
+    }
+  }
+}
