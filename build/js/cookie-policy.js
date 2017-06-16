@@ -16,10 +16,17 @@ ubuntu.cookiePolicy = function () {
   var context = null;
 
   return {
-    setup: function setup() {
+    setup: function setup(content) {
+      var start = '\n        <div class="p-notification--cookie-policy">\n          <p class="p-notification__content">';
+      var end = '\n            <a href="" class="p-notification__close js-close">Close</a>\n          </p>\n        </div>';
+      if (!content) {
+        content = 'We use cookies to improve your experience. By your continued\n          use of this site you accept such use. To change your settings\n          please\n          <a href="https://www.ubuntu.com/legal/terms-and-policies/privacy-policy#cookies">\n            see our policy\n          </a>.';
+      }
+
       if (this.getCookie('_cookies_accepted') !== 'true') {
         var range = document.createRange();
-        var cookieNode = range.createContextualFragment('<div class="p-notification--cookie-policy"><p class="p-notification__content">We use cookies to improve your experience. By your continued use of this site you accept such use.<br /> To change your settings please <a href="https://www.ubuntu.com/legal/terms-and-policies/privacy-policy#cookies">see our policy</a>. <a href="" class="p-notification__close js-close">Close</a></p></div>');
+        var fullNotice = start + ' ' + content + ' ' + end;
+        var cookieNode = range.createContextualFragment(fullNotice);
         document.body.insertBefore(cookieNode, document.body.lastChild);
         this.context = document.querySelector('.p-notification--cookie-policy');
         this.context.querySelector('.js-close').addEventListener('click', function (e) {
