@@ -1,4 +1,6 @@
 @mixin p-notification {
+  $asset-path: 'https://assets.ubuntu.com/v1/';
+
   .p-notification--cookie-policy {
     background-color: $color-x-light;
     border: 0;
@@ -29,7 +31,7 @@
       }
 
       &__close {
-        background-image: url(https://assets.ubuntu.com/v1/66542f40-close.svg);
+        background-image: url('#{$asset-path}66542f40-close.svg');
         background-size: 1rem;
         height: 1rem;
         position: absolute;
