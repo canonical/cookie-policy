@@ -29,7 +29,19 @@ gulp.task('lint:sass', function () {
 
 gulp.task('sass', function () {
   return gulp.src('./src/sass/**/*.scss')
-    .pipe(sass.sync({outputStyle: 'compressed'}).on('error', sass.logError))
+    .pipe(sass({
+      outputStyle: 'compressed',
+      includePaths: 'node_modules'
+    }).on('error', sass.logError))
+    .pipe(prefix(
+      'last 2 version',
+      'safari 5',
+      'ie 8',
+      'ie 9',
+      'opera 12.1',
+      'ios 6',
+      'android 4'
+    ))
     .pipe(gulp.dest('./build/css'));
 });
 
