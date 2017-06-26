@@ -14,9 +14,14 @@ if (ubuntu.hasOwnProperty('cookiePolicy')) {
 // The cookie policy injection and interaction
 ubuntu.cookiePolicy = function () {
   var context = null;
+  var options = {
+    'content': 'We use cookies to improve your experience. By your continued\n      use of this site you accept such use. To change your settings\n      please\n      <a href="https://www.ubuntu.com/legal/terms-and-policies/privacy-policy#cookies">\n        see our policy\n      </a>.'
+  };
 
   return {
-    setup: function setup(content) {
+    setup: function setup(options) {
+      var content = options.content;
+      var duration = options.duration;
       var start = '\n        <div class="p-notification--cookie-policy">\n          <p class="p-notification__content">';
       var end = '\n            <a href="" class="p-notification__close js-close">Close</a>\n          </p>\n        </div>';
       if (!content) {
@@ -31,12 +36,18 @@ ubuntu.cookiePolicy = function () {
         this.context = document.querySelector('.p-notification--cookie-policy');
         this.context.querySelector('.js-close').addEventListener('click', function (e) {
           e.preventDefault();
-          this.close();
+          this.closeCookie();
         }.bind(this));
+
+        if (duration) {
+          window.setTimeout(function () {
+            this.closeCookie();
+          }.bind(this), duration);
+        }
       }
     },
 
-    close: function close() {
+    closeCookie: function closeCookie() {
       this.context.style.display = 'none';
       this.setCookie('_cookies_accepted', 'true', 3000);
     },
