@@ -59,6 +59,9 @@ ubuntu.cookiePolicy = function() {
           window.setTimeout(function() {
             this.closeCookie();
           }.bind(this), duration);
+          window.addEventListener('unload', function() {
+            this.closeCookie();
+          }.bind(this));
         }
       }
     },
