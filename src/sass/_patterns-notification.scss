@@ -4,15 +4,18 @@
   .p-notification--cookie-policy {
     @include notification;
     bottom: 0;
-    left: .75rem;
-    right: .75rem;
+    box-sizing: border-box;
+    left: 50%;
+    margin-left: calc(#{$breakpoint-large} / -2);
     position: fixed;
-    width: auto;
+    width: $breakpoint-large;
     z-index: 200;
 
     @at-root .p-notification {
       &__content {
         margin: 0;
+        padding-right: $sp-large;
+        text-align: left;
       }
 
       &__close {
