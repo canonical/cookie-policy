@@ -22,7 +22,7 @@ ubuntu.cookiePolicy = function () {
     setup: function setup(options) {
       var content = options.content;
       var duration = options.duration;
-      var start = '\n        <div class="p-notification--cookie-policy">\n          <p class="p-notification__content">';
+      var start = '\n        <div class="p-notification--cookie-policy"\n          aria-labelledby="cookie-policy-title"\n          aria-describedby="cookie-policy-content">\n          <h1 id="cookie-policy-title" class="u-off-screen">Cookie policy</h1>\n          <p class="p-notification__content" id="cookie-policy-content">';
       var end = '\n            <a href="" class="p-notification__close js-close">Close</a>\n          </p>\n        </div>';
       if (!content) {
         content = 'We use cookies to improve your experience. By your continued\n          use of this site you accept such use. To change your settings\n          please\n          <a href="https://www.ubuntu.com/legal/terms-and-policies/privacy-policy#cookies">\n            see our policy\n          </a>.';
@@ -43,6 +43,9 @@ ubuntu.cookiePolicy = function () {
           window.setTimeout(function () {
             this.closeCookie();
           }.bind(this), duration);
+          window.addEventListener('unload', function () {
+            this.closeCookie();
+          }.bind(this));
         }
       }
     },

@@ -27,8 +27,11 @@ ubuntu.cookiePolicy = function() {
       let content = options.content;
       let duration = options.duration;
       let start = `
-        <div class="p-notification--cookie-policy">
-          <p class="p-notification__content">`;
+        <div class="p-notification--cookie-policy"
+          aria-labelledby="cookie-policy-title"
+          aria-describedby="cookie-policy-content">
+          <h1 id="cookie-policy-title" class="u-off-screen">Cookie policy</h1>
+          <p class="p-notification__content" id="cookie-policy-content">`;
       let end = `
             <a href="" class="p-notification__close js-close">Close</a>
           </p>
