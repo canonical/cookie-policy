@@ -1,8 +1,6 @@
-// Settings
-@import 'settings-colors';
-
 // Patterns
+@import 'node_modules/vanilla-framework/scss/vanilla';
 @import 'patterns-notification';
 
 // Include all the CSS
-@include p-notification;
+@include cookie-p-notification;

@@ -24,6 +24,7 @@
     "gulp-sass": "^2.3.2",
     "gulp-sass-lint": "^1.2.0",
     "gulp-webserver": "^0.9.1",
-    "jshint": "^2.9.2"
+    "jshint": "^2.9.2",
+    "vanilla-framework": "^1.2.3"
   }
 }

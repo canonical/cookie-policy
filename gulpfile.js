@@ -29,7 +29,10 @@ gulp.task('lint:sass', function () {
 
 gulp.task('sass', function () {
   return gulp.src('./src/sass/**/*.scss')
-    .pipe(sass.sync({outputStyle: 'compressed'}).on('error', sass.logError))
+    .pipe(sass({
+      outputStyle: 'compressed',
+      includePaths: 'node_modules'
+    }).on('error', sass.logError))
     .pipe(gulp.dest('./build/css'));
 });
 
