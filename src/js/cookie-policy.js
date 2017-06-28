@@ -34,13 +34,16 @@ ubuntu.cookiePolicy = function() {
           class="p-notification--cookie-policy"
           aria-labelledby="cookie-policy-title"
           aria-describedby="cookie-policy-content">
-          <h1 id="cookie-policy-title" class="u-off-screen">Cookie policy</h1>
+          <h1 id="cookie-policy-title" class="u-off-screen">
+            Cookie policy notification
+          </h1>
           <p class="p-notification__content"
             id="cookie-policy-content"
             role="document"
             tabindex="0">`;
       let end = `
-            <button class="p-notification__close js-close">Close</buttno>
+            <button class="p-notification__close js-close"
+               aria-label="Close">Close</buttno>
           </p>
         </dialog>`;
       if (!content) {
