@@ -27,15 +27,22 @@ ubuntu.cookiePolicy = function() {
       let content = options.content;
       let duration = options.duration;
       let start = `
-        <div class="p-notification--cookie-policy"
+        <dialog
+          tabindex="0"
+          open="open"
+          role="alertdialog"
+          class="p-notification--cookie-policy"
           aria-labelledby="cookie-policy-title"
           aria-describedby="cookie-policy-content">
           <h1 id="cookie-policy-title" class="u-off-screen">Cookie policy</h1>
-          <p class="p-notification__content" id="cookie-policy-content">`;
+          <p class="p-notification__content"
+            id="cookie-policy-content"
+            role="document"
+            tabindex="0">`;
       let end = `
-            <a href="" class="p-notification__close js-close">Close</a>
+            <button class="p-notification__close js-close">Close</buttno>
           </p>
-        </div>`;
+        </dialog>`;
       if (!content) {
         content =
           `We use cookies to improve your experience. By your continued
@@ -70,7 +77,7 @@ ubuntu.cookiePolicy = function() {
     },
 
     closeCookie: function() {
-      this.context.style.display = 'none';
+      this.context.close();
       this.setCookie('_cookies_accepted', 'true', 3000);
     },
 

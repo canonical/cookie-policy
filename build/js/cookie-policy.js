@@ -22,8 +22,8 @@ ubuntu.cookiePolicy = function () {
     setup: function setup(options) {
       var content = options.content;
       var duration = options.duration;
-      var start = '\n        <div class="p-notification--cookie-policy"\n          aria-labelledby="cookie-policy-title"\n          aria-describedby="cookie-policy-content">\n          <h1 id="cookie-policy-title" class="u-off-screen">Cookie policy</h1>\n          <p class="p-notification__content" id="cookie-policy-content">';
-      var end = '\n            <a href="" class="p-notification__close js-close">Close</a>\n          </p>\n        </div>';
+      var start = '\n        <dialog\n          tabindex="0"\n          open="open"\n          role="alertdialog"\n          class="p-notification--cookie-policy"\n          aria-labelledby="cookie-policy-title"\n          aria-describedby="cookie-policy-content">\n          <h1 id="cookie-policy-title" class="u-off-screen">Cookie policy</h1>\n          <p class="p-notification__content"\n            id="cookie-policy-content"\n            role="document"\n            tabindex="0">';
+      var end = '\n            <button class="p-notification__close js-close">Close</buttno>\n          </p>\n        </dialog>';
       if (!content) {
         content = 'We use cookies to improve your experience. By your continued\n          use of this site you accept such use. To change your settings\n          please\n          <a href="https://www.ubuntu.com/legal/terms-and-policies/privacy-policy#cookies">\n            see our policy\n          </a>.';
       }
@@ -51,7 +51,7 @@ ubuntu.cookiePolicy = function () {
     },
 
     closeCookie: function closeCookie() {
-      this.context.style.display = 'none';
+      this.context.close();
       this.setCookie('_cookies_accepted', 'true', 3000);
     },
 
