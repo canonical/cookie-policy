@@ -19,8 +19,11 @@
       }
 
       &__close {
+        background-color: $color-transparent;
         background-image: url('#{$asset-path}66542f40-close.svg');
         background-size: 1rem;
+        border: 0;
+        cursor: pointer;
         height: 1rem;
         position: absolute;
         right: .75rem;

@@ -14,11 +14,16 @@ if (ubuntu.hasOwnProperty('cookiePolicy')) {
 // The cookie policy injection and interaction
 ubuntu.cookiePolicy = function () {
   var context = null;
+  var options = {
+    'content': 'We use cookies to improve your experience. By your continued\n      use of this site you accept such use. To change your settings\n      please\n      <a href="https://www.ubuntu.com/legal/terms-and-policies/privacy-policy#cookies">\n        see our policy\n      </a>.'
+  };
 
   return {
-    setup: function setup(content) {
-      var start = '\n        <div class="p-notification--cookie-policy">\n          <p class="p-notification__content">';
-      var end = '\n            <a href="" class="p-notification__close js-close">Close</a>\n          </p>\n        </div>';
+    setup: function setup(options) {
+      var content = options.content;
+      var duration = options.duration;
+      var start = '\n        <dialog\n          tabindex="0"\n          open="open"\n          role="alertdialog"\n          class="p-notification--cookie-policy"\n          aria-labelledby="cookie-policy-title"\n          aria-describedby="cookie-policy-content">\n          <h1 id="cookie-policy-title" class="u-off-screen">\n            Cookie policy notification\n          </h1>\n          <p class="p-notification__content"\n            id="cookie-policy-content"\n            role="document"\n            tabindex="0">';
+      var end = '\n            <button class="p-notification__close js-close"\n               aria-label="Close">Close</buttno>\n          </p>\n        </dialog>';
       if (!content) {
         content = 'We use cookies to improve your experience. By your continued\n          use of this site you accept such use. To change your settings\n          please\n          <a href="https://www.ubuntu.com/legal/terms-and-policies/privacy-policy#cookies">\n            see our policy\n          </a>.';
       }
@@ -31,13 +36,22 @@ ubuntu.cookiePolicy = function () {
         this.context = document.querySelector('.p-notification--cookie-policy');
         this.context.querySelector('.js-close').addEventListener('click', function (e) {
           e.preventDefault();
-          this.close();
+          this.closeCookie();
         }.bind(this));
+
+        if (duration) {
+          window.setTimeout(function () {
+            this.closeCookie();
+          }.bind(this), duration);
+          window.addEventListener('unload', function () {
+            this.closeCookie();
+          }.bind(this));
+        }
       }
     },
 
-    close: function close() {
-      this.context.style.display = 'none';
+    closeCookie: function closeCookie() {
+      this.context.close();
       this.setCookie('_cookies_accepted', 'true', 3000);
     },
 
