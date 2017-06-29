@@ -43,7 +43,7 @@ ubuntu.cookiePolicy = function() {
             tabindex="0">`;
       let end = `
             <button class="p-notification__close js-close"
-               aria-label="Close">Close</buttno>
+               aria-label="Close this cookie policy notification">Close</button>
           </p>
         </dialog>`;
       if (!content) {
