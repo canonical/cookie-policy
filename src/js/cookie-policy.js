@@ -80,8 +80,10 @@ ubuntu.cookiePolicy = function() {
     },
 
     closeCookie: function() {
-      this.context.close();
-      this.setCookie('_cookies_accepted', 'true', 3000);
+      if (this.context.getAttribute('open')) {
+        this.context.removeAttribute('open');
+        this.setCookie('_cookies_accepted', 'true', 3000);
+      }
     },
 
     setCookie: function (name, value, exdays) {

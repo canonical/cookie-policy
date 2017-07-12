@@ -5,11 +5,14 @@
     @include notification;
     bottom: 0;
     box-sizing: border-box;
-    left: 50%;
-    margin-left: calc(#{$breakpoint-large} / -2);
     position: fixed;
-    width: $breakpoint-large;
     z-index: 200;
+
+    @media (min-width: $breakpoint-large) {
+      width: $breakpoint-large;
+      left: 50%;
+      margin-left: calc(#{$breakpoint-large} / -2);
+    }
 
     @at-root .p-notification {
       &__content {
