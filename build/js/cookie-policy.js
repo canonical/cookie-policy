@@ -51,7 +51,6 @@ ubuntu.cookiePolicy = function () {
     },
 
     closeCookie: function closeCookie() {
-      console.log(this.context);
       if (this.context.getAttribute('open')) {
         this.context.removeAttribute('open');
         this.setCookie('_cookies_accepted', 'true', 3000);
