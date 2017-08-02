@@ -25,9 +25,11 @@
         background-color: $color-transparent;
         background-image: url('#{$asset-path}66542f40-close.svg');
         background-size: 1rem;
+        background-repeat: no-repeat;
         border: 0;
         cursor: pointer;
         height: 1rem;
+        padding: 0;
         position: absolute;
         right: .75rem;
         text-indent: -99999px;
