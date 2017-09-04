@@ -5,6 +5,7 @@
     @include notification;
     bottom: 0;
     box-sizing: border-box;
+    display: none;
     position: fixed;
     z-index: 200;
 
@@ -12,6 +13,10 @@
       width: $breakpoint-large;
       left: 50%;
       margin-left: calc(#{$breakpoint-large} / -2);
+    }
+
+    &[open] {
+      display: block;
     }
 
     @at-root .p-notification {
