@@ -1,6 +1,6 @@
 {
   "name": "cookie-policy",
-  "version": "0.0.1",
+  "version": "1.0.3",
   "description": "A script and stylesheet that displays the Canonical cookie policy",
   "main": "index.js",
   "scripts": {
