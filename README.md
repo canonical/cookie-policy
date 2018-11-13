@@ -5,9 +5,7 @@ page.
 
 ## Usage
 
-Currently there is no deployment system for this project as its under
-development. Once the project hits v1 this message will be replaced with some
-links to the latest versions of the JS and CSS.
+This project can be installed from an [NPM package](https://www.npmjs.com/package/cookie-policy).
 
 ### Options
 You can configure the cookie policy with the following options.
