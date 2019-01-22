@@ -25,6 +25,7 @@
     "gulp-sass-lint": "^1.2.0",
     "gulp-webserver": "^0.9.1",
     "jshint": "^2.9.2",
+    "prettier": "1.16.1",
     "vanilla-framework": "^1.6.2"
   }
 }
