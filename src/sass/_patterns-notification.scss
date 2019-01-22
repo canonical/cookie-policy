@@ -10,9 +10,9 @@
     z-index: 200;
 
     @media (min-width: $breakpoint-large) {
-      width: $breakpoint-large;
       left: 50%;
       margin-left: calc(#{$breakpoint-large} / -2);
+      width: $breakpoint-large;
     }
 
     &[open] {
@@ -29,9 +29,9 @@
       &__close {
         background-color: $color-transparent;
         background-image: url("#{$asset-path}66542f40-close.svg");
-        background-size: 1rem;
-        background-repeat: no-repeat;
         background-position: center;
+        background-repeat: no-repeat;
+        background-size: 1rem;
         border: 0;
         cursor: pointer;
         height: 1rem;
