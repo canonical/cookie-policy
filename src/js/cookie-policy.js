@@ -1,26 +1,25 @@
 /**
  * Setup namespace
  */
-if (typeof ubuntu === 'undefined') {
+if (typeof ubuntu === "undefined") {
   var ubuntu = {};
 }
 
-if (ubuntu.hasOwnProperty('cookiePolicy')) {
+if (ubuntu.hasOwnProperty("cookiePolicy")) {
   throw TypeError("Namespace 'ubuntu' not available");
 }
 
 // The cookie policy injection and interaction
-ubuntu.cookiePolicy = function() {
+ubuntu.cookiePolicy = (function() {
   let context = null;
   let options = {
-    'content':
-      `We use cookies to improve your experience. By your continued
+    content: `We use cookies to improve your experience. By your continued
       use of this site you accept such use. To change your settings
       please
       <a href="https://www.ubuntu.com/legal/terms-and-policies/privacy-policy#cookies">
         see our policy
       </a>.`
-  }
+  };
 
   return {
     setup: function(options) {
@@ -47,8 +46,7 @@ ubuntu.cookiePolicy = function() {
           </p>
         </dialog>`;
       if (!content) {
-        content =
-          `We use cookies to improve your experience. By your continued
+        content = `We use cookies to improve your experience. By your continued
           use of this site you accept such use. To change your settings
           please
           <a href="https://www.ubuntu.com/legal/terms-and-policies/privacy-policy#cookies">
@@ -56,56 +54,64 @@ ubuntu.cookiePolicy = function() {
           </a>.`;
       }
 
-      if (this.getCookie('_cookies_accepted') !== 'true') {
+      if (this.getCookie("_cookies_accepted") !== "true") {
         var range = document.createRange();
         var fullNotice = `${start} ${content} ${end}`;
         var cookieNode = range.createContextualFragment(fullNotice);
         document.body.insertBefore(cookieNode, document.body.lastChild);
-        this.context = document.querySelector('.p-notification--cookie-policy');
-        this.context.querySelector('.js-close').addEventListener(
-          'click', function(e) {
-          e.preventDefault();
-          this.closeCookie();
-        }.bind(this));
+        this.context = document.querySelector(".p-notification--cookie-policy");
+        this.context.querySelector(".js-close").addEventListener(
+          "click",
+          function(e) {
+            e.preventDefault();
+            this.closeCookie();
+          }.bind(this)
+        );
 
         if (duration) {
-          window.setTimeout(function() {
-            this.closeCookie();
-          }.bind(this), duration);
-          window.addEventListener('unload', function() {
-            this.closeCookie();
-          }.bind(this));
+          window.setTimeout(
+            function() {
+              this.closeCookie();
+            }.bind(this),
+            duration
+          );
+          window.addEventListener(
+            "unload",
+            function() {
+              this.closeCookie();
+            }.bind(this)
+          );
         }
       }
     },
 
     closeCookie: function() {
-      if (this.context.getAttribute('open')) {
-        this.context.removeAttribute('open');
-        this.setCookie('_cookies_accepted', 'true', 3000);
+      if (this.context.getAttribute("open")) {
+        this.context.removeAttribute("open");
+        this.setCookie("_cookies_accepted", "true", 3000);
       }
     },
 
-    setCookie: function (name, value, exdays) {
+    setCookie: function(name, value, exdays) {
       var d = new Date();
-      d.setTime(d.getTime() + (exdays*24*60*60*1000));
-      var expires = 'expires=' + d.toUTCString();
-      document.cookie = name + '=' + value + '; ' + expires;
+      d.setTime(d.getTime() + exdays * 24 * 60 * 60 * 1000);
+      var expires = "expires=" + d.toUTCString();
+      document.cookie = name + "=" + value + "; " + expires;
     },
 
     getCookie: function(name) {
-      var name = name + '=';
-      var ca = document.cookie.split(';');
-      for(var i = 0; i <ca.length; i++) {
+      var name = name + "=";
+      var ca = document.cookie.split(";");
+      for (var i = 0; i < ca.length; i++) {
         var c = ca[i];
-        while (c.charAt(0)==' ') {
+        while (c.charAt(0) == " ") {
           c = c.substring(1);
         }
         if (c.indexOf(name) === 0) {
-          return c.substring(name.length,c.length);
+          return c.substring(name.length, c.length);
         }
       }
-      return '';
+      return "";
     }
-  }
-}();
+  };
+})();

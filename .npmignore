@@ -3,3 +3,4 @@ index.html
 gulpfile.js
 .jshintrc
 .sass-lint.yml
+.prettierignore

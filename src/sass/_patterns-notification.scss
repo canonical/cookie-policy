@@ -1,5 +1,5 @@
 @mixin cookie-p-notification {
-  $asset-path: 'https://assets.ubuntu.com/v1/';
+  $asset-path: "https://assets.ubuntu.com/v1/";
 
   .p-notification--cookie-policy {
     @include notification;
@@ -28,7 +28,7 @@
 
       &__close {
         background-color: $color-transparent;
-        background-image: url('#{$asset-path}66542f40-close.svg');
+        background-image: url("#{$asset-path}66542f40-close.svg");
         background-size: 1rem;
         background-repeat: no-repeat;
         background-position: center;
@@ -37,9 +37,9 @@
         height: 1rem;
         padding: 1rem;
         position: absolute;
-        right: .75rem;
+        right: 0.75rem;
         text-indent: -99999px;
-        top: .25rem;
+        top: 0.25rem;
         width: 1rem;
       }
     }
