@@ -2,7 +2,7 @@
  * Setup namespace
  */
 if (typeof ubuntu === "undefined") {
-  var ubuntu = {};
+  let ubuntu = {};
 }
 
 if (ubuntu.hasOwnProperty("cookiePolicy")) {
@@ -55,9 +55,9 @@ ubuntu.cookiePolicy = (function() {
       }
 
       if (this.getCookie("_cookies_accepted") !== "true") {
-        var range = document.createRange();
-        var fullNotice = `${start} ${content} ${end}`;
-        var cookieNode = range.createContextualFragment(fullNotice);
+        const range = document.createRange();
+        const fullNotice = `${start} ${content} ${end}`;
+        const cookieNode = range.createContextualFragment(fullNotice);
         document.body.insertBefore(cookieNode, document.body.lastChild);
         this.context = document.querySelector(".p-notification--cookie-policy");
         this.context.querySelector(".js-close").addEventListener(
@@ -93,17 +93,17 @@ ubuntu.cookiePolicy = (function() {
     },
 
     setCookie: function(name, value, exdays) {
-      var d = new Date();
+      const d = new Date();
       d.setTime(d.getTime() + exdays * 24 * 60 * 60 * 1000);
-      var expires = "expires=" + d.toUTCString();
+      const expires = "expires=" + d.toUTCString();
       document.cookie = name + "=" + value + "; " + expires;
     },
 
-    getCookie: function(name) {
-      var name = name + "=";
-      var ca = document.cookie.split(";");
-      for (var i = 0; i < ca.length; i++) {
-        var c = ca[i];
+    getCookie: function(nameParam) {
+      const name = nameParam + "=";
+      const ca = document.cookie.split(";");
+      for (let i = 0; i < ca.length; i++) {
+        let c = ca[i];
         while (c.charAt(0) == " ") {
           c = c.substring(1);
         }
