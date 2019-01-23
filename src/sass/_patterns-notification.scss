@@ -1,8 +1,8 @@
 @mixin cookie-p-notification {
-  $asset-path: "https://assets.ubuntu.com/v1/";
+  $asset-path: 'https://assets.ubuntu.com/v1/';
 
   .p-notification--cookie-policy {
-    @include notification;
+    @include vf-p-notification;
     bottom: 0;
     box-sizing: border-box;
     display: none;
@@ -28,7 +28,7 @@
 
       &__close {
         background-color: $color-transparent;
-        background-image: url("#{$asset-path}66542f40-close.svg");
+        background-image: url('#{$asset-path}66542f40-close.svg');
         background-position: center;
         background-repeat: no-repeat;
         background-size: 1rem;

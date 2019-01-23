@@ -1,24 +1,24 @@
 /**
  * Setup namespace
  */
-if (typeof ubuntu === "undefined") {
-  let ubuntu = {};
+if (typeof ubuntu === 'undefined') {
+  var ubuntu = {};
 }
 
-if (ubuntu.hasOwnProperty("cookiePolicy")) {
+if (ubuntu.hasOwnProperty('cookiePolicy')) {
   throw TypeError("Namespace 'ubuntu' not available");
 }
 
 // The cookie policy injection and interaction
 ubuntu.cookiePolicy = (function() {
-  let context = null;
-  let options = {
+  var context = null;
+  var options = {
     content: `We use cookies to improve your experience. By your continued
       use of this site you accept such use. To change your settings
       please
       <a href="https://www.ubuntu.com/legal/terms-and-policies/privacy-policy#cookies">
         see our policy
-      </a>.`
+      </a>.`,
   };
 
   return {
@@ -36,14 +36,14 @@ ubuntu.cookiePolicy = (function() {
           <h1 id="cookie-policy-title" class="u-off-screen">
             Cookie policy notification
           </h1>
-          <p class="p-notification__content"
+          <span class="p-notification__content"
             id="cookie-policy-content"
             role="document"
             tabindex="0">`;
       let end = `
             <button class="p-notification__close js-close"
                aria-label="Close this cookie policy notification">Close</button>
-          </p>
+          </span>
         </dialog>`;
       if (!content) {
         content = `We use cookies to improve your experience. By your continued
@@ -54,14 +54,14 @@ ubuntu.cookiePolicy = (function() {
           </a>.`;
       }
 
-      if (this.getCookie("_cookies_accepted") !== "true") {
+      if (this.getCookie('_cookies_accepted') !== 'true') {
         const range = document.createRange();
         const fullNotice = `${start} ${content} ${end}`;
         const cookieNode = range.createContextualFragment(fullNotice);
         document.body.insertBefore(cookieNode, document.body.lastChild);
-        this.context = document.querySelector(".p-notification--cookie-policy");
-        this.context.querySelector(".js-close").addEventListener(
-          "click",
+        this.context = document.querySelector('.p-notification--cookie-policy');
+        this.context.querySelector('.js-close').addEventListener(
+          'click',
           function(e) {
             e.preventDefault();
             this.closeCookie();
@@ -76,7 +76,7 @@ ubuntu.cookiePolicy = (function() {
             duration
           );
           window.addEventListener(
-            "unload",
+            'unload',
             function() {
               this.closeCookie();
             }.bind(this)
@@ -86,32 +86,32 @@ ubuntu.cookiePolicy = (function() {
     },
 
     closeCookie: function() {
-      if (this.context.getAttribute("open")) {
-        this.context.removeAttribute("open");
-        this.setCookie("_cookies_accepted", "true", 3000);
+      if (this.context.getAttribute('open')) {
+        this.context.removeAttribute('open');
+        this.setCookie('_cookies_accepted', 'true', 3000);
       }
     },
 
     setCookie: function(name, value, exdays) {
       const d = new Date();
       d.setTime(d.getTime() + exdays * 24 * 60 * 60 * 1000);
-      const expires = "expires=" + d.toUTCString();
-      document.cookie = name + "=" + value + "; " + expires;
+      const expires = 'expires=' + d.toUTCString();
+      document.cookie = name + '=' + value + '; ' + expires;
     },
 
     getCookie: function(nameParam) {
-      const name = nameParam + "=";
-      const ca = document.cookie.split(";");
+      const name = nameParam + '=';
+      const ca = document.cookie.split(';');
       for (let i = 0; i < ca.length; i++) {
         let c = ca[i];
-        while (c.charAt(0) == " ") {
+        while (c.charAt(0) == ' ') {
           c = c.substring(1);
         }
         if (c.indexOf(name) === 0) {
           return c.substring(name.length, c.length);
         }
       }
-      return "";
-    }
+      return '';
+    },
   };
 })();
