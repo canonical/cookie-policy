@@ -1,6 +1,6 @@
 node_modules
 index.html
 gulpfile.js
-.jshintrc
+.eslintrc
 .sass-lint.yml
 .prettierignore
