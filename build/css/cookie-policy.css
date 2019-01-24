@@ -12,7 +12,6 @@
   top: -2px;
   vertical-align: sub;
 }
-
 .p-icon--minus {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' height='9' width='9'%3E%3Cpath d='M0 5V4h9v1z' fill='%23666' fill-rule='evenodd'/%3E%3C/svg%3E");
 }
@@ -20,7 +19,6 @@
 .p-icon--minus.is-light {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' height='9' width='9'%3E%3Cpath d='M0 5V4h9v1z' fill='%23cdcdcd' fill-rule='evenodd'/%3E%3C/svg%3E");
 }
-
 .p-icon--plus {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' height='9' width='9'%3E%3Cg fill='%23666' fill-rule='evenodd'%3E%3Cpath d='M4 0h1v9H4z'/%3E%3Cpath d='M0 5V4h9v1z'/%3E%3C/g%3E%3C/svg%3E");
 }
@@ -28,7 +26,6 @@
 .p-icon--plus.is-light {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' height='9' width='9'%3E%3Cg fill='%23cdcdcd' fill-rule='evenodd'%3E%3Cpath d='M4 0h1v9H4z'/%3E%3Cpath d='M0 5V4h9v1z'/%3E%3C/g%3E%3C/svg%3E");
 }
-
 .p-icon--minus,
 .p-icon--plus {
   height: 1rem;
@@ -43,7 +40,6 @@
   top: -2px;
   vertical-align: sub;
 }
-
 .u-off-screen {
   height: 1px !important;
   left: -10000px !important;
@@ -51,120 +47,48 @@
   position: absolute !important;
   top: auto !important;
   width: 1px !important;
-}
-
-/*! normalize.css v8.0.0 | MIT License | github.com/necolas/normalize.css */
-/* Document
-    ========================================================================== */
-/**
-  * 1. Correct the line height in all browsers.
-  * 2. Prevent adjustments of font size after orientation changes in iOS.
-  */
+} /*! normalize.css v8.0.0 | MIT License | github.com/necolas/normalize.css */
 html {
   line-height: 1.15;
-  /* 1 */
   -webkit-text-size-adjust: 100%;
-  /* 2 */
 }
-
-/* Sections
-    ========================================================================== */
-/**
-  * Remove the margin in all browsers.
-  */
 body {
   margin: 0;
 }
-
-/**
-  * Correct the font size and margin on `h1` elements within `section` and
-  * `article` contexts in Chrome, Firefox, and Safari.
-  */
 h1 {
   font-size: 2em;
   margin: 0.67em 0;
 }
-
-/* Grouping content
-    ========================================================================== */
-/**
-  * 1. Add the correct box sizing in Firefox.
-  * 2. Show the overflow in Edge and IE.
-  */
 hr {
   box-sizing: content-box;
-  /* 1 */
   height: 0;
-  /* 1 */
   overflow: visible;
-  /* 2 */
 }
-
-/**
-  * 1. Correct the inheritance and scaling of font size in all browsers.
-  * 2. Correct the odd `em` font sizing in all browsers.
-  */
 pre {
   font-family: monospace, monospace;
-  /* 1 */
   font-size: 1em;
-  /* 2 */
 }
-
-/* Text-level semantics
-    ========================================================================== */
-/**
-  * Remove the gray background on active links in IE 10.
-  */
 a {
   background-color: transparent;
 }
-
-/**
-  * 1. Remove the bottom border in Chrome 57-
-  * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.
-  */
 abbr[title] {
   border-bottom: none;
-  /* 1 */
   text-decoration: underline;
-  /* 2 */
   text-decoration: underline dotted;
-  /* 2 */
 }
-
-/**
-  * Add the correct font weight in Chrome, Edge, and Safari.
-  */
 b,
 strong {
   font-weight: bolder;
 }
-
-/**
-  * 1. Correct the inheritance and scaling of font size in all browsers.
-  * 2. Correct the odd `em` font sizing in all browsers.
-  */
 code,
 kbd,
 samp {
   font-family: monospace, monospace;
-  /* 1 */
   font-size: 1em;
-  /* 2 */
 }
-
-/**
-  * Add the correct font size in all browsers.
-  */
 small {
   font-size: 80%;
 }
-
-/**
-  * Prevent `sub` and `sup` elements from affecting the line height in
-  * all browsers.
-  */
 sub,
 sup {
   font-size: 75%;
@@ -172,74 +96,37 @@ sup {
   position: relative;
   vertical-align: baseline;
 }
-
 sub {
   bottom: -0.25em;
 }
-
 sup {
   top: -0.5em;
 }
-
-/* Embedded content
-    ========================================================================== */
-/**
-  * Remove the border on images inside links in IE 10.
-  */
 img {
   border-style: none;
 }
-
-/* Forms
-    ========================================================================== */
-/**
-  * 1. Change the font styles in all browsers.
-  * 2. Remove the margin in Firefox and Safari.
-  */
 button,
 input,
 optgroup,
 select,
 textarea {
   font-family: inherit;
-  /* 1 */
   font-size: 100%;
-  /* 1 */
 }
-
-/**
-  * Show the overflow in IE.
-  * 1. Show the overflow in Edge.
-  */
 button,
 input {
-  /* 1 */
   overflow: visible;
 }
-
-/**
-  * Remove the inheritance of text transform in Edge, Firefox, and IE.
-  * 1. Remove the inheritance of text transform in Firefox.
-  */
 button,
 select {
-  /* 1 */
   text-transform: none;
 }
-
-/**
-  * Correct the inability to style clickable types in iOS and Safari.
-  */
 button,
 [type='button'],
 [type='reset'],
 [type='submit'] {
   -webkit-appearance: button;
 }
-
-/**
-  * Remove the inner border and padding in Firefox.
-  */
 button::-moz-focus-inner,
 [type='button']::-moz-focus-inner,
 [type='reset']::-moz-focus-inner,
@@ -247,157 +134,75 @@ button::-moz-focus-inner,
   border-style: none;
   padding: 0;
 }
-
-/**
-  * Restore the focus styles unset by the previous rule.
-  */
 button:-moz-focusring,
 [type='button']:-moz-focusring,
 [type='reset']:-moz-focusring,
 [type='submit']:-moz-focusring {
   outline: 1px dotted ButtonText;
 }
-
-/**
-  * Correct the padding in Firefox.
-  */
 fieldset {
   padding: 0.35em 0.75em 0.625em;
 }
-
-/**
-  * 1. Correct the text wrapping in Edge and IE.
-  * 2. Correct the color inheritance from `fieldset` elements in IE.
-  * 3. Remove the padding so developers are not caught out when they zero out
-  *    `fieldset` elements in all browsers.
-  */
 legend {
   box-sizing: border-box;
-  /* 1 */
   color: inherit;
-  /* 2 */
   display: table;
-  /* 1 */
   max-width: 100%;
-  /* 1 */
   padding: 0;
-  /* 3 */
   white-space: normal;
-  /* 1 */
 }
-
-/**
-  * Add the correct vertical alignment in Chrome, Firefox, and Opera.
-  */
 progress {
   vertical-align: baseline;
 }
-
-/**
-  * Remove the default vertical scrollbar in IE 10+.
-  */
 textarea {
   overflow: auto;
 }
-
-/**
-  * 1. Add the correct box sizing in IE 10.
-  * 2. Remove the padding in IE 10.
-  */
 [type='checkbox'],
 [type='radio'] {
   box-sizing: border-box;
-  /* 1 */
   padding: 0;
-  /* 2 */
 }
-
-/**
-  * Correct the cursor style of increment and decrement buttons in Chrome.
-  */
 [type='number']::-webkit-inner-spin-button,
 [type='number']::-webkit-outer-spin-button {
   height: auto;
 }
-
-/**
-  * 1. Correct the odd appearance in Chrome and Safari.
-  * 2. Correct the outline style in Safari.
-  */
 [type='search'] {
   -webkit-appearance: textfield;
-  /* 1 */
   outline-offset: -2px;
-  /* 2 */
 }
-
-/**
-  * Remove the inner padding in Chrome and Safari on macOS.
-  */
 [type='search']::-webkit-search-decoration {
   -webkit-appearance: none;
 }
-
-/**
-  * 1. Correct the inability to style clickable types in iOS and Safari.
-  * 2. Change font properties to `inherit` in Safari.
-  */
 ::-webkit-file-upload-button {
   -webkit-appearance: button;
-  /* 1 */
   font: inherit;
-  /* 2 */
 }
-
-/* Interactive
-    ========================================================================== */
-/*
-  * Add the correct display in Edge, IE 10+, and Firefox.
-  */
 details {
   display: block;
 }
-
-/*
-  * Add the correct display in all browsers.
-  */
 summary {
   display: list-item;
 }
-
-/* Misc
-    ========================================================================== */
-/**
-  * Add the correct display in IE 10+.
-  */
 template {
   display: none;
 }
-
-/**
-  * Add the correct display in IE 10.
-  */
 [hidden] {
   display: none;
 }
-
 blockquote {
   border-left: 2px solid #666;
 }
 blockquote > cite {
   display: block;
 }
-
 html {
   box-sizing: border-box;
 }
-
 *,
 *::before,
 *::after {
   box-sizing: inherit;
 }
-
 button {
   background-color: #fff;
   border-color: #cdcdcd;
@@ -415,13 +220,12 @@ button:disabled:active,
 button:disabled:hover,
 button.is--disabled:active,
 button.is--disabled:hover {
-  background-color: transparent;
+  background-color: rgba(0, 0, 0, 0);
   border-color: #cdcdcd;
 }
 button .p-link--external {
   color: currentColor;
 }
-
 button,
 [type='submit'] {
   transition-duration: 0.165s;
@@ -499,7 +303,6 @@ p + p > [type='submit'] {
     margin-top: 1.1rem;
   }
 }
-
 code,
 samp,
 kbd {
@@ -507,7 +310,6 @@ kbd {
   font-weight: 300;
   text-align: left;
 }
-
 pre,
 code {
   direction: ltr;
@@ -517,11 +319,9 @@ code {
   word-spacing: normal;
   word-wrap: break-word;
 }
-
 code {
   display: inline;
 }
-
 pre {
   background-color: #f7f7f7;
   border: 1px solid #cdcdcd;
@@ -535,7 +335,6 @@ pre {
   text-align: left;
   text-shadow: none;
 }
-
 [type='text'],
 [type='date'],
 [type='datetime'],
@@ -557,7 +356,6 @@ textarea,
   padding-bottom: 0.3375rem;
   padding-top: 0.3375rem;
 }
-
 [type='text'],
 [type='date'],
 [type='datetime'],
@@ -760,7 +558,6 @@ select.has-information,
 textarea.has-information {
   border: 1px solid #335280;
 }
-
 [type='checkbox'],
 [type='radio'] {
   float: left;
@@ -777,7 +574,6 @@ textarea.has-information {
   outline: 1px solid #19b6ee;
   outline-offset: 0;
 }
-
 [disabled][type='text'],
 [disabled][type='date'],
 [disabled][type='datetime'],
@@ -817,7 +613,6 @@ textarea[disabled='disabled'],
   cursor: not-allowed;
   opacity: 0.5;
 }
-
 [readonly][type='text'],
 [readonly][type='date'],
 [readonly][type='datetime'],
@@ -920,7 +715,6 @@ textarea:active[readonly='readonly'] {
   border-color: #666;
   outline: none;
 }
-
 label {
   cursor: pointer;
   display: block;
@@ -941,7 +735,6 @@ label.has-success {
 label.has-information {
   color: #335280;
 }
-
 [type='file'] {
   width: 100%;
 }
@@ -949,11 +742,9 @@ label.has-information {
   outline: 1px solid #19b6ee;
   outline-offset: 2px;
 }
-
 [type='reset'] {
   display: none;
 }
-
 [type='search'] {
   -moz-appearance: none;
   -webkit-appearance: none;
@@ -967,17 +758,14 @@ label.has-information {
   -webkit-appearance: searchfield-cancel-button;
   cursor: pointer;
 }
-
 [type='checkbox'] + label,
 [type='radio'] + label {
   vertical-align: middle;
   width: 100%;
 }
-
 [type='radio'] {
   margin-top: 0.4rem;
 }
-
 [type='submit'] {
   background-color: #0e8420;
   border-color: #0e8420;
@@ -1001,7 +789,6 @@ label.has-information {
 [type='submit'] .p-link--external {
   color: currentColor;
 }
-
 select {
   -moz-appearance: none;
   -webkit-appearance: none;
@@ -1031,24 +818,20 @@ select[size] option {
   line-height: 0.875rem;
   padding: 0.5rem 0.5rem;
 }
-
 textarea {
   margin-bottom: 0.7rem;
   overflow: auto;
   vertical-align: top;
 }
-
 fieldset {
   background-color: #f7f7f7;
   border: 0;
   border-radius: 0.125rem;
   color: #111;
 }
-
 label {
   width: fit-content;
 }
-
 input[type='checkbox'] {
   opacity: 0;
   position: absolute;
@@ -1092,7 +875,6 @@ input[type='checkbox'] + label::after {
 input[type='checkbox']:checked + label::after {
   content: '';
 }
-
 hr {
   background-color: #cdcdcd;
   border: 0;
@@ -1105,7 +887,6 @@ hr {
 hr + p {
   margin-top: -0.5rem;
 }
-
 .row.is-bordered {
   position: relative;
 }
@@ -1116,7 +897,6 @@ hr + p {
   margin-bottom: 0.9375rem;
   width: 100%;
 }
-
 a {
   color: #007aa6;
   text-decoration: none;
@@ -1131,18 +911,15 @@ a:hover {
 a:visited {
   color: #005573;
 }
-
 li > ul,
 li > ol {
   margin-bottom: 0;
   padding-top: 0;
 }
-
 li > ul > li:last-of-type,
 li > ol > li:last-of-type {
   padding-bottom: 0;
 }
-
 ol,
 ul {
   margin-bottom: 1.5rem;
@@ -1155,35 +932,29 @@ nav ul {
   list-style: none;
   list-style-image: none;
 }
-
 li,
 dl {
   margin: 0;
   padding: 0;
 }
-
 dd {
   margin-left: 1rem;
 }
-
 dt {
   border-top: 1px dotted #666;
 }
 dt:first-of-type {
   border-top: 0;
 }
-
 img {
   border: 0;
   border-radius: 0.125rem;
   height: auto;
   max-width: 100%;
 }
-
 svg:not(:root) {
   overflow: hidden;
 }
-
 figure {
   margin-bottom: 1.5rem;
   margin-left: 0;
@@ -1196,7 +967,6 @@ figure figcaption {
   margin-top: 0.25rem;
   width: 100%;
 }
-
 object,
 iframe,
 embed,
@@ -1207,16 +977,13 @@ audio {
   margin: 0 auto 20px;
   max-width: 100%;
 }
-
 audio:not([controls]) {
   display: none;
   height: 0;
 }
-
 [hidden] {
   display: none;
 }
-
 .p-notification--cookie-policy .p-notification,
 .p-notification--cookie-policy .p-notification--positive,
 .p-notification--cookie-policy .p-notification--caution,
@@ -1224,7 +991,6 @@ audio:not([controls]) {
 .p-notification--cookie-policy .p-notification--information {
   border-radius: 0.125rem;
 }
-
 .p-notification--cookie-policy .p-notification,
 .p-notification--cookie-policy .p-notification--positive,
 .p-notification--cookie-policy .p-notification--caution,
@@ -1232,7 +998,6 @@ audio:not([controls]) {
 .p-notification--cookie-policy .p-notification--information {
   box-shadow: 0 1px 5px 1px rgba(17, 17, 17, 0.2);
 }
-
 .p-notification--cookie-policy .p-notification,
 .p-notification--cookie-policy .p-notification--positive,
 .p-notification--cookie-policy .p-notification--caution,
@@ -1241,7 +1006,6 @@ audio:not([controls]) {
   background-color: #fff;
   color: #111;
 }
-
 .p-notification--cookie-policy .p-notification,
 .p-notification--cookie-policy .p-notification--positive,
 .p-notification--cookie-policy .p-notification--caution,
@@ -1251,14 +1015,12 @@ audio:not([controls]) {
   overflow: auto;
   padding: 1rem;
 }
-
 .p-icon--minus,
 .p-icon--plus {
   overflow: hidden;
   text-indent: calc(100% + 10rem);
   white-space: nowrap;
 }
-
 table {
   border: 0;
   border-collapse: collapse;
@@ -1267,7 +1029,6 @@ table {
   table-layout: fixed;
   width: 100%;
 }
-
 td,
 th {
   font-weight: 300;
@@ -1281,22 +1042,18 @@ th {
     padding-right: 1rem;
   }
 }
-
 thead tr {
   border-bottom: 1px solid #111;
   vertical-align: top;
 }
-
 tbody tr:not(:first-child) {
   border-top: 1px solid #cdcdcd;
 }
-
 td,
 th {
   padding-bottom: 0.4375rem;
   padding-top: 0.5rem;
 }
-
 @font-face {
   font-family: 'Ubuntu';
   font-style: normal;
@@ -1305,7 +1062,6 @@ th {
       format('woff2'),
     url('https://assets.ubuntu.com/v1/8619add2-Ubuntu-L_W.woff') format('woff');
 }
-
 @font-face {
   font-family: 'Ubuntu';
   font-style: normal;
@@ -1314,7 +1070,6 @@ th {
       format('woff2'),
     url('https://assets.ubuntu.com/v1/7af50859-Ubuntu-R_W.woff') format('woff');
 }
-
 @font-face {
   font-family: 'Ubuntu';
   font-style: italic;
@@ -1323,7 +1078,6 @@ th {
       format('woff2'),
     url('https://assets.ubuntu.com/v1/8be89d02-Ubuntu-LI_W.woff') format('woff');
 }
-
 @font-face {
   font-family: 'Ubuntu';
   font-style: italic;
@@ -1333,7 +1087,6 @@ th {
     url('https://assets.ubuntu.com/v1/f0898c72-ubuntu-ri-webfont.woff')
       format('woff');
 }
-
 @font-face {
   font-family: 'Ubuntu';
   font-style: normal;
@@ -1342,7 +1095,6 @@ th {
       format('woff2'),
     url('https://assets.ubuntu.com/v1/502cc3a1-Ubuntu-Th_W.woff') format('woff');
 }
-
 @font-face {
   font-family: 'Ubuntu Mono';
   font-style: normal;
@@ -1352,7 +1104,6 @@ th {
     url('https://assets.ubuntu.com/v1/85edb898-UbuntuMono-R_W.woff')
       format('woff');
 }
-
 @font-face {
   font-family: 'Ubuntu Mono';
   font-style: normal;
@@ -1362,7 +1113,6 @@ th {
     url('https://assets.ubuntu.com/v1/85edb898-UbuntuMono-R_W.woff')
       format('woff');
 }
-
 html {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
@@ -1375,7 +1125,6 @@ html {
   font-weight: 300;
   line-height: 1.5rem;
 }
-
 h1,
 h2,
 h3,
@@ -1387,13 +1136,11 @@ h6,
     'Oxygen', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
 }
-
 p:empty {
   line-height: 0;
   margin: 0;
   padding: 0;
 }
-
 button,
 input,
 select,
@@ -1402,7 +1149,6 @@ textarea {
     'Oxygen', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
 }
-
 blockquote {
   margin-bottom: 0;
   margin-left: 0;
@@ -1416,24 +1162,20 @@ blockquote > p {
 blockquote > cite {
   font-style: normal;
 }
-
 small.dense {
   margin-bottom: 1.2rem;
 }
-
 sub,
 sup {
   line-height: 0;
   position: relative;
   vertical-align: baseline;
 }
-
 abbr[title] {
   border-bottom: 0.1em dotted;
   cursor: pointer;
   text-decoration: none;
 }
-
 @media (max-width: 768px) {
   h3 + p,
   h4 + p,
@@ -1442,7 +1184,6 @@ abbr[title] {
     margin-top: -0.5rem;
   }
 }
-
 h5 + p,
 h5 + h5,
 h6 + p,
@@ -1465,7 +1206,6 @@ h6 + .p-heading--six,
 .p-heading--six + .p-heading--six {
   margin-top: 0rem;
 }
-
 .p-muted-heading + p,
 .p-muted-heading + h5,
 .p-muted-heading + h6,
@@ -1473,7 +1213,6 @@ h6 + .p-heading--six,
 .p-muted-heading + .p-heading--six {
   margin-top: -0.5rem;
 }
-
 p + p:not(.p-muted-heading),
 h5 + p:not(.p-muted-heading),
 h6 + p:not(.p-muted-heading),
@@ -1481,7 +1220,6 @@ h6 + p:not(.p-muted-heading),
 .p-heading--six + p:not(.p-muted-heading) {
   margin-top: -1rem;
 }
-
 ul + h1,
 ul + h2,
 ul + .p-heading--one,
@@ -1536,7 +1274,6 @@ h6 + .p-heading--two,
     padding-top: 1.7rem;
   }
 }
-
 p + h2,
 p + .p-heading--two {
   padding-top: 2.2rem;
@@ -1547,7 +1284,6 @@ p + .p-heading--two {
     padding-top: 1.6rem;
   }
 }
-
 p + h3,
 p + .p-heading--three {
   padding-top: 2.1rem;
@@ -1558,23 +1294,19 @@ p + .p-heading--three {
     padding-top: 1.5rem;
   }
 }
-
 p + h4,
 p + .p-heading--four {
   padding-top: 1.55rem;
 }
-
 p + h5,
 p + .p-heading--five,
 p + h6,
 p + .p-heading--six {
   padding-top: 1.4rem;
 }
-
 p + .p-muted-heading {
   padding-top: 1rem;
 }
-
 h1 {
   max-width: 20em;
   font-size: 2.91029rem;
@@ -1593,7 +1325,6 @@ h1 {
     padding-top: 0.2rem;
   }
 }
-
 h2 {
   max-width: 20em;
   font-size: 2.22819rem;
@@ -1612,7 +1343,6 @@ h2 {
     padding-top: 0.1rem;
   }
 }
-
 h3 {
   max-width: 25em;
   font-size: 1.70596rem;
@@ -1631,7 +1361,6 @@ h3 {
     padding-top: 0;
   }
 }
-
 h4 {
   max-width: 25em;
   font-size: 1.30612rem;
@@ -1650,19 +1379,16 @@ h4 {
     padding-top: 0.3rem;
   }
 }
-
 h5 {
   font-size: 1rem;
   font-style: normal;
   font-weight: 500;
 }
-
 h6 {
   font-size: 1rem;
   font-style: italic;
   font-weight: 300;
 }
-
 label,
 dt,
 cite,
@@ -1676,14 +1402,12 @@ h6,
   margin-top: 0;
   padding-top: 0.4rem;
 }
-
 dd,
 p,
 h5,
 h6 {
   margin-bottom: 1.1rem;
 }
-
 small,
 thead th {
   font-size: 0.875rem;
@@ -1691,27 +1415,23 @@ thead th {
   margin-bottom: 0.7rem;
   padding-top: 0.05rem;
 }
-
 thead th {
   color: #666;
   margin-bottom: 0.5rem;
   margin-top: 0;
   text-transform: uppercase;
 }
-
 p,
 h5,
 h6,
 .measure--p {
   max-width: 38em;
 }
-
 dt,
 strong,
 .p-notification--cookie-policy .p-notification__status {
   font-weight: 400;
 }
-
 .p-notification--cookie-policy {
   bottom: 0;
   box-sizing: border-box;
@@ -1864,7 +1584,7 @@ strong,
   text-align: left;
 }
 .p-notification__close {
-  background-color: transparent;
+  background-color: rgba(0, 0, 0, 0);
   background-image: url('https://assets.ubuntu.com/v1/66542f40-close.svg');
   background-position: center;
   background-repeat: no-repeat;
