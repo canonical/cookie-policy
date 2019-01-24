@@ -45,7 +45,7 @@ var options = {
     'We use cookies to improve your experience. By your continued use of this site you accept such use.<br /> This notice will disappear by itself. To change your settings please <a href="https://www.ubuntu.com/legal/terms-and-policies/privacy-policy#cookies">see our policy</a>.',
   duration: 3000,
 };
-ubuntu.cookiePolicy.setup(options);
+cpNs.cookiePolicy.setup(options);
 ```
 
 ## Contributing

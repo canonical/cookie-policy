@@ -1,9 +1,9 @@
 /**
  * Setup namespace
- */ if ('undefined' == typeof ubuntu) var ubuntu = {};
-if (ubuntu.hasOwnProperty('cookiePolicy'))
-  throw TypeError("Namespace 'ubuntu' not available"); // The cookie policy injection and interaction
-ubuntu.cookiePolicy = (function() {
+ */ if ('undefined' == typeof cpNs) var cpNs = {};
+if (cpNs.hasOwnProperty('cookiePolicy'))
+  throw TypeError("Namespace 'cpNs' not available"); // The cookie policy injection and interaction
+cpNs.cookiePolicy = (function() {
   return {
     setup: function(a) {
       let b = a.content,

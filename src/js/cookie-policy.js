@@ -1,16 +1,16 @@
 /**
  * Setup namespace
  */
-if (typeof ubuntu === 'undefined') {
-  var ubuntu = {};
+if (typeof cpNs === 'undefined') {
+  var cpNs = {};
 }
 
-if (ubuntu.hasOwnProperty('cookiePolicy')) {
-  throw TypeError("Namespace 'ubuntu' not available");
+if (cpNs.hasOwnProperty('cookiePolicy')) {
+  throw TypeError("Namespace 'cpNs' not available");
 }
 
 // The cookie policy injection and interaction
-ubuntu.cookiePolicy = (function() {
+cpNs.cookiePolicy = (function() {
   var context = null;
   var options = {
     content: `We use cookies to improve your experience. By your continued
