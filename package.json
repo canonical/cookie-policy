@@ -33,7 +33,7 @@
     "gulp": "^4.0.0",
     "gulp-babel": "^8.0.0",
     "node-sass": "^4.5.3",
-    "vanilla-framework": "^1.8.0"
+    "vanilla-framework": "^1.8.1"
   },
   "husky": {
     "hooks": {
