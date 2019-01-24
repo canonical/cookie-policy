@@ -30,6 +30,7 @@
     "@babel/cli": "^7.2.3",
     "@babel/core": "^7.2.2",
     "@babel/preset-env": "^7.3.1",
+    "babel-preset-minify": "^0.5.0",
     "node-sass": "^4.5.3",
     "vanilla-framework": "^1.8.1"
   },
@@ -51,7 +52,7 @@
     "clean": "rm -rf build",
     "test": "eslint ./src/js/**/*.js && sass-lint ./src/sass/**/*.scss",
     "buildScss": "node-sass ./src/sass/cookie-policy.scss --include-path node_modules --output build/css --output-style compressed",
-    "buildJs": "babel ./src/js/cookie-policy.js --out-dir ./build/js/",
+    "buildJs": "babel --presets minify ./src/js/cookie-policy.js --out-dir ./build/js/",
     "build": "npm run test && npm run buildScss && npm run buildJs",
     "watch": "npm-watch"
   }
