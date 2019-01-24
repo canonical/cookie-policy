@@ -17,9 +17,6 @@
   },
   "homepage": "https://github.com/canonical-webteam/cookie-policy#readme",
   "devDependencies": {
-    "@babel/cli": "^7.2.3",
-    "@babel/core": "^7.2.2",
-    "@babel/preset-env": "^7.3.1",
     "del": "^3.0.0",
     "gulp-eslint": "^5.0.0",
     "gulp-sass-lint": "^1.4.0",
@@ -30,6 +27,9 @@
     "pretty-quick": "^1.10.0"
   },
   "dependencies": {
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.2.2",
+    "@babel/preset-env": "^7.3.1",
     "node-sass": "^4.5.3",
     "vanilla-framework": "^1.8.1"
   },
