@@ -1,7 +1,7 @@
 {
   "name": "cookie-policy",
   "version": "1.0.5",
-  "description": "A script and stylesheet that displays the Canonical cookie policy",
+  "description": "A script and style sheet that displays a cookie policy notification",
   "main": "index.html",
   "repository": {
     "type": "git",

@@ -1,6 +1,6 @@
 # Canonical cookie policy component
 
-By default, this project contains the scripts and styles to display the a cookie policy notification linking to the Ubuntu cookie policy on a web page.
+By default, this project contains the scripts and styles to display the a cookie policy notification on a web page.
 
 You can use it to display a custom cookies message of your choosing on your own web page.
 
@@ -42,7 +42,7 @@ your website when using this option.
 ```javascript
 var options = {
   content:
-    'We use cookies to improve your experience. By your continued use of this site you accept such use.<br /> This notice will disappear by itself. To change your settings please <a href="https://www.ubuntu.com/legal/terms-and-policies/privacy-policy#cookies">see our policy</a>.',
+    'We use cookies to improve your experience. By your continued use of this site you accept such use.<br /> This notice will disappear by itself.',
   duration: 3000,
 };
 cpNs.cookiePolicy.setup(options);
