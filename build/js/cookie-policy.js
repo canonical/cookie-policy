@@ -11,11 +11,7 @@ cpNs.cookiePolicy = (function() {
       if (
         (b ||
           (b = `We use cookies to improve your experience. By your continued
-          use of this site you accept such use. To change your settings
-          please
-          <a href="https://www.ubuntu.com/legal/terms-and-policies/privacy-policy#cookies">
-            see our policy
-          </a>.`),
+          use of this site you accept such use.`),
         'true' !== this.getCookie('_cookies_accepted'))
       ) {
         const a = document.createRange(),
