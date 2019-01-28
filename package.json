@@ -49,7 +49,7 @@
   "scripts": {
     "clean": "rm -rf build",
     "test": "eslint ./src/js/**/*.js && sass-lint ./src/sass/**/*.scss",
-    "buildScss": "node-sass ./src/sass/cookie-policy.scss --include-path node_modules --output build/css --output-style compressed",
+    "buildScss": "node-sass ./src/sass/cookie-policy.scss --include-path node_modules --output-style compressed --output build/css",
     "buildJs": "babel --presets minify ./src/js/cookie-policy.js --out-dir ./build/js/",
     "build": "npm run test && npm run buildScss && npm run buildJs",
     "watch": "npm-watch"
