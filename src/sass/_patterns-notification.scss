@@ -5,7 +5,9 @@
     @include vf-p-notification;
     bottom: 0;
     box-sizing: border-box;
+    border: 0;
     display: none;
+    padding: 1rem;
     padding-right: $spv-inter--regular-scaleable;
     position: fixed;
     z-index: 200;

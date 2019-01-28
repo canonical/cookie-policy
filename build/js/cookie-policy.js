@@ -20,7 +20,7 @@ cpNs.cookiePolicy = (function() {
           tabindex="0"
           open="open"
           role="alertdialog"
-          class="p-notification--cookie-policy"
+          class="p-notification p-notification--cookie-policy"
           aria-labelledby="cookie-policy-title"
           aria-describedby="cookie-policy-content">
           <h1 id="cookie-policy-title" class="u-off-screen">
