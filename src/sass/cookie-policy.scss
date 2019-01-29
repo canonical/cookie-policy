@@ -1,6 +1,8 @@
 // Vanilla components
 @import 'vanilla-framework/scss/vanilla';
 @include vf-u-off-screen;
+@include vf-base;
+@include vf-p-notification;
 
 // Patterns
 @import 'patterns-notification';
