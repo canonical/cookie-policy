@@ -1,6 +1,6 @@
 {
   "name": "cookie-policy",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "A script and style sheet that displays a cookie policy notification",
   "main": "index.html",
   "repository": {
