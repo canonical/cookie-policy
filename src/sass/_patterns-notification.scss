@@ -2,7 +2,6 @@
   $asset-path: 'https://assets.ubuntu.com/v1/';
 
   .p-notification--cookie-policy {
-    @include vf-p-notification;
     bottom: 0;
     box-sizing: border-box;
     border: 0;
@@ -35,6 +34,7 @@
         background-position: center;
         background-repeat: no-repeat;
         background-size: 1rem;
+        border: 0;
         cursor: pointer;
         height: 1rem;
         padding: 1rem;

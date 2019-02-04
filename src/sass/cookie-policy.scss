@@ -7,7 +7,8 @@
 
 // Include all the CSS
 .cookie-policy {
-  @include vf-b-placeholders;
   @include vf-u-off-screen;
+  @include vf-b-placeholders;
+  @include vf-p-notification;
   @include cookie-p-notification;
 }
