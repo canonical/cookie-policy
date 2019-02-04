@@ -22,25 +22,27 @@ cpNs.cookiePolicy = (function() {
       let content = options.content;
       let duration = options.duration;
       let start = `
-        <dialog
-          tabindex="0"
-          open="open"
-          role="alertdialog"
-          class="p-notification p-notification--cookie-policy"
-          aria-labelledby="cookie-policy-title"
-          aria-describedby="cookie-policy-content">
-          <h1 id="cookie-policy-title" class="u-off-screen">
-            Cookie policy notification
-          </h1>
-          <span class="p-notification__content"
-            id="cookie-policy-content"
-            role="document"
-            tabindex="0">`;
+        <div class="cookie-policy">
+          <dialog
+            tabindex="0"
+            open="open"
+            role="alertdialog"
+            class="p-notification p-notification--cookie-policy"
+            aria-labelledby="cookie-policy-title"
+            aria-describedby="cookie-policy-content">
+            <h1 id="cookie-policy-title" class="u-off-screen">
+              Cookie policy notification
+            </h1>
+            <span class="p-notification__content"
+              id="cookie-policy-content"
+              role="document"
+              tabindex="0">`;
       let end = `
-            <button class="p-notification__close js-close"
-               aria-label="Close this cookie policy notification">Close</button>
-          </span>
-        </dialog>`;
+              <button class="p-notification__close js-close"
+                aria-label="Close this cookie policy notification">Close</button>
+            </span>
+          </dialog>
+        </div>`;
       if (!content) {
         content = `We use cookies to improve your experience. By your continued
           use of this site you accept such use.`;
