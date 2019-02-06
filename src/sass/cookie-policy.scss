@@ -1,11 +1,14 @@
 // Vanilla components
 @import 'vanilla-framework/scss/vanilla';
-@include vf-u-off-screen;
-@include vf-base;
-@include vf-p-notification;
 
 // Patterns
+@import 'base-typography';
 @import 'patterns-notification';
 
 // Include all the CSS
-@include cookie-p-notification;
+.cookie-policy {
+  @include vf-u-off-screen;
+  @include vf-b-placeholders;
+  @include vf-p-notification;
+  @include cookie-p-notification;
+}
