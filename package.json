@@ -2,7 +2,8 @@
   "name": "cookie-policy",
   "version": "1.1.0",
   "description": "A script and style sheet that displays a cookie policy notification",
-  "main": "index.html",
+  "main": "build/module.js",
+  "iife": "build/cookie-policy.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/canonical-webteam/cookie-policy.git"
@@ -53,8 +54,8 @@
     "clean": "rm -rf build",
     "test": "eslint ./src/js/**/*.js && sass-lint ./src/sass/**/*.scss",
     "buildScss": "node-sass ./src/sass/cookie-policy.scss --include-path node_modules --output-style compressed --output build/css",
-    "buildJs": "babel --presets minify ./src/js/cookie-policy.js --out-dir ./build/js/",
-    "build": "npm run test && npm run buildScss && npm run buildJs",
+    "buildJs": "rollup -c",
+    "build": "npm run clean && npm run test && npm run buildScss && npm run buildJs",
     "prepublish": "npm run build",
     "watch": "npm-watch"
   }
