@@ -1,4 +1,6 @@
 import pkg from './package.json';
+import babel from 'rollup-plugin-babel';
+import { uglify } from 'rollup-plugin-uglify';
 
 export default [
   {
@@ -8,6 +10,12 @@ export default [
       format: 'iife',
       name: 'canonicalCookiePolicy',
       sourcemap: true,
+      plugins: [
+        babel({
+          exclude: 'node_modules/**',
+        }),
+        uglify(),
+      ],
     },
   },
   {
@@ -17,6 +25,11 @@ export default [
       format: 'esm',
       name: 'canonicalCookiePolicy',
       sourcemap: true,
+      plugins: [
+        babel({
+          exclude: 'node_modules/**',
+        }),
+      ],
     },
   },
 ];
