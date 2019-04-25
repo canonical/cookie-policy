@@ -2,8 +2,8 @@
   "name": "cookie-policy",
   "version": "1.1.0",
   "description": "A script and style sheet that displays a cookie policy notification",
-  "main": "build/module.js",
-  "iife": "build/cookie-policy.js",
+  "main": "build/js/module.js",
+  "iife": "build/js/cookie-policy.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/canonical-webteam/cookie-policy.git"

@@ -4,11 +4,11 @@ import { uglify } from 'rollup-plugin-uglify';
 
 export default [
   {
-    input: 'src/js/index.js',
+    input: 'src/js/cookie-policy.js',
     output: {
       file: pkg.iife,
       format: 'iife',
-      name: 'canonicalCookiePolicy',
+      name: 'cpNs',
       sourcemap: true,
       plugins: [
         babel({
@@ -19,11 +19,11 @@ export default [
     },
   },
   {
-    input: 'src/js/index.js',
+    input: 'src/js/cookie-policy.js',
     output: {
       file: pkg.main,
       format: 'esm',
-      name: 'canonicalCookiePolicy',
+      name: 'cpNs',
       sourcemap: true,
       plugins: [
         babel({
