@@ -38,8 +38,10 @@ export const cookiePolicy = options => {
     return '';
   };
 
-  let content = options.content;
-  let duration = options.duration;
+  if (options) {
+    var content = options.content;
+    var duration = options.duration;
+  }
 
   if (!content) {
     content = `We use cookies to improve your experience. By your continued
