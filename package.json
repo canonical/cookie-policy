@@ -6,7 +6,7 @@
   "iife": "build/js/cookie-policy.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/canonical-webteam/cookie-policy.git"
+    "url": "git+https://github.com/canonical-web-and-design/cookie-policy.git"
   },
   "author": "Anthony Dillon <anthony.dillon@canonical.com>",
   "contributors": [
@@ -14,9 +14,9 @@
   ],
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/canonical-webteam/cookie-policy/issues"
+    "url": "https://github.com/canonical-web-and-design/cookie-policy/issues"
   },
-  "homepage": "https://github.com/canonical-webteam/cookie-policy#readme",
+  "homepage": "https://github.com/canonical-web-and-design/cookie-policy#readme",
   "devDependencies": {
     "eslint": "5.16.0",
     "husky": "1.3.1",
