@@ -1,4 +1,7 @@
 export const cookiePolicy = options => {
+  /**
+   * Checks for available namespace
+   */
   if (typeof cpNs === 'undefined') {
     var cpNs = {};
   }
@@ -10,12 +13,21 @@ export const cookiePolicy = options => {
   let context = null;
 
   const closeCookie = () => {
+    /**
+     * Close the cookie banner on screen
+     */
     if (context.getAttribute('open')) {
       context.removeAttribute('open');
       setCookie('_cookies_accepted', 'true', 3000);
     }
   };
 
+  /**
+   * Set a cookie util
+   * @param {string} name - Name of the cookie
+   * @param {string} value - Value of the cookie
+   * @param {integrer} exdays - When cookie should expire
+   */
   const setCookie = (name, value, exdays) => {
     const d = new Date();
     d.setTime(d.getTime() + exdays * 24 * 60 * 60 * 1000);
@@ -23,6 +35,10 @@ export const cookiePolicy = options => {
     document.cookie = name + '=' + value + '; ' + expires;
   };
 
+  /**
+   * Get value of specific cookie
+   * @param {string} name - Name of the cookie
+   */
   const getCookie = nameParam => {
     const name = nameParam + '=';
     const ca = document.cookie.split(';');
@@ -43,11 +59,17 @@ export const cookiePolicy = options => {
     var duration = options.duration;
   }
 
+  /**
+   * Provide fall back content for cookie banner
+   */
   if (!content) {
     content = `We use cookies to improve your experience. By your continued
       use of this site you accept such use.`;
   }
 
+  /**
+   * Start of structural mark-up for cookie banner
+   */
   let start = `
     <div class="cookie-policy">
       <dialog
@@ -65,6 +87,9 @@ export const cookiePolicy = options => {
           role="document"
           tabindex="0">`;
 
+  /**
+   * End of structural mark-up for cookie banner
+   */
   let end = `
         <button class="p-notification__close js-close"
           aria-label="Close this cookie policy notification">Close</button>
@@ -72,6 +97,9 @@ export const cookiePolicy = options => {
     </dialog>
   </div>`;
 
+  /**
+   * If banner hasn't already apeared for this user, set up and display banner on screen
+   */
   if (getCookie('_cookies_accepted') !== 'true') {
     const range = document.createRange();
     const fullNotice = `${start} ${content} ${end}`;
@@ -83,6 +111,9 @@ export const cookiePolicy = options => {
       closeCookie();
     });
 
+    /**
+     * Set user generated duration, if provided.
+     */
     if (duration) {
       window.setTimeout(function() {
         closeCookie();
