@@ -1,4 +1,3 @@
 {
-  "presets": [["env", { "modules": false }], "stage-0"],
-  "plugins": ["external-helpers"]
+  "exclude": ["node_modules/**"]
 }

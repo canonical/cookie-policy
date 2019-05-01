@@ -1,6 +1,6 @@
 import pkg from './package.json';
 import babel from 'rollup-plugin-babel';
-import { uglify } from 'rollup-plugin-uglify';
+import { terser } from 'rollup-plugin-terser';
 
 export default [
   {
@@ -9,14 +9,9 @@ export default [
       file: pkg.iife,
       format: 'iife',
       name: 'cpNs',
-      sourcemap: true,
-      plugins: [
-        babel({
-          exclude: 'node_modules/**',
-        }),
-        uglify(),
-      ],
+      sourcemap: false,
     },
+    plugins: [babel(), terser()],
   },
   {
     input: 'src/js/cookie-policy.js',
@@ -24,12 +19,8 @@ export default [
       file: pkg.main,
       format: 'esm',
       name: 'cpNs',
-      sourcemap: true,
-      plugins: [
-        babel({
-          exclude: 'node_modules/**',
-        }),
-      ],
+      sourcemap: false,
     },
+    plugins: [babel()],
   },
 ];
