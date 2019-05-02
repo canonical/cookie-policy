@@ -25,7 +25,7 @@ You can then install the library either by directly linking to it or via an ES6 
 To consume the library directly, add a link to the JS file containing an [IIFE](https://developer.mozilla.org/en-US/docs/Glossary/IIFE) and call the lib:
 
 ```javascript
-<script src="/node_modules/cookie-policy/build/js/cookie-policy.js"></script>
+<script src="[ INSERT YOUR LOCAL PATH ]/js/cookie-policy.js"></script>
 <script>
   cpNs.cookiePolicy();
 </script>
