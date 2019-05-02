@@ -10,7 +10,7 @@ This project can be installed via an [NPM package](https://www.npmjs.com/package
 
 ```bash
 yarn add cookie-policy
-npm install cookie-policy --save
+npm install cookie-policy
 ```
 
 You can then install the library either by directly linking to it or via an ES6 import.
