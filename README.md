@@ -10,6 +10,11 @@ This project can be installed via an [NPM package](https://www.npmjs.com/package
 
 ```bash
 yarn add cookie-policy
+```
+
+...or...
+
+```bash
 npm install cookie-policy
 ```
 
