@@ -9,13 +9,13 @@ You can use it to display a custom cookies message of your choosing on your own 
 This project can be installed via an [NPM package](https://www.npmjs.com/package/cookie-policy).
 
 ```bash
-yarn add cookie-policy
+yarn add @canonical/cookie-policy
 ```
 
 ...or...
 
 ```bash
-npm install cookie-policy
+npm install @canonical/cookie-policy
 ```
 
 You can then install the library either by directly linking to it or via an ES6 import.
