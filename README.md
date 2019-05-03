@@ -6,16 +6,45 @@ You can use it to display a custom cookies message of your choosing on your own 
 
 ## Usage
 
-This project can be installed from an [NPM package](https://www.npmjs.com/package/cookie-policy).
+This project can be installed via an [NPM package](https://www.npmjs.com/package/cookie-policy).
+
+```bash
+yarn add cookie-policy
+```
+
+...or...
+
+```bash
+npm install cookie-policy
+```
+
+You can then install the library either by directly linking to it or via an ES6 import.
+
+1. Via direct link
+
+To consume the library directly, add a link to the JS file containing an [IIFE](https://developer.mozilla.org/en-US/docs/Glossary/IIFE) and call the lib:
+
+```javascript
+<script src="[ INSERT YOUR LOCAL PATH ]/js/cookie-policy.js"></script>
+<script>
+  cpNs.cookiePolicy();
+</script>
+```
+
+2. Via ES6 import
+
+```javascript
+import { cookiePolicy } from 'cookie-policy';
+```
 
 ### Options
 
 You can configure the cookie policy with the following options.
 
-#### Message:
+#### Content:
 
-You can edit to cookie policy message by passing the setup function an options
-object with a content value. For example:
+You can edit to cookie policy message by passing the `cookiePolicy` function an options
+object with a `content` value. For example:
 
 ```javascript
 var options = {
@@ -25,8 +54,8 @@ var options = {
 
 #### Timed destruction
 
-You can make the cookie policy self-destruct in time by passing a duration value as
-an option. Duration is measured in milliseconds.
+You can make the cookie policy banner close automatically by passing a duration value as
+an option. The duration is the time in milliseconds the banner will appear on-screen before closing.
 
 ```javascript
 var options = {
@@ -37,7 +66,7 @@ var options = {
 Note: It is recommended you add a link to your cookie policy in the footer of
 your website when using this option.
 
-#### Full example
+#### Full example via direct link
 
 ```javascript
 var options = {
@@ -45,7 +74,20 @@ var options = {
     'We use cookies to improve your experience. By your continued use of this site you accept such use.<br /> This notice will disappear by itself.',
   duration: 3000,
 };
-cpNs.cookiePolicy.setup(options);
+cpNs.cookiePolicy(options);
+```
+
+#### Full example via ES6 import
+
+```javascript
+import { cookiePolicy } from 'cookie-policy';
+
+var options = {
+  content:
+    'We use cookies to improve your experience. By your continued use of this site you accept such use.<br /> This notice will disappear by itself.',
+  duration: 3000,
+};
+cookiePolicy(options);
 ```
 
 ## Contributing
