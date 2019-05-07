@@ -54,6 +54,7 @@
     "buildJs": "rollup -c",
     "build": "npm run clean && npm run test && npm run buildScss && npm run buildJs",
     "prepublish": "npm run build",
+    "preversion": "npm test",
     "watch": "npm-watch"
   }
 }
