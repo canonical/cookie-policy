@@ -51,7 +51,6 @@
     "buildScss": "node-sass ./src/sass/cookie-policy.scss --include-path node_modules --output-style compressed --output build/css",
     "buildJs": "rollup -c",
     "build": "npm run clean && npm run test && npm run buildScss && npm run buildJs",
-    "postpublish": "git push origin --all; git push origin --tags",
     "prepublish": "npm run build",
     "preversion": "npm test",
     "watch": "npm-watch"
