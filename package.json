@@ -29,7 +29,7 @@
     "rollup": "1.16.7",
     "rollup-plugin-babel": "4.3.3",
     "rollup-plugin-terser": "5.1.1",
-    "vanilla-framework": "2.1.0"
+    "vanilla-framework": "1.8.1"
   },
   "husky": {
     "hooks": {
