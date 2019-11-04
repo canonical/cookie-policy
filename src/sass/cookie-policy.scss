@@ -1,6 +1,9 @@
 // Vanilla components
 @import 'vanilla-framework/scss/vanilla';
 
+// Include base Vanilla styles
+@include vf-base;
+
 // Patterns
 @import 'base-typography';
 @import 'patterns-notification';
