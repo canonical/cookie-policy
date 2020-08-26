@@ -1,6 +1,6 @@
 # Canonical cookie policy component
 
-By default, this project contains the scripts and styles to display the a cookie policy notification on a web page.
+This project contains the scripts and styles to display a cookie policy notification on a web page.
 
 You can use it to display a custom cookies message of your choosing on your own web page.
 
@@ -51,20 +51,6 @@ var options = {
   content: 'We use cookies to improve your experience.',
 };
 ```
-
-#### Timed destruction
-
-You can make the cookie policy banner close automatically by passing a duration value as
-an option. The duration is the time in milliseconds the banner will appear on-screen before closing.
-
-```javascript
-var options = {
-  duration: 3000,
-};
-```
-
-Note: It is recommended you add a link to your cookie policy in the footer of
-your website when using this option.
 
 #### Full example via direct link
 

@@ -9,7 +9,21 @@
 
 // Include all the CSS
 .cookie-policy {
-  @include vf-u-off-screen;
+  @include vf-base;
+  @include vf-b-typography;
+  @include vf-b-hr;
+  @include vf-p-headings;
+  @include vf-p-buttons;
+  @include vf-p-modal;
+  @include vf-p-switch;
   @include vf-p-notification;
+  @include vf-u-vertical-spacing;
+  @include vf-u-margin-collapse;
+  @include vf-u-off-screen;
+  @include vf-u-floats;
   @include cookie-p-notification;
+
+  .p-modal__dialog {
+    overflow: auto;
+  }
 }

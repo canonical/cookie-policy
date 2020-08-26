@@ -1,13 +1,10 @@
 @mixin cookie-p-notification {
-  $asset-path: 'https://assets.ubuntu.com/v1/';
-
   .p-notification--cookie-policy {
     bottom: 0;
     box-sizing: border-box;
     border: 0;
     display: none;
     padding: 1rem;
-    padding-right: $spv-outer--regular-scaleable;
     position: fixed;
     z-index: 200;
 
@@ -24,25 +21,7 @@
     @at-root .p-notification {
       &__content {
         margin: 0;
-        padding-right: $sp-large;
         text-align: left;
-      }
-
-      &__close {
-        background-color: $color-transparent;
-        background-image: url('#{$asset-path}66542f40-close.svg');
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: 1rem;
-        border: 0;
-        cursor: pointer;
-        height: 1rem;
-        padding: 1rem;
-        position: absolute;
-        right: 0.75rem;
-        text-indent: -99999px;
-        top: 0.25rem;
-        width: 1rem;
       }
     }
   }
