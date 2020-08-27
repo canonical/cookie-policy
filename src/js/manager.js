@@ -3,9 +3,10 @@ import { Control } from './control.js';
 import { controlsContent } from './content.js';
 
 export class Manager {
-  constructor(container) {
+  constructor(container, destroyComponent) {
     this.container = container;
     this.controlsStore = [];
+    this.destroyComponent = destroyComponent;
     this.content = `
       <div class="p-modal" id="modal">
         <div class="p-modal__dialog" role="dialog" aria-labelledby="modal-title" aria-describedby="modal-description">
@@ -14,7 +15,7 @@ export class Manager {
           </header>
           <p id="modal-description">We use technologies such as cookies on our site to recognise visitors and remember their preferences, enhance user experience, personalise content and ads, provide social media features, and to measure campaign effectiveness and analyse site traffic. Please review and select which types of trackers you consent to the use of by us and third parties on our site. </p>
           <p>For further details or to change your consent choices at any time see our cookie policy.</p>
-          <p><a href="" class="p-button--positive u-no-margin--bottom js-close">Accept recommended settings</a></p>
+          <p><button class="p-button--positive u-no-margin--bottom js-close">Accept recommended settings</button></p>
           <p>This will automatically switch all toggles below to "ON".</p>
           <hr />
           <div class="controls"></div>
@@ -27,7 +28,7 @@ export class Manager {
     const scope = this;
     this.container.innerHTML = this.content;
     const controlsContainer = this.container.querySelector('.controls');
-    controlsContent.forEach(function (controlDetails) {
+    controlsContent.forEach((controlDetails) => {
       let control = new Control(controlDetails, controlsContainer);
       if (control.element) {
         scope.controlsStore.push({
@@ -42,25 +43,19 @@ export class Manager {
   initaliseListeners() {
     var scope = this;
 
-    this.container
-      .querySelector('.js-close')
-      .addEventListener('click', function (e) {
-        e.preventDefault();
-        setAllPreference();
-        scope.close();
-      });
+    this.container.querySelector('.js-close').addEventListener('click', (e) => {
+      e.preventDefault();
+      setAllPreference();
+      scope.destroyComponent();
+    });
 
     this.container
       .querySelector('.js-save-preferences')
       .addEventListener('click', (e) => {
         e.preventDefault();
         scope.savePreferences();
-        scope.close();
+        scope.destroyComponent();
       });
-  }
-
-  close() {
-    this.container.innerHTML = '';
   }
 
   savePreferences() {

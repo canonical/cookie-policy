@@ -3,11 +3,11 @@ export class Control {
     this.id = details.id;
     this.title = details.title;
     this.description = details.description;
-    this.switcher = details.switcher;
+    this.showSwitcher = details.showSwitcher;
     this.container = container;
     this.element;
 
-    // Rendering off the bat here as this is a dump component.
+    // Rendering off the bat here as this is a dumb component.
     // It saves creating a variable and calling .render() on it.
     this.render();
   }
@@ -17,7 +17,7 @@ export class Control {
     control.classList.add('u-sv3');
     control.innerHTML = `
       ${
-        this.switcher
+        this.showSwitcher
           ? `<label class="u-float-right">
         <input type="checkbox" class="p-switch js-${this.id}-switch" checked="">
         <div class="p-switch__slider"></div>

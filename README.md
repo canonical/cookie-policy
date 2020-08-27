@@ -37,30 +37,15 @@ To consume the library directly, add a link to the JS file containing an [IIFE](
 import { cookiePolicy } from 'cookie-policy';
 ```
 
-### Options
+### Callback hook
 
-You can configure the cookie policy with the following options.
-
-#### Content:
-
-You can edit to cookie policy message by passing the `cookiePolicy` function an options
-object with a `content` value. For example:
+You can set up the cookie policy with a callback when a preference is selected.
 
 ```javascript
-var options = {
-  content: 'We use cookies to improve your experience.',
-};
-```
-
-#### Full example via direct link
-
-```javascript
-var options = {
-  content:
-    'We use cookies to improve your experience. By your continued use of this site you accept such use.<br /> This notice will disappear by itself.',
-  duration: 3000,
-};
-cpNs.cookiePolicy(options);
+function callbackFunction() {
+  alert('Calling back');
+}
+cpNs.cookiePolicy(callbackFunction);
 ```
 
 #### Full example via ES6 import
@@ -68,12 +53,7 @@ cpNs.cookiePolicy(options);
 ```javascript
 import { cookiePolicy } from 'cookie-policy';
 
-var options = {
-  content:
-    'We use cookies to improve your experience. By your continued use of this site you accept such use.<br /> This notice will disappear by itself.',
-  duration: 3000,
-};
-cookiePolicy(options);
+cookiePolicy();
 ```
 
 ## Contributing
