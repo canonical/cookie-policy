@@ -40,22 +40,19 @@ export class Notification {
   }
 
   initaliseListeners() {
-    var scope = this;
     this.container.querySelector('.js-close').addEventListener('click', (e) => {
-      e.preventDefault();
       setCookie('_cookies_accepted_all', true);
       controlsContent.forEach((controlDetails) => {
-        if (controlDetails.switcher) {
-          deleteCookie(`_cookies_accepted_${controlDetails.switcher}`);
+        if (controlDetails.showSwitcher) {
+          deleteCookie(`_cookies_accepted_${controlDetails.id}`);
         }
       });
-      scope.destroyComponent();
+      this.destroyComponent();
     });
     this.container
       .querySelector('.js-manage')
       .addEventListener('click', (e) => {
-        e.preventDefault();
-        scope.renderManager();
+        this.renderManager();
       });
   }
 }

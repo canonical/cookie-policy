@@ -25,13 +25,12 @@ export class Manager {
   }
 
   render() {
-    const scope = this;
     this.container.innerHTML = this.content;
     const controlsContainer = this.container.querySelector('.controls');
     controlsContent.forEach((controlDetails) => {
       let control = new Control(controlDetails, controlsContainer);
       if (control.element) {
-        scope.controlsStore.push({
+        this.controlsStore.push({
           id: [controlDetails.id],
           element: control.element,
         });
@@ -41,20 +40,16 @@ export class Manager {
   }
 
   initaliseListeners() {
-    var scope = this;
-
     this.container.querySelector('.js-close').addEventListener('click', (e) => {
-      e.preventDefault();
       setAllPreference();
-      scope.destroyComponent();
+      this.destroyComponent();
     });
 
     this.container
       .querySelector('.js-save-preferences')
       .addEventListener('click', (e) => {
-        e.preventDefault();
-        scope.savePreferences();
-        scope.destroyComponent();
+        this.savePreferences();
+        this.destroyComponent();
       });
   }
 
