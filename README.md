@@ -56,6 +56,16 @@ import { cookiePolicy } from 'cookie-policy';
 cookiePolicy();
 ```
 
+### Cookie groups
+
+Essential cookies are always allowed, unless the user turns them off in their browser. Otherwise, there will be a series of values the `_cookies_accepted` cookie can contain :
+| Cookie value | Description | Note |
+| --- | --- | --- |
+| all | All cookies accepted by the user. Currently used by the existing widget | Previous value was `true`. Using the same cookie. |
+| essential | Essential cookies accepted. | This is used to hide the notification instead of not setting the cookie |
+| performance | Performance cookies accepted. | - |
+| functionality | Functionality cookies accepted. | - |
+
 ## Contributing
 
 If you would like to help improve this project, here is a list of commands to

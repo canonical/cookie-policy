@@ -1,4 +1,4 @@
-import { deleteCookie, setCookie, setAllPreference } from './utils.js';
+import { setCookie } from './utils.js';
 import { Control } from './control.js';
 import { controlsContent } from './content.js';
 
@@ -29,42 +29,37 @@ export class Manager {
     const controlsContainer = this.container.querySelector('.controls');
     controlsContent.forEach((controlDetails) => {
       let control = new Control(controlDetails, controlsContainer);
-      if (control.element) {
-        this.controlsStore.push({
-          id: [controlDetails.id],
-          element: control.element,
-        });
-      }
+      this.controlsStore.push(control);
     });
     this.initaliseListeners();
   }
 
   initaliseListeners() {
-    this.container.querySelector('.js-close').addEventListener('click', (e) => {
-      setAllPreference();
+    this.container.querySelector('.js-close').addEventListener('click', () => {
+      setCookie('all');
       this.destroyComponent();
     });
 
     this.container
       .querySelector('.js-save-preferences')
-      .addEventListener('click', (e) => {
+      .addEventListener('click', () => {
         this.savePreferences();
         this.destroyComponent();
       });
   }
 
   savePreferences() {
-    const checkedControls = this.controlsStore.filter(
-      (control) => control.element.checked
+    const checkedControls = this.controlsStore.filter((control) =>
+      control.isChecked()
     );
 
     if (this.controlsStore.length === checkedControls.length) {
-      setAllPreference();
+      setCookie('all');
     } else {
       this.controlsStore.forEach((control) => {
-        control.element.checked
-          ? setCookie(`_cookies_accepted_${control.id}`, true)
-          : deleteCookie(`_cookies_accepted_${control.id}`);
+        if (control.isChecked()) {
+          setCookie(control.getId());
+        }
       });
     }
   }

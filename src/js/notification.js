@@ -1,5 +1,4 @@
-import { deleteCookie, setCookie } from './utils.js';
-import { controlsContent } from './content.js';
+import { setCookie } from './utils.js';
 
 export class Notification {
   constructor(container, renderManager, destroyComponent) {
@@ -41,12 +40,7 @@ export class Notification {
 
   initaliseListeners() {
     this.container.querySelector('.js-close').addEventListener('click', (e) => {
-      setCookie('_cookies_accepted_all', true);
-      controlsContent.forEach((controlDetails) => {
-        if (controlDetails.showSwitcher) {
-          deleteCookie(`_cookies_accepted_${controlDetails.id}`);
-        }
-      });
+      setCookie('all');
       this.destroyComponent();
     });
     this.container

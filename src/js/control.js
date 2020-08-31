@@ -29,4 +29,12 @@ export class Control {
     this.container.appendChild(control);
     this.element = control.querySelector(`.js-${this.id}-switch`);
   }
+
+  isChecked() {
+    return this.element ? this.element.checked : true;
+  }
+
+  getId() {
+    return this.id;
+  }
 }
