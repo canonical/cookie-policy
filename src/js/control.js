@@ -19,7 +19,7 @@ export class Control {
       ${
         this.showSwitcher
           ? `<label class="u-float-right">
-        <input type="checkbox" class="p-switch js-${this.id}-switch" checked="">
+        <input type="checkbox" class="p-switch js-${this.id}-switch">
         <div class="p-switch__slider"></div>
       </label>`
           : ''
