@@ -13,7 +13,7 @@ export class Control {
   }
 
   render() {
-    let control = document.createElement('div');
+    const control = document.createElement('div');
     control.classList.add('u-sv3');
     control.innerHTML = `
       ${

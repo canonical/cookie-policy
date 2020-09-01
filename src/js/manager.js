@@ -28,7 +28,7 @@ export class Manager {
     this.container.innerHTML = this.content;
     const controlsContainer = this.container.querySelector('.controls');
     controlsContent.forEach((controlDetails) => {
-      let control = new Control(controlDetails, controlsContainer);
+      const control = new Control(controlDetails, controlsContainer);
       this.controlsStore.push(control);
     });
     this.initaliseListeners();
