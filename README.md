@@ -37,6 +37,14 @@ To consume the library directly, add a link to the JS file containing an [IIFE](
 import { cookiePolicy } from 'cookie-policy';
 ```
 
+### Revoking the cookie policy
+
+If you would like users to change their preferences you can add `js-revoke-cookie-manager` class to any element that is present in the document to recall the policy manager.
+
+```html
+<button href="" class="js-revoke-cookie-manager">Revoke cookie manager</button>
+```
+
 ### Callback hook
 
 You can set up the cookie policy with a callback when a preference is selected.
