@@ -4,22 +4,22 @@ import { terser } from 'rollup-plugin-terser';
 
 export default [
   {
-    input: 'src/js/cookie-policy.js',
+    input: 'src/js/main.js',
     output: {
       file: pkg.iife,
       format: 'iife',
       name: 'cpNs',
-      sourcemap: false,
+      sourcemap: true,
     },
     plugins: [babel(), terser()],
   },
   {
-    input: 'src/js/cookie-policy.js',
+    input: 'src/js/main.js',
     output: {
       file: pkg.main,
       format: 'esm',
       name: 'cpNs',
-      sourcemap: false,
+      sourcemap: true,
     },
     plugins: [babel()],
   },

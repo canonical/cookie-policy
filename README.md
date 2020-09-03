@@ -1,6 +1,6 @@
 # Canonical cookie policy component
 
-By default, this project contains the scripts and styles to display the a cookie policy notification on a web page.
+This project contains the scripts and styles to display a cookie policy notification on a web page.
 
 You can use it to display a custom cookies message of your choosing on your own web page.
 
@@ -37,44 +37,23 @@ To consume the library directly, add a link to the JS file containing an [IIFE](
 import { cookiePolicy } from 'cookie-policy';
 ```
 
-### Options
+### Revoking the cookie policy
 
-You can configure the cookie policy with the following options.
+If you would like users to change their preferences you can add `js-revoke-cookie-manager` class to any element that is present in the document to recall the policy manager.
 
-#### Content:
-
-You can edit to cookie policy message by passing the `cookiePolicy` function an options
-object with a `content` value. For example:
-
-```javascript
-var options = {
-  content: 'We use cookies to improve your experience.',
-};
+```html
+<button href="" class="js-revoke-cookie-manager">Revoke cookie manager</button>
 ```
 
-#### Timed destruction
+### Callback hook
 
-You can make the cookie policy banner close automatically by passing a duration value as
-an option. The duration is the time in milliseconds the banner will appear on-screen before closing.
-
-```javascript
-var options = {
-  duration: 3000,
-};
-```
-
-Note: It is recommended you add a link to your cookie policy in the footer of
-your website when using this option.
-
-#### Full example via direct link
+You can set up the cookie policy with a callback when a preference is selected.
 
 ```javascript
-var options = {
-  content:
-    'We use cookies to improve your experience. By your continued use of this site you accept such use.<br /> This notice will disappear by itself.',
-  duration: 3000,
-};
-cpNs.cookiePolicy(options);
+function callbackFunction() {
+  alert('Calling back');
+}
+cpNs.cookiePolicy(callbackFunction);
 ```
 
 #### Full example via ES6 import
@@ -82,13 +61,18 @@ cpNs.cookiePolicy(options);
 ```javascript
 import { cookiePolicy } from 'cookie-policy';
 
-var options = {
-  content:
-    'We use cookies to improve your experience. By your continued use of this site you accept such use.<br /> This notice will disappear by itself.',
-  duration: 3000,
-};
-cookiePolicy(options);
+cookiePolicy();
 ```
+
+### Cookie groups
+
+Essential cookies are always allowed, unless the user turns them off in their browser. Otherwise, there will be a series of values the `_cookies_accepted` cookie can contain :
+| Cookie value | Description | Note |
+| --- | --- | --- |
+| all | All cookies accepted by the user. Currently used by the existing widget | Previous value was `true`. Using the same cookie. |
+| essential | Essential cookies accepted. | This is used to hide the notification instead of not setting the cookie |
+| performance | Performance cookies accepted. | - |
+| functionality | Functionality cookies accepted. | - |
 
 ## Contributing
 
