@@ -16,7 +16,7 @@ export class Manager {
           <p id="modal-description">We use cookies to recognise visitors and remember your preferences.</p>
           <p>They enhance user experience, personalise content and ads, provide social media features, measure campaign effectiveness, and analyse site traffic.</p>
           <p>Select the types of trackers you consent to, both by us, and third parties.</p>
-          <p>Visit <a href="https://ubuntu.com/legal/data-privacy#cookies">cookie policy</a> to learn more.</p>
+          <p>Learn more at <a href="https://ubuntu.com/legal/data-privacy#cookies">data privacy: cookie policy</a> - you can change your choices at any time from the footer of the site.</p>
           <p><button class="p-button--positive u-no-margin--bottom js-close">Accept all</button></p>
           <p>This will switch all toggles "ON".</p>
           <hr />
