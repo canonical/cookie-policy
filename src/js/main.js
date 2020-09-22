@@ -5,7 +5,11 @@ import { preferenceNotSelected } from './utils.js';
 export const cookiePolicy = (callback = null) => {
   let cookiePolicyContainer = null;
 
-  const renderNotification = function () {
+  const renderNotification = function (e) {
+    if (e) {
+      e.preventDefault();
+    }
+
     if (cookiePolicyContainer === null) {
       cookiePolicyContainer = document.createElement('div');
       cookiePolicyContainer.classList.add('cookie-policy');
