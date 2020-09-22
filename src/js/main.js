@@ -32,12 +32,16 @@ export const cookiePolicy = (callback = null) => {
     cookiePolicyContainer = null;
   };
 
-  const revokeButton = document.querySelector('.js-revoke-cookie-manager');
-  if (revokeButton) {
-    revokeButton.addEventListener('click', renderNotification);
-  }
+  const init = function () {
+    const revokeButton = document.querySelector('.js-revoke-cookie-manager');
+    if (revokeButton) {
+      revokeButton.addEventListener('click', renderNotification);
+    }
 
-  if (preferenceNotSelected()) {
-    renderNotification();
-  }
+    if (preferenceNotSelected()) {
+      renderNotification();
+    }
+  };
+
+  document.addEventListener('DOMContentLoaded', init, false);
 };
