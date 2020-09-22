@@ -21,5 +21,11 @@ export const getCookie = () => {
 };
 
 export const preferenceNotSelected = () => {
-  return getCookie('_cookies_accepted') ? false : true;
+  const cookieValue = getCookie('_cookies_accepted');
+  // Skip a value of "true" to override old existing cookies
+  if (cookieValue && cookieValue != 'true') {
+    return false;
+  } else {
+    return true;
+  }
 };
