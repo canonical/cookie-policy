@@ -34,7 +34,7 @@ To consume the library directly, add a link to the JS file containing an [IIFE](
 2. Via ES6 import
 
 ```javascript
-import { cookiePolicy } from 'cookie-policy';
+import { cookiePolicy } from "@canonical/cookie-policy";
 ```
 
 ### Revoking the cookie policy
@@ -59,7 +59,7 @@ cpNs.cookiePolicy(callbackFunction);
 #### Full example via ES6 import
 
 ```javascript
-import { cookiePolicy } from 'cookie-policy';
+import { cookiePolicy } from "@canonical/cookie-policy";
 
 cookiePolicy();
 ```
