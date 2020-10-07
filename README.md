@@ -34,7 +34,7 @@ To consume the library directly, add a link to the JS file containing an [IIFE](
 2. Via ES6 import
 
 ```javascript
-import { cookiePolicy } from "@canonical/cookie-policy";
+import { cookiePolicy } from '@canonical/cookie-policy';
 ```
 
 ### Revoking the cookie policy
@@ -42,7 +42,13 @@ import { cookiePolicy } from "@canonical/cookie-policy";
 If you would like users to change their preferences you can add `js-revoke-cookie-manager` class to any element that is present in the document to recall the policy manager.
 
 ```html
-<button href="" class="js-revoke-cookie-manager">Revoke cookie manager</button>
+<button class="js-revoke-cookie-manager">Revoke cookie manager</button>
+```
+
+or
+
+```html
+<a href="" class="js-revoke-cookie-manager"Revoke cookie manager</a>
 ```
 
 ### Callback hook
@@ -59,7 +65,7 @@ cpNs.cookiePolicy(callbackFunction);
 #### Full example via ES6 import
 
 ```javascript
-import { cookiePolicy } from "@canonical/cookie-policy";
+import { cookiePolicy } from '@canonical/cookie-policy';
 
 cookiePolicy();
 ```
