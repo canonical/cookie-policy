@@ -1,0 +1,15 @@
+@mixin cookie-p-modal {
+  .p-modal {
+    height: auto;
+    width: auto;
+
+    &__dialog {
+      overflow: auto;
+      margin-bottom: 2rem !important;
+    }
+
+    button {
+      box-sizing: border-box;
+    }
+  }
+}
