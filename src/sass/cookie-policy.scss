@@ -6,6 +6,7 @@
 
 // Patterns
 @import 'patterns-notification';
+@import 'patterns-modal';
 
 // Include all the CSS
 .cookie-policy {
@@ -22,8 +23,5 @@
   @include vf-u-off-screen;
   @include vf-u-floats;
   @include cookie-p-notification;
-
-  .p-modal__dialog {
-    overflow: auto;
-  }
+  @include cookie-p-modal;
 }
