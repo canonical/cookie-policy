@@ -3,8 +3,9 @@ export const setCookie = (value) => {
   d.setTime(d.getTime() + 365 * 24 * 60 * 60 * 1000);
   const expires = 'expires=' + d.toUTCString();
   const samesite = 'samesite=lax;';
+  const path = 'path=/;';
   document.cookie =
-    '_cookies_accepted=' + value + '; ' + expires + '; ' + samesite;
+    '_cookies_accepted=' + value + '; ' + expires + '; ' + samesite + path;
   if (enabledTracking(value)) {
     pushPageview();
   }
