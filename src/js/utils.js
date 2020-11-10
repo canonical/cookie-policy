@@ -14,16 +14,19 @@ export const setCookie = (value) => {
 export const getCookie = () => {
   const toMatch = '_cookies_accepted=';
   const splitArray = document.cookie.split(';');
+  let cookieValue = '';
+  let currentCookieValue = '';
   for (let i = 0; i < splitArray.length; i++) {
     let cookie = splitArray[i];
     while (cookie.charAt(0) == ' ') {
       cookie = cookie.substring(1);
     }
-    if (cookie.indexOf(toMatch) === 0) {
-      return cookie.substring(toMatch.length, cookie.length);
+    currentCookieValue = cookie.substring(toMatch.length, cookie.length);
+    if (cookie.indexOf(toMatch) === 0 && currentCookieValue !== 'true') {
+      cookieValue = currentCookieValue;
     }
   }
-  return '';
+  return cookieValue;
 };
 
 export const preferenceNotSelected = () => {
