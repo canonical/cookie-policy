@@ -1,8 +1,9 @@
 export class Control {
-  constructor(details, container) {
+  constructor(details, container, language) {
+    this.language = language;
     this.id = details.id;
-    this.title = details.title;
-    this.description = details.description;
+    this.title = details.content[this.language].title;
+    this.description = details.content[this.language].description;
     this.showSwitcher = details.showSwitcher;
     this.container = container;
     this.element;
