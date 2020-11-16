@@ -1,3 +1,5 @@
+import { content } from './content.js';
+
 export const setCookie = (value) => {
   const d = new Date();
   d.setTime(d.getTime() + 365 * 24 * 60 * 60 * 1000);
@@ -36,6 +38,14 @@ export const preferenceNotSelected = () => {
     return false;
   } else {
     return true;
+  }
+};
+
+export const getContent = (language) => {
+  if (content[language]) {
+    return content[language];
+  } else {
+    return content['default'];
   }
 };
 

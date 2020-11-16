@@ -4,6 +4,7 @@ import { preferenceNotSelected } from './utils.js';
 
 export const cookiePolicy = (callback = null) => {
   let cookiePolicyContainer = null;
+  let language = document.documentElement.lang;
 
   const renderNotification = function (e) {
     if (e) {
@@ -19,13 +20,13 @@ export const cookiePolicy = (callback = null) => {
         renderManager,
         close
       );
-      notifiation.render();
+      notifiation.render(language);
     }
   };
 
   const renderManager = function () {
     const manager = new Manager(cookiePolicyContainer, close);
-    manager.render();
+    manager.render(language);
   };
 
   const close = function () {
