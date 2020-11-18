@@ -99,8 +99,13 @@ To build the JS and CSS into the build folder, run:
 npm run build
 ```
 
-You can view the build files in action by opening the `index.html` in the root
-of this project.
+You can view the build files in action by running:
+
+```
+python -m SimpleHTTPServer
+```
+
+And, visiting http://0.0.0.0:8000/
 
 ### Hacking
 

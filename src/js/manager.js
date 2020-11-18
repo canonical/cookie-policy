@@ -1,4 +1,4 @@
-import { setCookie } from './utils.js';
+import { setCookie, getContent } from './utils.js';
 import { Control } from './control.js';
 import { controlsContent } from './content.js';
 
@@ -7,30 +7,36 @@ export class Manager {
     this.container = container;
     this.controlsStore = [];
     this.destroyComponent = destroyComponent;
-    this.content = `
-      <div class="p-modal" id="modal">
-        <div class="p-modal__dialog" role="dialog" aria-labelledby="modal-title" aria-describedby="modal-description">
-          <header class="p-modal__header">
-            <h2 class="p-modal__title" id="modal-title">Tracking choices</h2>
-          </header>
-          <p id="modal-description">We use cookies to recognise visitors and remember your preferences.</p>
-          <p>They enhance user experience, personalise content and ads, provide social media features, measure campaign effectiveness, and analyse site traffic.</p>
-          <p>Select the types of trackers you consent to, both by us, and third parties.</p>
-          <p>Learn more at <a href="https://ubuntu.com/legal/data-privacy#cookies">data privacy: cookie policy</a> - you can change your choices at any time from the footer of the site.</p>
-          <p><button class="p-button--positive u-no-margin--bottom js-close">Accept all</button></p>
-          <p>This will switch all toggles "ON".</p>
-          <hr />
-          <div class="controls"></div>
-          <button class="p-button--neutral js-save-preferences">Save preferences</button>
-        </div>
-      </div>`;
   }
 
-  render() {
-    this.container.innerHTML = this.content;
+  getManagerMarkup(language) {
+    const managerContent = getContent(language).manager;
+    const manager = `
+    <div class="p-modal" id="modal">
+    <div class="p-modal__dialog" role="dialog" aria-labelledby="modal-title" aria-describedby="modal-description">
+      <header class="p-modal__header">
+        <h2 class="p-modal__title" id="modal-title">${managerContent.title}</h2>
+      </header>
+      <p id="modal-description">${managerContent.body1}</p>
+      <p>${managerContent.body2}</p>
+      <p>${managerContent.body3}</p>
+      <p>${managerContent.body4}</p>
+      <p><button class="p-button--positive u-no-margin--bottom js-close">${managerContent.acceptAll}</button></p>
+      <p>${managerContent.acceptAllHelp}</p>
+      <hr />
+      <div class="controls"></div>
+      <button class="p-button--neutral js-save-preferences">${managerContent.SavePreferences}</button>
+    </div>
+  </div>`;
+
+    return manager;
+  }
+
+  render(language) {
+    this.container.innerHTML = this.getManagerMarkup(language);
     const controlsContainer = this.container.querySelector('.controls');
     controlsContent.forEach((controlDetails) => {
-      const control = new Control(controlDetails, controlsContainer);
+      const control = new Control(controlDetails, controlsContainer, language);
       this.controlsStore.push(control);
     });
     this.initaliseListeners();

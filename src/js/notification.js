@@ -1,11 +1,16 @@
-import { setCookie } from './utils.js';
+import { setCookie, getContent } from './utils.js';
+import { content } from './content.js';
 
 export class Notification {
   constructor(container, renderManager, destroyComponent) {
     this.container = container;
     this.renderManager = renderManager;
     this.destroyComponent = destroyComponent;
-    this.content = `
+  }
+
+  getNotificationMarkup(language) {
+    const notificationContent = getContent(language);
+    const notification = `
       <dialog
         tabindex="0"
         open="open"
@@ -13,28 +18,27 @@ export class Notification {
         class="p-notification p-notification--cookie-policy"
         aria-labelledby="cookie-policy-title"
         aria-describedby="cookie-policy-content">
-        <h1 id="cookie-policy-title" class="u-off-screen">
-          Cookie policy notification
-        </h1>
         <span class="p-notification__content"
           id="cookie-policy-content"
           role="document"
           tabindex="0">
-          <h1 class="p-heading--four">Your tracker settings</h1>
+          <h1 id="cookie-policy-title" class="p-heading--four">${notificationContent.notification.title}</h1>
           <hr />
-          <p>We use cookies and similar methods to recognise visitors and remember preferences. We also use them to measure campaign effectiveness and analyse site traffic.</p>
-          <p>By selecting ‘Accept‘, you consent to the use of these methods by us and trusted third parties.</p>
-          <p>For further details or to change your consent choices at any time see our <a href="https://ubuntu.com/legal/data-privacy#cookies">cookie policy</a>.</p>
+          <p>${notificationContent.notification.body1}</p>
+          <p>${notificationContent.notification.body2}</p>
+          <p>${notificationContent.notification.body3}</p>
           <p class="u-no-margin--bottom">
-            <button class="p-button--positive js-close">Accept all and visit site</button>
-            <button class="p-button--neutral u-no-margin--bottom js-manage">Manage your tracker settings</button>
+            <button class="p-button--positive js-close">${notificationContent.notification.buttonAccept}</button>
+            <button class="p-button--neutral u-no-margin--bottom js-manage">${notificationContent.notification.buttonManage}</button>
           </p>
         </span>
       </dialog>`;
+
+    return notification;
   }
 
-  render() {
-    this.container.innerHTML = this.content;
+  render(language) {
+    this.container.innerHTML = this.getNotificationMarkup(language);
     this.initaliseListeners();
   }
 
