@@ -5,7 +5,6 @@
 @include vf-b-placeholders;
 
 // Patterns
-@import 'patterns-notification';
 @import 'patterns-modal';
 
 // Include all the CSS
@@ -13,7 +12,6 @@
   @include vf-base;
   @include vf-b-typography;
   @include vf-b-hr;
-  @include vf-p-headings;
   @include vf-p-buttons;
   @include vf-p-modal;
   @include vf-p-switch;
