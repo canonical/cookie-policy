@@ -1,9 +1,11 @@
+import { getControlsContent } from './utils.js';
+
 export class Control {
   constructor(details, container, language) {
     this.language = language;
     this.id = details.id;
-    this.title = details.content[this.language].title;
-    this.description = details.content[this.language].description;
+    this.title = getControlsContent(details, language).title;
+    this.description = getControlsContent(details, language).description;
     this.showSwitcher = details.showSwitcher;
     this.container = container;
     this.element;

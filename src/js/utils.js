@@ -49,6 +49,14 @@ export const getContent = (language) => {
   }
 };
 
+export const getControlsContent = (details, language) => {
+  if (details.content[language]) {
+    return details.content[language];
+  } else {
+    return details.content['default'];
+  }
+};
+
 const pushPageview = () => {
   if (typeof dataLayer === 'object') {
     dataLayer.push({ event: 'pageview' });
