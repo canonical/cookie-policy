@@ -27,7 +27,7 @@ export class Control {
       </label>`
           : ''
       }
-      <h3 class="p-heading--four">${this.title}</h3>
+      <h4>${this.title}</h4>
       <p>${this.description}</p>`;
     this.container.appendChild(control);
     this.element = control.querySelector(`.js-${this.id}-switch`);
