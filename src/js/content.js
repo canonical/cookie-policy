@@ -125,7 +125,7 @@ export const content = {
       body2:
         '「同意」を選択すると、当社および信頼できる第三者による上記の手法の利用に同意したものとみなされます。',
       body3:
-        '詳細または同意の変更については、いつでも当社のク<a href="https://ubuntu.com/legal/data-privacy#cookies">をご覧になることができます。</a>.',
+        '詳細または同意の変更については、いつでも当社の<a href="https://ubuntu.com/legal/data-privacy#cookies">クッキーに関するポリシー</a>をご覧になることができます。',
       buttonAccept: 'すべて同意してサイトにアクセス',
       buttonManage: 'トラッキング機能の設定の管理',
     },
