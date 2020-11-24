@@ -1,5 +1,4 @@
 import { setCookie, getContent } from './utils.js';
-import { content } from './content.js';
 
 export class Notification {
   constructor(container, renderManager, destroyComponent) {
@@ -11,19 +10,12 @@ export class Notification {
   getNotificationMarkup(language) {
     const notificationContent = getContent(language);
     const notification = `
-      <dialog
-        tabindex="0"
-        open="open"
-        role="alertdialog"
-        class="p-notification p-notification--cookie-policy"
-        aria-labelledby="cookie-policy-title"
-        aria-describedby="cookie-policy-content">
-        <span class="p-notification__content"
-          id="cookie-policy-content"
-          role="document"
-          tabindex="0">
-          <h1 id="cookie-policy-title" class="p-heading--four">${notificationContent.notification.title}</h1>
-          <hr />
+      <div class="p-modal" id="modal">
+        <div class="p-modal__dialog" role="dialog" aria-labelledby="cookie-policy-title" aria-describedby="cookie-policy-content">
+        <header class="p-modal__header">
+          <h2 class="p-modal__title" id="cookie-policy-title">${notificationContent.notification.title}</h2>
+        </header>
+        <div id="cookie-policy-content">
           <p>${notificationContent.notification.body1}</p>
           <p>${notificationContent.notification.body2}</p>
           <p>${notificationContent.notification.body3}</p>
@@ -31,8 +23,8 @@ export class Notification {
             <button class="p-button--positive js-close">${notificationContent.notification.buttonAccept}</button>
             <button class="p-button--neutral u-no-margin--bottom js-manage">${notificationContent.notification.buttonManage}</button>
           </p>
-        </span>
-      </dialog>`;
+        </div>
+      </div>`;
 
     return notification;
   }
