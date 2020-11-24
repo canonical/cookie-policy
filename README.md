@@ -102,10 +102,10 @@ npm run build
 You can view the build files in action by running:
 
 ```
-python -m SimpleHTTPServer
+npm run serve
 ```
 
-And, visiting http://0.0.0.0:8000/
+And, visiting http://0.0.0.0:8301/
 
 ### Hacking
 
