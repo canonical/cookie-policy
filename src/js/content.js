@@ -72,7 +72,7 @@ export const content = {
       body2:
         'By selecting ‘Accept‘, you consent to the use of these methods by us and trusted third parties.',
       body3:
-        'For further details or to change your consent choices at any time see our <a href="https://ubuntu.com/legal/data-privacy#cookies">cookie policy</a>.',
+        'For further details or to change your consent choices at any time see our <a href="https://ubuntu.com/legal/data-privacy?cp=hide#cookies">cookie policy</a>.',
       buttonAccept: 'Accept all and visit site',
       buttonManage: 'Manage your tracker settings',
     },
@@ -85,7 +85,7 @@ export const content = {
       body3:
         'Select the types of trackers you consent to, both by us, and third parties.',
       body4:
-        'Learn more at <a href="https://ubuntu.com/legal/data-privacy#cookies">data privacy: cookie policy</a> - you can change your choices at any time from the footer of the site.',
+        'Learn more at <a href="https://ubuntu.com/legal/data-privacy?cp=hide#cookies">data privacy: cookie policy</a> - you can change your choices at any time from the footer of the site.',
       acceptAll: 'Accept all',
       acceptAllHelp: 'This will switch all toggles "ON".',
       SavePreferences: 'Save preferences',
@@ -99,7 +99,7 @@ export const content = {
         '我们使用cookie和相似的方法来识别访问者和记住偏好设置。我们也用它们来衡量活动的效果和网站流量分析。',
       body2: '选择”接受“，您同意我们和受信的第三方来使用这些方式。',
       body3:
-        '更多内容或者随时地变更您的同意选择，请点击我们的 <a href="https://ubuntu.com/legal/data-privacy#cookies">cookie策略</a>.',
+        '更多内容或者随时地变更您的同意选择，请点击我们的 <a href="https://ubuntu.com/legal/data-privacy?cp=hide#cookies">cookie策略</a>.',
       buttonAccept: '接受全部和访问网站',
       buttonManage: '管理您的追踪器设置',
     },
@@ -110,7 +110,7 @@ export const content = {
         '它们增强用户体验，使内容和广告个性化，提供社交媒体功能，衡量活动效果和网站流量分析。',
       body3: '选择您同意授予我们和受信的第三方的追踪类型。',
       body4:
-        '点击<a href="https://ubuntu.com/legal/data-privacy#cookies">数据隐私：cookie策略</a>了解更多，您可以在网站底部随时更改您的选择。',
+        '点击<a href="https://ubuntu.com/legal/data-privacy?cp=hide#cookies">数据隐私：cookie策略</a>了解更多，您可以在网站底部随时更改您的选择。',
       acceptAll: '接受全部',
       acceptAllHelp: '这将把全部开关变为”开启“。',
       SavePreferences: '保存偏好设置',
@@ -125,7 +125,7 @@ export const content = {
       body2:
         '「同意」を選択すると、当社および信頼できる第三者による上記の手法の利用に同意したものとみなされます。',
       body3:
-        '詳細または同意の変更については、いつでも当社の<a href="https://ubuntu.com/legal/data-privacy#cookies">クッキーに関するポリシー</a>をご覧になることができます。',
+        '詳細または同意の変更については、いつでも当社の<a href="https://ubuntu.com/legal/data-privacy?cp=hide#cookies">クッキーに関するポリシー</a>をご覧になることができます。',
       buttonAccept: 'すべて同意してサイトにアクセス',
       buttonManage: 'トラッキング機能の設定の管理',
     },
@@ -138,7 +138,7 @@ export const content = {
       body3:
         '当社および第三者によるトラッキング機能のタイプから、お客様が同意されるものをお選びください。',
       body4:
-        '詳細は、<a href="https://ubuntu.com/legal/data-privacy#cookies">データプライバシー：クッキーに関するポリシー</a>をご覧ください。お客様が選んだ設定は、本サイトの下部からいつでも変更できます。',
+        '詳細は、<a href="https://ubuntu.com/legal/data-privacy?cp=hide#cookies">データプライバシー：クッキーに関するポリシー</a>をご覧ください。お客様が選んだ設定は、本サイトの下部からいつでも変更できます。',
       acceptAll: 'すべて同意',
       acceptAllHelp: '同意されるとすべての設定が「ON」に切り替わります。',
       SavePreferences: '設定を保存',

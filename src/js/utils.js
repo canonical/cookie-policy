@@ -41,6 +41,17 @@ export const preferenceNotSelected = () => {
   }
 };
 
+export const hideSpecified = () => {
+  const urlParams = new URLSearchParams(window.location.search);
+  const cpQuery = urlParams.get('cp');
+
+  if (cpQuery === 'hide') {
+    return true;
+  } else {
+    return false;
+  }
+};
+
 export const getContent = (language) => {
   if (content[language]) {
     return content[language];
