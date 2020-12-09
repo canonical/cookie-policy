@@ -51,6 +51,10 @@ or
 <a href="" class="js-revoke-cookie-manager"Revoke cookie manager</a>
 ```
 
+### Visiting a page with tracker disabled
+
+If you add the query `?cp=hide` to any URL the cookie policy will not be rendered. The main use case is to visit the policy page without the modal blocking the content.
+
 ### Callback hook
 
 You can set up the cookie policy with a callback when a preference is selected.
