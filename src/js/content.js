@@ -99,7 +99,7 @@ export const content = {
         '我们使用cookie和相似的方法来识别访问者和记住偏好设置。我们也用它们来衡量活动的效果和网站流量分析。',
       body2: '选择”接受“，您同意我们和受信的第三方来使用这些方式。',
       body3:
-        '更多内容或者随时地变更您的同意选择，请点击我们的 <a href="https://ubuntu.com/legal/data-privacy#cookies?cp=hide">cookie策略</a>.',
+        '更多内容或者随时地变更您的同意选择，请点击我们的 <a href="https://ubuntu.com/legal/data-privacy?cp=hide#cookies">cookie策略</a>.',
       buttonAccept: '接受全部和访问网站',
       buttonManage: '管理您的追踪器设置',
     },
