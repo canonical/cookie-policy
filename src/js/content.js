@@ -138,7 +138,7 @@ export const content = {
       body3:
         '当社および第三者によるトラッキング機能のタイプから、お客様が同意されるものをお選びください。',
       body4:
-        '詳細は、<a href="https://ubuntu.com/legal/data-privacy#cookies?cp=hide">データプライバシー：クッキーに関するポリシー</a>をご覧ください。お客様が選んだ設定は、本サイトの下部からいつでも変更できます。',
+        '詳細は、<a href="https://ubuntu.com/legal/data-privacy?cp=hide#cookies">データプライバシー：クッキーに関するポリシー</a>をご覧ください。お客様が選んだ設定は、本サイトの下部からいつでも変更できます。',
       acceptAll: 'すべて同意',
       acceptAllHelp: '同意されるとすべての設定が「ON」に切り替わります。',
       SavePreferences: '設定を保存',
