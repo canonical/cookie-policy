@@ -85,7 +85,7 @@ export const content = {
       body3:
         'Select the types of trackers you consent to, both by us, and third parties.',
       body4:
-        'Learn more at <a href="https://ubuntu.com/legal/data-privacy#cookies?cp=hide">data privacy: cookie policy</a> - you can change your choices at any time from the footer of the site.',
+        'Learn more at <a href="https://ubuntu.com/legal/data-privacy?cp=hide#cookies">data privacy: cookie policy</a> - you can change your choices at any time from the footer of the site.',
       acceptAll: 'Accept all',
       acceptAllHelp: 'This will switch all toggles "ON".',
       SavePreferences: 'Save preferences',
