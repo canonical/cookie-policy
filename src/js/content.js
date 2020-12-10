@@ -110,7 +110,7 @@ export const content = {
         '它们增强用户体验，使内容和广告个性化，提供社交媒体功能，衡量活动效果和网站流量分析。',
       body3: '选择您同意授予我们和受信的第三方的追踪类型。',
       body4:
-        '点击<a href="https://ubuntu.com/legal/data-privacy#cookies?cp=hide">数据隐私：cookie策略</a>了解更多，您可以在网站底部随时更改您的选择。',
+        '点击<a href="https://ubuntu.com/legal/data-privacy?cp=hide#cookies">数据隐私：cookie策略</a>了解更多，您可以在网站底部随时更改您的选择。',
       acceptAll: '接受全部',
       acceptAllHelp: '这将把全部开关变为”开启“。',
       SavePreferences: '保存偏好设置',
