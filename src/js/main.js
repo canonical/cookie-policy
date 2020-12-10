@@ -1,6 +1,6 @@
 import { Notification } from './notification.js';
 import { Manager } from './manager.js';
-import { preferenceNotSelected } from './utils.js';
+import { preferenceNotSelected, hideSpecified } from './utils.js';
 
 export const cookiePolicy = (callback = null) => {
   let cookiePolicyContainer = null;
@@ -43,7 +43,7 @@ export const cookiePolicy = (callback = null) => {
       revokeButton.addEventListener('click', renderNotification);
     }
 
-    if (preferenceNotSelected()) {
+    if (preferenceNotSelected() && !hideSpecified()) {
       renderNotification();
     }
   };
