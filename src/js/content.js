@@ -72,7 +72,7 @@ export const content = {
       body2:
         'By selecting ‘Accept‘, you consent to the use of these methods by us and trusted third parties.',
       body3:
-        'For further details or to change your consent choices at any time see our <a href="https://ubuntu.com/legal/data-privacy#cookies?cp=hide?cp=hide">cookie policy</a>.',
+        'For further details or to change your consent choices at any time see our <a href="https://ubuntu.com/legal/data-privacy?cp=hide#cookies">cookie policy</a>.',
       buttonAccept: 'Accept all and visit site',
       buttonManage: 'Manage your tracker settings',
     },
