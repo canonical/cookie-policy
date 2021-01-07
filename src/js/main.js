@@ -14,6 +14,7 @@ export const cookiePolicy = (callback = null) => {
     if (cookiePolicyContainer === null) {
       cookiePolicyContainer = document.createElement('div');
       cookiePolicyContainer.classList.add('cookie-policy');
+      document.body.classList.add('u-scroll-lock');
       document.body.appendChild(cookiePolicyContainer);
       const notifiation = new Notification(
         cookiePolicyContainer,
@@ -34,6 +35,7 @@ export const cookiePolicy = (callback = null) => {
       callback();
     }
     document.body.removeChild(cookiePolicyContainer);
+    document.body.classList.remove('u-scroll-lock');
     cookiePolicyContainer = null;
   };
 
