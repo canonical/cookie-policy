@@ -15,6 +15,7 @@ export const cookiePolicy = (callback = null) => {
       cookiePolicyContainer = document.createElement('div');
       cookiePolicyContainer.classList.add('cookie-policy');
       document.body.classList.add('u-scroll-lock');
+      document.body.setAttribute('aria-hidden', true);
       document.body.appendChild(cookiePolicyContainer);
       const notifiation = new Notification(
         cookiePolicyContainer,
@@ -36,6 +37,7 @@ export const cookiePolicy = (callback = null) => {
     }
     document.body.removeChild(cookiePolicyContainer);
     document.body.classList.remove('u-scroll-lock');
+    document.body.removeAttribute('aria-hidden');
     cookiePolicyContainer = null;
   };
 
