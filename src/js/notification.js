@@ -32,11 +32,6 @@ export class Notification {
   render(language) {
     this.container.innerHTML = this.getNotificationMarkup(language);
     this.initaliseListeners();
-    this.container.children[0].children[0].children[1].focus();
-    this.container.children[0].children[0].children[1].setAttribute(
-      'style',
-      'background: purple;'
-    );
   }
 
   initaliseListeners() {
