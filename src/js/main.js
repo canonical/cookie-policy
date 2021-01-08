@@ -12,8 +12,9 @@ export const cookiePolicy = (callback = null) => {
     }
 
     if (cookiePolicyContainer === null) {
-      cookiePolicyContainer = document.createElement('div');
+      cookiePolicyContainer = document.createElement('dialog');
       cookiePolicyContainer.classList.add('cookie-policy');
+      cookiePolicyContainer.setAttribute('open', true);
       document.body.classList.add('u-scroll-lock');
       document.body.setAttribute('aria-hidden', true);
       document.body.appendChild(cookiePolicyContainer);
@@ -23,6 +24,7 @@ export const cookiePolicy = (callback = null) => {
         close
       );
       notifiation.render(language);
+      document.getElementById('cookie-policy-button-accept').focus();
     }
   };
 
