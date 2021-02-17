@@ -1,6 +1,6 @@
 {
   "name": "@canonical/cookie-policy",
-  "version": "3.1.2",
+  "version": "3.2.0",
   "description": "A script and style sheet that displays a cookie policy notification",
   "main": "build/js/module.js",
   "iife": "build/js/cookie-policy.js",
