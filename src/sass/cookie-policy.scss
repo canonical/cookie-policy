@@ -1,11 +1,9 @@
 // Vanilla components
 @import 'vanilla-framework/scss/vanilla';
+@import 'patterns-modal';
 
 // Include base Vanilla styles
 @include vf-b-placeholders;
-
-// Patterns
-@import 'patterns-modal';
 
 // Include all the CSS
 .cookie-policy {
