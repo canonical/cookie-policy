@@ -15,7 +15,6 @@ export const cookiePolicy = (callback = null) => {
       cookiePolicyContainer = document.createElement('dialog');
       cookiePolicyContainer.classList.add('cookie-policy');
       cookiePolicyContainer.setAttribute('open', true);
-      document.body.setAttribute('aria-hidden', true);
       document.body.appendChild(cookiePolicyContainer);
       const notifiation = new Notification(
         cookiePolicyContainer,
@@ -37,7 +36,6 @@ export const cookiePolicy = (callback = null) => {
       callback();
     }
     document.body.removeChild(cookiePolicyContainer);
-    document.body.removeAttribute('aria-hidden');
     cookiePolicyContainer = null;
   };
 
