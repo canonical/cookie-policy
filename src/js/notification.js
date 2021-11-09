@@ -1,4 +1,4 @@
-import { setCookie, getContent } from './utils.js';
+import { setCookie, getContent } from "./utils.js";
 
 export class Notification {
   constructor(container, renderManager, destroyComponent) {
@@ -21,7 +21,7 @@ export class Notification {
           <p>${notificationContent.notification.body3}</p>
           <p class="u-no-margin--bottom">
             <button class="p-button--positive js-close" id="cookie-policy-button-accept">${notificationContent.notification.buttonAccept}</button>
-            <button class="p-button--neutral u-no-margin--bottom js-manage">${notificationContent.notification.buttonManage}</button>
+            <button class="p-button--neutral js-manage">${notificationContent.notification.buttonManage}</button>
           </p>
         </div>
       </div>`;
@@ -35,13 +35,13 @@ export class Notification {
   }
 
   initaliseListeners() {
-    this.container.querySelector('.js-close').addEventListener('click', (e) => {
-      setCookie('all');
+    this.container.querySelector(".js-close").addEventListener("click", (e) => {
+      setCookie("all");
       this.destroyComponent();
     });
     this.container
-      .querySelector('.js-manage')
-      .addEventListener('click', (e) => {
+      .querySelector(".js-manage")
+      .addEventListener("click", (e) => {
         this.renderManager();
       });
   }
