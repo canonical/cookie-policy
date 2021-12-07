@@ -1,6 +1,6 @@
-import { setCookie, getContent } from './utils.js';
-import { Control } from './control.js';
-import { controlsContent } from './content.js';
+import { setCookie, getContent } from "./utils.js";
+import { Control } from "./control.js";
+import { controlsContent } from "./content.js";
 
 export class Manager {
   constructor(container, destroyComponent) {
@@ -25,7 +25,7 @@ export class Manager {
       <p>${managerContent.acceptAllHelp}</p>
       <hr />
       <div class="controls"></div>
-      <button class="p-button--neutral js-save-preferences">${managerContent.SavePreferences}</button>
+      <button class="p-button js-save-preferences">${managerContent.SavePreferences}</button>
     </div>
   </div>`;
 
@@ -34,7 +34,7 @@ export class Manager {
 
   render(language) {
     this.container.innerHTML = this.getManagerMarkup(language);
-    const controlsContainer = this.container.querySelector('.controls');
+    const controlsContainer = this.container.querySelector(".controls");
     controlsContent.forEach((controlDetails) => {
       const control = new Control(controlDetails, controlsContainer, language);
       this.controlsStore.push(control);
@@ -43,14 +43,14 @@ export class Manager {
   }
 
   initaliseListeners() {
-    this.container.querySelector('.js-close').addEventListener('click', () => {
-      setCookie('all');
+    this.container.querySelector(".js-close").addEventListener("click", () => {
+      setCookie("all");
       this.destroyComponent();
     });
 
     this.container
-      .querySelector('.js-save-preferences')
-      .addEventListener('click', () => {
+      .querySelector(".js-save-preferences")
+      .addEventListener("click", () => {
         this.savePreferences();
         this.destroyComponent();
       });
@@ -62,7 +62,7 @@ export class Manager {
     );
 
     if (this.controlsStore.length === checkedControls.length) {
-      setCookie('all');
+      setCookie("all");
     } else {
       this.controlsStore.forEach((control) => {
         if (control.isChecked()) {

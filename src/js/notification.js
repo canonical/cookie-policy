@@ -21,7 +21,7 @@ export class Notification {
           <p>${notificationContent.notification.body3}</p>
           <p class="u-no-margin--bottom">
             <button class="p-button--positive js-close" id="cookie-policy-button-accept">${notificationContent.notification.buttonAccept}</button>
-            <button class="p-button--neutral js-manage">${notificationContent.notification.buttonManage}</button>
+            <button class="p-button js-manage">${notificationContent.notification.buttonManage}</button>
           </p>
         </div>
       </div>`;
