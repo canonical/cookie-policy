@@ -1,4 +1,4 @@
-import { getControlsContent } from './utils.js';
+import { getControlsContent } from "./utils.js";
 
 export class Control {
   constructor(details, container, language) {
@@ -16,16 +16,16 @@ export class Control {
   }
 
   render() {
-    const control = document.createElement('div');
-    control.classList.add('u-sv3');
+    const control = document.createElement("div");
+    control.classList.add("u-sv3");
     control.innerHTML = `
       ${
         this.showSwitcher
-          ? `<label class="u-float-right">
-        <input type="checkbox" class="p-switch js-${this.id}-switch">
-        <div class="p-switch__slider"></div>
+          ? `<label class="u-float-right p-switch">
+        <input type="checkbox" class="p-switch__input js-${this.id}-switch">
+        <span class="p-switch__slider"></span>
       </label>`
-          : ''
+          : ""
       }
       <h4>${this.title}</h4>
       <p>${this.description}</p>`;
