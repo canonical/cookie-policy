@@ -4002,7 +4002,7 @@ validate-npm-package-license@^3.0.1:
     spdx-correct "^3.0.0"
     spdx-expression-parse "^3.0.0"
 
-vanilla-framework@^3.0.0:
+vanilla-framework@3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/vanilla-framework/-/vanilla-framework-3.0.0.tgz#97ebd707e8e73a83973aa66d70caedc38e48d740"
   integrity sha512-/q4P07hr7965s8HVVD8gjPubfd9laMzADje5Y1+4papnWaVq0Snpa+vSLA7tiBKU7vROf5J5dWy3nEo6YqrC8A==
