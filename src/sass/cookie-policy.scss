@@ -18,4 +18,7 @@
   @include vf-u-off-screen;
   @include vf-u-floats;
   @include cookie-p-modal;
+
+  /* fix box-sizing that Vanilla sets on html and it doesn't work nested in .cookie-policy */
+  box-sizing: border-box;
 }

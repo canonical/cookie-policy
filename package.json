@@ -1,6 +1,6 @@
 {
   "name": "@canonical/cookie-policy",
-  "version": "3.4.0",
+  "version": "3.5.0",
   "description": "A script and style sheet that displays a cookie policy notification",
   "main": "build/js/module.js",
   "iife": "build/js/cookie-policy.js",
@@ -32,7 +32,7 @@
     "stylelint": "14.2.0",
     "stylelint-config-standard": "24.0.0",
     "stylelint-order": "6.0.1",
-    "vanilla-framework": "3.14.0"
+    "vanilla-framework": "4.0.0"
   },
   "watch": {
     "buildJs": "src/js/*.js",
