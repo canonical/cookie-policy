@@ -1,4 +1,4 @@
-import { setCookie, getContent } from "./utils.js";
+import { setCookie, getContent, setGoogleConsentPreferences } from "./utils.js";
 import { Control } from "./control.js";
 import { controlsContent } from "./content.js";
 
@@ -45,6 +45,7 @@ export class Manager {
   initaliseListeners() {
     this.container.querySelector(".js-close").addEventListener("click", () => {
       setCookie("all");
+      setGoogleConsentPreferences("all");
       this.destroyComponent();
     });
 
@@ -63,10 +64,12 @@ export class Manager {
 
     if (this.controlsStore.length === checkedControls.length) {
       setCookie("all");
+      setGoogleConsentPreferences("all");
     } else {
       this.controlsStore.forEach((control) => {
         if (control.isChecked()) {
           setCookie(control.getId());
+          setGoogleConsentPreferences(control.getId());
         }
       });
     }
