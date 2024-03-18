@@ -1,10 +1,6 @@
-import { Notification } from "./notification.js";
-import { Manager } from "./manager.js";
-import {
-  preferenceNotSelected,
-  hideSpecified,
-  addGoogleConsentMode,
-} from "./utils.js";
+import { Notification } from './notification.js';
+import { Manager } from './manager.js';
+import { preferenceNotSelected, hideSpecified } from './utils.js';
 
 export const cookiePolicy = (callback = null) => {
   let cookiePolicyContainer = null;
@@ -16,9 +12,9 @@ export const cookiePolicy = (callback = null) => {
     }
 
     if (cookiePolicyContainer === null) {
-      cookiePolicyContainer = document.createElement("dialog");
-      cookiePolicyContainer.classList.add("cookie-policy");
-      cookiePolicyContainer.setAttribute("open", true);
+      cookiePolicyContainer = document.createElement('dialog');
+      cookiePolicyContainer.classList.add('cookie-policy');
+      cookiePolicyContainer.setAttribute('open', true);
       document.body.appendChild(cookiePolicyContainer);
       const notifiation = new Notification(
         cookiePolicyContainer,
@@ -26,7 +22,7 @@ export const cookiePolicy = (callback = null) => {
         close
       );
       notifiation.render(language);
-      document.getElementById("cookie-policy-button-accept").focus();
+      document.getElementById('cookie-policy-button-accept').focus();
     }
   };
 
@@ -36,7 +32,7 @@ export const cookiePolicy = (callback = null) => {
   };
 
   const close = function () {
-    if (typeof callback === "function") {
+    if (typeof callback === 'function') {
       callback();
     }
     document.body.removeChild(cookiePolicyContainer);
@@ -44,11 +40,9 @@ export const cookiePolicy = (callback = null) => {
   };
 
   const init = function () {
-    addGoogleConsentMode("essential");
-
-    const revokeButton = document.querySelector(".js-revoke-cookie-manager");
+    const revokeButton = document.querySelector('.js-revoke-cookie-manager');
     if (revokeButton) {
-      revokeButton.addEventListener("click", renderNotification);
+      revokeButton.addEventListener('click', renderNotification);
     }
 
     if (preferenceNotSelected() && !hideSpecified()) {
@@ -56,5 +50,5 @@ export const cookiePolicy = (callback = null) => {
     }
   };
 
-  document.addEventListener("DOMContentLoaded", init, false);
+  document.addEventListener('DOMContentLoaded', init, false);
 };
