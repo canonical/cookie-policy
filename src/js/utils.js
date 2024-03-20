@@ -1,5 +1,38 @@
 import { content } from "./content.js";
 
+const DEFAULT_CONSENT = {
+  ad_storage: "denied",
+  ad_user_data: "denied",
+  ad_personalization: "denied",
+  analytics_storage: "denied",
+  functionality_storage: "denied",
+  personalization_storage: "denied",
+  security_storage: "denied",
+};
+
+const ESSENTIAL_PREFERENCES = ["security_storage"];
+
+const PERFORMANCE_PREFERENCES = [
+  "ad_storage",
+  "ad_user_data",
+  "ad_personalization",
+  "analytics_storage",
+];
+
+const FUNCTIONALITY_PREFERENCES = [
+  "functionality_storage",
+  "personalization_storage",
+];
+
+const ALL_PREFERENCES = [
+  "ad_storage",
+  "ad_user_data",
+  "ad_personalization",
+  "analytics_storage",
+  "functionality_storage",
+  "personalization_storage",
+];
+
 export const setCookie = (value) => {
   const d = new Date();
   d.setTime(d.getTime() + 365 * 24 * 60 * 60 * 1000);
@@ -68,86 +101,109 @@ export const getControlsContent = (details, language) => {
   }
 };
 
-export const addGoogleConsentMode = (mode) => {
-  // Add to head section
-  const consentSetup = `
-  <script>
-    // Define dataLayer and the gtag function.
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    // Set default consent to 'denied' as a placeholder
-    gtag('consent', 'default', {
-      'ad_storage': 'denied',
-      'ad_user_data': 'denied',
-      'ad_personalization': 'denied',
-      'analytics_storage': 'denied',
-      'functionality_storage': 'denied',
-      'personalization_storage': 'denied',
-      'security_storage': 'denied'
-    });
-  </script>`;
+export const addGoogleConsentMode = () => {
+  let consentAlreadySetup = false;
 
-  if (document.head.innerHTML) {
-    // Add to the top of the head section to ensure it's before the tag manager script
-    // TODO: Check for existing gtag and only add if it's there
-    // TODO: Check for existing consentSetup and only add if it's not there
-    // TODO: Minify the JS before adding it to the head
-    document.head.innerHTML = consentSetup + document.head.innerHTML;
-  } else {
-    document.head.innerHTML = consentSetup;
+  // Check for existing gtag, consentSetup before adding the default script
+  for (let item of document.scripts) {
+    if (item.innerHTML.includes("gtag") || item.innerHTML.includes("consent")) {
+      consentAlreadySetup = true;
+    }
+  }
+
+  if (!consentAlreadySetup) {
+    // Delete existing script
+    let oldScript = document.getElementById("google-consent-mode");
+    oldScript && oldScript.remove();
+
+    // Add to head section
+    const consentSetup = `
+    <script id="google-consent-mode">
+      // Define dataLayer and the gtag function.
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      // Set default consent to 'denied' as a placeholder
+      gtag('consent', 'default', ${JSON.stringify(DEFAULT_CONSENT)});
+    </script>`;
+
+    if (document.head.innerHTML) {
+      // Add to the top of the head section to ensure it's before the tag manager script
+      document.head.innerHTML = consentSetup + document.head.innerHTML;
+    } else {
+      document.head.innerHTML = consentSetup;
+    }
   }
 };
 
+export const loadConsentFromCookie = () => {
+  const cookieValue = getCookie("_cookies_accepted");
+  cookieValue && setGoogleConsentPreferences(cookieValue);
+};
+
+export const setGoogleConsentFromControls = (controls) => {
+  const checkedControls = controls.filter((control) => control.isChecked());
+
+  let updatedConsent = { ...DEFAULT_CONSENT };
+
+  // We combine the preferences into a single object
+  checkedControls.forEach((item) => {
+    updatedConsent = updateConsentPreferences(updatedConsent, item.id);
+  });
+
+  // Insert the script at the bottom of the head section
+  insertConsentScript(updatedConsent);
+};
+
 export const setGoogleConsentPreferences = (selectedPreference) => {
-  // 'all' is the default
-  let consentObject = `
-    <script>
-      gtag("consent", "update", {
-        ad_storage: "granted",
-        ad_user_data: "granted",
-        ad_personalization: "granted",
-        analytics_storage: "granted",
-        functionality_storage: "granted",
-        personalization_storage: "granted",
-        security_storage: "granted",
-      })
+  let updatedConsent = updateConsentPreferences(
+    DEFAULT_CONSENT,
+    selectedPreference
+  );
+
+  // Insert the script at the bottom of the head section
+  insertConsentScript(updatedConsent);
+};
+
+const updateConsentPreferences = (consentObject, selectedPreference) => {
+  let updatedConsent = { ...consentObject };
+
+  ESSENTIAL_PREFERENCES.forEach((item) => {
+    updatedConsent[item] = "granted";
+  });
+
+  if (selectedPreference === "performance") {
+    PERFORMANCE_PREFERENCES.forEach((item) => {
+      updatedConsent[item] = "granted";
+    });
+  } else if (selectedPreference === "functionality") {
+    FUNCTIONALITY_PREFERENCES.forEach((item) => {
+      updatedConsent[item] = "granted";
+    });
+  } else if (selectedPreference === "all") {
+    ALL_PREFERENCES.forEach((item) => {
+      updatedConsent[item] = "granted";
+    });
+  }
+
+  return updatedConsent;
+};
+
+const insertConsentScript = (consentObject) => {
+  // Delete existing script
+  let oldScript = document.getElementById("consent-mode-preferences");
+  oldScript && oldScript.remove();
+
+  let consentScript = `
+    <script id="consent-mode-preferences">
+      gtag("consent", "update", ${JSON.stringify(consentObject)})
     </script>
   `;
-  if (selectedPreference === "performance") {
-    // 'performance'
-    consentObject = `
-      <script>
-        function consentUpdate() {
-          gtag("consent", "update", {
-            ad_storage: "granted",
-            ad_user_data: "granted",
-            ad_personalization: "granted",
-            analytics_storage: "granted",
-            security_storage: "granted",
-          });
-        };
-      </script>
-    `;
-  } else if (selectedPreference === "functionality") {
-    // 'functionality'
-    consentObject = `
-      <script>
-        function consentUpdate() {
-          gtag('consent', 'update', {
-            'functionality_storage': 'granted',
-            'personalization_storage': 'granted',
-            'security_storage': 'granted'
-          });
-        }
-      </script>
-    `;
-  }
 
   if (document.head.innerHTML) {
     // Add to the bottom of the head section to ensure it's after the tag manager script
-    document.head.innerHTML = document.head.innerHTML + consentObject;
+    document.head.innerHTML = document.head.innerHTML + consentScript;
   } else {
-    document.head.innerHTML = consentObject;
+    document.head.innerHTML = consentScript;
   }
 };
 
