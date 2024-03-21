@@ -1,13 +1,13 @@
 {
   "name": "@canonical/cookie-policy",
-  "version": "3.5.0",
+  "version": "3.6.0",
   "description": "A script and style sheet that displays a cookie policy notification",
   "main": "build/js/module.js",
   "iife": "build/js/cookie-policy.js",
   "type": "module",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/canonical-web-and-design/cookie-policy.git"
+    "url": "git+https://github.com/canonical/cookie-policy.git"
   },
   "author": "Anthony Dillon <anthony.dillon@canonical.com>",
   "contributors": [
@@ -15,9 +15,9 @@
   ],
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/canonical-web-and-design/cookie-policy/issues"
+    "url": "https://github.com/canonical/cookie-policy/issues"
   },
-  "homepage": "https://github.com/canonical-web-and-design/cookie-policy#readme",
+  "homepage": "https://github.com/canonical/cookie-policy#readme",
   "devDependencies": {
     "@babel/core": "7.20.12",
     "@babel/preset-env": "7.20.2",
