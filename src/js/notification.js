@@ -1,4 +1,4 @@
-import { setCookie, getContent } from "./utils.js";
+import { setCookie, getContent, setGoogleConsentPreferences } from "./utils.js";
 
 export class Notification {
   constructor(container, renderManager, destroyComponent) {
@@ -37,6 +37,7 @@ export class Notification {
   initaliseListeners() {
     this.container.querySelector(".js-close").addEventListener("click", (e) => {
       setCookie("all");
+      setGoogleConsentPreferences("all");
       this.destroyComponent();
     });
     this.container
