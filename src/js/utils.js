@@ -104,26 +104,20 @@ export const getControlsContent = (details, language) => {
 export const addGoogleConsentMode = () => {
   let consentAlreadySetup = false;
 
-  // Check for existing gtag, consentSetup before adding the default script
-  for (let item of document.scripts) {
-    if (item.innerHTML.includes("gtag") || item.innerHTML.includes("consent")) {
-      consentAlreadySetup = true;
-    }
-  }
-
-  if (!consentAlreadySetup) {
+  // Check for existing gtag before adding the default script
+  if (!window.gtag) {
     // Delete existing script
     let oldScript = document.getElementById("google-consent-mode");
     oldScript && oldScript.remove();
 
     // Run the script to define gtag
     window.dataLayer = window.dataLayer || [];
-    function gtag() {
+    window.gtag = function gtag() {
       dataLayer.push(arguments);
-    }
+    };
 
     // Set default consent to 'denied' as a placeholder
-    gtag("consent", "default", JSON.stringify(DEFAULT_CONSENT));
+    window.gtag("consent", "default", JSON.stringify(DEFAULT_CONSENT));
   }
 };
 
@@ -185,8 +179,8 @@ const runConsentScript = (consentObject) => {
   let oldScript = document.getElementById("consent-mode-preferences");
   oldScript && oldScript.remove();
 
-  // Define new script
-  gtag("consent", "update", JSON.stringify(consentObject));
+  // Update preferences
+  window.gtag("consent", "update", JSON.stringify(consentObject));
 };
 
 const pushPageview = () => {
