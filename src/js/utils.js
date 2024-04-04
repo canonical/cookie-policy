@@ -102,36 +102,16 @@ export const getControlsContent = (details, language) => {
 };
 
 export const addGoogleConsentMode = () => {
-  let consentAlreadySetup = false;
+  // Check for existing gtag before adding the default script
+  if (!window.gtag) {
+    // Run the script to define gtag
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function gtag() {
+      dataLayer.push(arguments);
+    };
 
-  // Check for existing gtag, consentSetup before adding the default script
-  for (let item of document.scripts) {
-    if (item.innerHTML.includes("gtag") || item.innerHTML.includes("consent")) {
-      consentAlreadySetup = true;
-    }
-  }
-
-  if (!consentAlreadySetup) {
-    // Delete existing script
-    let oldScript = document.getElementById("google-consent-mode");
-    oldScript && oldScript.remove();
-
-    // Add to head section
-    const consentSetup = `
-    <script id="google-consent-mode">
-      // Define dataLayer and the gtag function.
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      // Set default consent to 'denied' as a placeholder
-      gtag('consent', 'default', ${JSON.stringify(DEFAULT_CONSENT)});
-    </script>`;
-
-    if (document.head.innerHTML) {
-      // Add to the top of the head section to ensure it's before the tag manager script
-      document.head.innerHTML = consentSetup + document.head.innerHTML;
-    } else {
-      document.head.innerHTML = consentSetup;
-    }
+    // Set default consent to 'denied' as a placeholder
+    window.gtag("consent", "default", JSON.stringify(DEFAULT_CONSENT));
   }
 };
 
@@ -151,7 +131,7 @@ export const setGoogleConsentFromControls = (controls) => {
   });
 
   // Insert the script at the bottom of the head section
-  insertConsentScript(updatedConsent);
+  runConsentScript(updatedConsent);
 };
 
 export const setGoogleConsentPreferences = (selectedPreference) => {
@@ -161,7 +141,7 @@ export const setGoogleConsentPreferences = (selectedPreference) => {
   );
 
   // Insert the script at the bottom of the head section
-  insertConsentScript(updatedConsent);
+  runConsentScript(updatedConsent);
 };
 
 const updateConsentPreferences = (consentObject, selectedPreference) => {
@@ -188,23 +168,9 @@ const updateConsentPreferences = (consentObject, selectedPreference) => {
   return updatedConsent;
 };
 
-const insertConsentScript = (consentObject) => {
-  // Delete existing script
-  let oldScript = document.getElementById("consent-mode-preferences");
-  oldScript && oldScript.remove();
-
-  let consentScript = `
-    <script id="consent-mode-preferences">
-      gtag("consent", "update", ${JSON.stringify(consentObject)})
-    </script>
-  `;
-
-  if (document.head.innerHTML) {
-    // Add to the bottom of the head section to ensure it's after the tag manager script
-    document.head.innerHTML = document.head.innerHTML + consentScript;
-  } else {
-    document.head.innerHTML = consentScript;
-  }
+const runConsentScript = (consentObject) => {
+  // Update preferences
+  window.gtag("consent", "update", JSON.stringify(consentObject));
 };
 
 const pushPageview = () => {
