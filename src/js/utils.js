@@ -102,14 +102,8 @@ export const getControlsContent = (details, language) => {
 };
 
 export const addGoogleConsentMode = () => {
-  let consentAlreadySetup = false;
-
   // Check for existing gtag before adding the default script
   if (!window.gtag) {
-    // Delete existing script
-    let oldScript = document.getElementById("google-consent-mode");
-    oldScript && oldScript.remove();
-
     // Run the script to define gtag
     window.dataLayer = window.dataLayer || [];
     window.gtag = function gtag() {
@@ -175,10 +169,6 @@ const updateConsentPreferences = (consentObject, selectedPreference) => {
 };
 
 const runConsentScript = (consentObject) => {
-  // Delete existing script
-  let oldScript = document.getElementById("consent-mode-preferences");
-  oldScript && oldScript.remove();
-
   // Update preferences
   window.gtag("consent", "update", JSON.stringify(consentObject));
 };
