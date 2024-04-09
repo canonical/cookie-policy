@@ -1,0 +1,48 @@
+name: Publish Cookie Policy release
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  build:
+    name: Build Cookie Policy
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 18
+      - name: Read cookie-policy version from package.json
+        run: |
+          node -p "require('./package.json').version" > CURRENT_VERSION
+          echo "Building Cookie Policy v$(cat CURRENT_VERSION)"
+      - run: yarn install
+      - run: yarn build
+      - run: yarn test
+      - name: Show size of the build file
+        run: stat -c '%s' build/css/build.css
+      - run: cp CURRENT_VERSION build/css
+      - uses: actions/upload-artifact@v4
+        with:
+          name: css
+          path: build/css
+
+  publish-npm:
+    name: Publish to NPM
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 12
+          registry-url: https://registry.npmjs.org/
+      - if: ${{ !github.event.release.prerelease }}
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+      - if: ${{ github.event.release.prerelease }}
+        run: npm publish --tag next
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
