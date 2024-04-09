@@ -24,6 +24,6 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
       - if: ${{ github.event.release.prerelease }}
-        run: npm publish --tag next
+        run: npm publish --tag next --access public
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
