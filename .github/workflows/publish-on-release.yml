@@ -21,7 +21,7 @@ jobs:
       - run: yarn build
       - run: yarn test
       - name: Show size of the build file
-        run: stat -c '%s' build/css/build.css
+        run: stat -c '%s' build/css/cookie-policy.css
       - run: cp CURRENT_VERSION build/css
       - uses: actions/upload-artifact@v4
         with:
