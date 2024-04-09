@@ -111,7 +111,7 @@ export const addGoogleConsentMode = () => {
     };
 
     // Set default consent to 'denied' as a placeholder
-    window.gtag("consent", "default", JSON.stringify(DEFAULT_CONSENT));
+    window.gtag("consent", "default", DEFAULT_CONSENT);
   }
 };
 
@@ -170,7 +170,7 @@ const updateConsentPreferences = (consentObject, selectedPreference) => {
 
 const runConsentScript = (consentObject) => {
   // Update preferences
-  window.gtag("consent", "update", JSON.stringify(consentObject));
+  window.gtag("consent", "update", consentObject);
 };
 
 const pushPageview = () => {

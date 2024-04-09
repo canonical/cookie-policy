@@ -7,6 +7,9 @@ import {
   loadConsentFromCookie,
 } from "./utils.js";
 
+// Add Google Consent Mode as soon as the script is loaded
+addGoogleConsentMode();
+
 export const cookiePolicy = (callback = null) => {
   let cookiePolicyContainer = null;
   let language = document.documentElement.lang;
@@ -45,8 +48,6 @@ export const cookiePolicy = (callback = null) => {
   };
 
   const init = function () {
-    // Add the default setup script for Google Consent Mode
-    addGoogleConsentMode();
     // Load the consent from the cookie, if available
     loadConsentFromCookie();
 
