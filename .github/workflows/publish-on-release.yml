@@ -13,14 +13,12 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 18
+          registry-url: https://registry.npmjs.org/
       - name: Build Cookie Policy
         run: |
           yarn install
           yarn build
           yarn test
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 12
       - if: ${{ !github.event.release.prerelease }}
         run: npm publish
         env:
