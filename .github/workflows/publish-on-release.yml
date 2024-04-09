@@ -1,8 +1,8 @@
 name: Publish Cookie Policy release
 
+# Only for testing. Should be on: release: types: [published]
 on:
-  release:
-    types: [published]
+  - push
 
 jobs:
   build:
