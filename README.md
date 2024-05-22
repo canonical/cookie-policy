@@ -48,7 +48,7 @@ If you would like users to change their preferences you can add `js-revoke-cooki
 or
 
 ```html
-<a href="" class="js-revoke-cookie-manager"Revoke cookie manager</a>
+<a href="" class="js-revoke-cookie-manager">Revoke cookie manager</a>
 ```
 
 ### Visiting a page with tracker disabled
