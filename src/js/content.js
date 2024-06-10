@@ -1,7 +1,7 @@
 export const controlsContent = [
   {
     id: 'essential',
-    showSwitcher: false,
+    enableSwitcher: false,
     content: {
       default: {
         title: 'Essential',
@@ -22,7 +22,7 @@ export const controlsContent = [
   },
   {
     id: 'performance',
-    showSwitcher: true,
+    enableSwitcher: true,
     content: {
       default: {
         title: 'Performance',
@@ -42,7 +42,7 @@ export const controlsContent = [
   },
   {
     id: 'functionality',
-    showSwitcher: true,
+    enableSwitcher: true,
     content: {
       default: {
         title: 'Functionality',

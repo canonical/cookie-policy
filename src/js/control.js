@@ -6,7 +6,7 @@ export class Control {
     this.id = details.id;
     this.title = getControlsContent(details, language).title;
     this.description = getControlsContent(details, language).description;
-    this.showSwitcher = details.showSwitcher;
+    this.enableSwitcher = details.enableSwitcher;
     this.container = container;
     this.element;
 
@@ -24,10 +24,10 @@ export class Control {
       ${
         `<label class="u-float-right p-switch">
           <input type="checkbox" class="p-switch__input js-${this.id}-switch" ${
-              (isChecked || !this.showSwitcher) && 'checked="" '
+              (isChecked || !this.enableSwitcher) && 'checked="" '
             }
             ${
-              !this.showSwitcher && `disabled="disabled"`
+              !this.enableSwitcher && `disabled="disabled"`
 
             }>
           <span class="p-switch__slider"></span>
