@@ -6,7 +6,7 @@ export class Control {
     this.id = details.id;
     this.title = getControlsContent(details, language).title;
     this.description = getControlsContent(details, language).description;
-    this.showSwitcher = details.showSwitcher;
+    this.enableSwitcher = details.enableSwitcher;
     this.container = container;
     this.element;
 
@@ -22,14 +22,16 @@ export class Control {
     control.classList.add("u-sv3");
     control.innerHTML = `
       ${
-        this.showSwitcher
-          ? `<label class="u-float-right p-switch">
-        <input type="checkbox" class="p-switch__input js-${this.id}-switch" ${
-              isChecked && 'checked=""'
+        `<label class="u-float-right p-switch">
+          <input type="checkbox" class="p-switch__input js-${this.id}-switch" ${
+              (isChecked || !this.enableSwitcher) && 'checked="" '
+            }
+            ${
+              !this.enableSwitcher && `disabled="disabled"`
+
             }>
-        <span class="p-switch__slider"></span>
-      </label>`
-          : ""
+          <span class="p-switch__slider"></span>
+        </label>`
       }
       <h4>${this.title}</h4>
       <p>${this.description}</p>`;
