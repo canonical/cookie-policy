@@ -54,6 +54,7 @@
     "prepublishonly": "npm run build",
     "preversion": "npm test",
     "serve": "python3 -m http.server 8301 && echo 'Demo is running on http://0.0.0.0:8301'",
-    "watch": "npm-watch"
+    "watch": "npm-watch",
+    "build-discourse-plugin": "npm run build && cp build/js/cookie-policy.js discourse-plugin/javascripts/cookie-policy.js && cp build/css/cookie-policy.css discourse-plugin/stylesheets/cookie-policy.css"
   }
 }

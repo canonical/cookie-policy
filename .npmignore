@@ -4,3 +4,7 @@ gulpfile.js
 .eslintrc
 .sass-lint.yml
 .prettierignore
+.dotrun.json
+
+# These files are used in discourse
+/discourse-plugin/

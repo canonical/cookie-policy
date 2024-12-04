@@ -1,0 +1,28 @@
+<link rel="stylesheet" href="/stylesheets/cookie-policy.css">
+<script src="/javascripts/cookie-policy.js"></script>
+<script type="text/discourse-plugin" version="0.12.3">
+  const loadScript = require('discourse/lib/load-script').default;
+  function getCookie(cname) {
+    var name = cname + "=";
+    var ca = document.cookie.split(";");
+    for (var i = 0; i < ca.length; i++) {
+      var c = ca[i];
+      while (c.charAt(0) == " ") {
+        c = c.substring(1);
+      }
+      if (c.indexOf(name) == 0) {
+        return c.substring(name.length, c.length);
+      }
+    }
+    return null;
+  }
+  function loadCookiePolicy() {
+    if (getCookie("_cookies_accepted") === "true") {
+      return;
+    }
+    loadScript("/javascripts/cookie-policy.js").then()=>{
+      cpNs.cookiePolicy();
+    }
+  }
+  document.addEventListener('DOMContentLoaded', loadCookiePolicy);
+</script>
