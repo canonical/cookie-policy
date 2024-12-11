@@ -13,6 +13,7 @@ addGoogleConsentMode();
 export const cookiePolicy = (callback = null) => {
   let cookiePolicyContainer = null;
   let language = document.documentElement.lang;
+  let initialised = false;
 
   const renderNotification = function (e) {
     if (e) {
@@ -48,6 +49,9 @@ export const cookiePolicy = (callback = null) => {
   };
 
   const init = function () {
+    if (initialised) return;
+    initialised = true;
+
     // Load the consent from the cookie, if available
     loadConsentFromCookie();
 
@@ -61,5 +65,11 @@ export const cookiePolicy = (callback = null) => {
     }
   };
 
-  document.addEventListener("DOMContentLoaded", init, false);
+  if (document.readyState === "loading") {
+    // If the document is still loading, listen for DOMContentLoaded
+    document.addEventListener("DOMContentLoaded", init, false);
+  } else {
+    // Otherwise the script was triggered after the document was loaded, so we can run it immediately
+    init();
+  }
 };
