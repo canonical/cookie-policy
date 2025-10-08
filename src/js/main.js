@@ -10,13 +10,11 @@ import {
   setCookiesAcceptedCookie,
   setUserUuidCookie,
   redirectNeeded,
-  setGoogleConsentPreferences,
   clearUrlParameters,
 } from "./utils.js";
 import {
   redirectToSession,
   getConsentPreferences,
-  postConsentPreferences,
 } from "./api.js";
 
 // Add Google Consent Mode as soon as the script is loaded

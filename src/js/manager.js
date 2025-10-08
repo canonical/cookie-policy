@@ -1,12 +1,9 @@
 import {
   getContent,
-  setGoogleConsentPreferences,
-  setGoogleConsentFromControls,
-  setCookiesAcceptedCookie,
+  storeCookiesPreferences
 } from "./utils.js";
 import { Control } from "./control.js";
 import { controlsContent } from "./content.js";
-import { postConsentPreferences } from "./api.js";
 
 export class Manager {
   constructor(container, destroyComponent, sessionParams = null) {
@@ -32,7 +29,7 @@ export class Manager {
       <p>${managerContent.acceptAllHelp}</p>
       <hr />
       <div class="controls"></div>
-      <button class="p-button js-save-preferences">${managerContent.handleSavePreferences}</button>
+      <button class="p-button js-save-preferences">${managerContent.savePreferences}</button>
     </div>
   </div>`;
 
@@ -60,7 +57,7 @@ export class Manager {
       .querySelector(".js-save-preferences")
       .addEventListener("click", async () => {
         await this.handleSavePreferences();
-        this.destroyComponent();
+        // this.destroyComponent();
       });
   }
 
@@ -68,22 +65,8 @@ export class Manager {
     // And if we don't have a session??
     const preference = "all";
 
-    if (
-      this.sessionParams &&
-      this.sessionParams.code &&
-      this.sessionParams.user_uuid
-    ) {
-      const result = await postConsentPreferences(
-        this.sessionParams.code,
-        this.sessionParams.user_uuid,
-        { consent: preference }
-      );
-
-      if (result.success) {
-        setCookiesAcceptedCookie(preference);
-        setGoogleConsentPreferences(preference);
-      }
-    }
+    // If we have session parameters, save to server and session
+    storeCookiesPreferences(this.sessionParams, preference);
 
     this.destroyComponent();
   }
@@ -104,23 +87,8 @@ export class Manager {
         : "essential";
     }
 
-    // If we have session parameters, save to server
-    if (
-      this.sessionParams &&
-      this.sessionParams.code &&
-      this.sessionParams.user_uuid
-    ) {
-      const result = await postConsentPreferences(
-        this.sessionParams.code,
-        this.sessionParams.user_uuid,
-        { consent: preference }
-      );
-
-      if (result.success) {
-        setCookiesAcceptedCookie(preference);
-        setGoogleConsentFromControls(this.controlsStore); // what is this.controlsStore?
-      }
-    }
+    // If we have session parameters, save to server and session
+    storeCookiesPreferences(this.sessionParams, preference, this.controlsStore);
 
     this.destroyComponent();
   }

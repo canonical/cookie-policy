@@ -88,7 +88,7 @@ export const content = {
         'Learn more at <a href="https://ubuntu.com/legal/data-privacy?cp=hide#cookies">data privacy: cookie policy</a> - you can change your choices at any time from the footer of the site.',
       acceptAll: "Accept all",
       acceptAllHelp: 'This will switch all toggles "ON".',
-      SavePreferences: "Save preferences",
+      savePreferences: "Save preferences",
     },
   },
 
@@ -113,7 +113,7 @@ export const content = {
         '点击<a href="https://ubuntu.com/legal/data-privacy?cp=hide#cookies">数据隐私：cookie策略</a>了解更多，您可以在网站底部随时更改您的选择。',
       acceptAll: "接受全部",
       acceptAllHelp: "这将把全部开关变为”开启“。",
-      SavePreferences: "保存偏好设置",
+      savePreferences: "保存偏好设置",
     },
   },
 
@@ -141,7 +141,7 @@ export const content = {
         '詳細は、<a href="https://ubuntu.com/legal/data-privacy?cp=hide#cookies">データプライバシー：クッキーに関するポリシー</a>をご覧ください。お客様が選んだ設定は、本サイトの下部からいつでも変更できます。',
       acceptAll: "すべて同意",
       acceptAllHelp: "同意されるとすべての設定が「ON」に切り替わります。",
-      SavePreferences: "設定を保存",
+      savePreferences: "設定を保存",
     },
   },
 };

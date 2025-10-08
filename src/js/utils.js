@@ -1,4 +1,5 @@
 import { content } from "./content.js";
+import { postConsentPreferences } from "./api.js";
 
 const DEFAULT_CONSENT = {
   ad_storage: "denied",
@@ -59,6 +60,30 @@ export const setCookiesAcceptedCookie = (preference) => {
   // Set _cookies_acceptedd cookie with 365 days expiration
   setSessionCookie("_cookies_accepted", preference, 365);
 };
+
+export const storeCookiesPreferences = async (sessionParams, preference, controlsStore) => {
+    if (
+      sessionParams &&
+      sessionParams.code &&
+      sessionParams.user_uuid
+    ) {
+      const result = await postConsentPreferences(
+        sessionParams.code,
+        sessionParams.user_uuid,
+        { consent: preference }
+      );
+
+      if (result.success) {
+        setCookiesAcceptedCookie(preference);
+
+        if (controlsStore) {
+          setGoogleConsentFromControls(controlsStore);
+        } else {
+          setGoogleConsentPreferences(preference);
+        }
+      }
+    }
+}
 
 export const getCookieByName = (name) => {
   const toMatch = name + "=";

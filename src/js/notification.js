@@ -1,9 +1,7 @@
 import {
   getContent,
-  setGoogleConsentPreferences,
-  setCookiesAcceptedCookie,
+  storeCookiesPreferences
 } from "./utils.js";
-import { postConsentPreferences } from "./api.js";
 
 export class Notification {
   constructor(
@@ -60,23 +58,9 @@ export class Notification {
 
   async handleAcceptAll() {
     const preference = "all";
-    // If we have session parameters, save to server
-    if (
-      this.sessionParams &&
-      this.sessionParams.code &&
-      this.sessionParams.user_uuid
-    ) {
-      const result = await postConsentPreferences(
-        this.sessionParams.code,
-        this.sessionParams.user_uuid,
-        { consent: preference }
-      );
 
-      if (result.success) {
-        setCookiesAcceptedCookie(preference);
-        setGoogleConsentPreferences(preference);
-      }
-    }
+    // If we have session parameters, save to server and session
+    storeCookiesPreferences(this.sessionParams, preference);
 
     this.destroyComponent();
   }
