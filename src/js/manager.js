@@ -1,17 +1,19 @@
 import {
-  setCookie,
   getContent,
   setGoogleConsentPreferences,
   setGoogleConsentFromControls,
+  setCookiesAcceptedCookie,
 } from "./utils.js";
 import { Control } from "./control.js";
 import { controlsContent } from "./content.js";
+import { postConsentPreferences } from "./api.js";
 
 export class Manager {
-  constructor(container, destroyComponent) {
+  constructor(container, destroyComponent, sessionParams = null) {
     this.container = container;
     this.controlsStore = [];
     this.destroyComponent = destroyComponent;
+    this.sessionParams = sessionParams;
   }
 
   getManagerMarkup(language) {
@@ -30,7 +32,7 @@ export class Manager {
       <p>${managerContent.acceptAllHelp}</p>
       <hr />
       <div class="controls"></div>
-      <button class="p-button js-save-preferences">${managerContent.SavePreferences}</button>
+      <button class="p-button js-save-preferences">${managerContent.handleSavePreferences}</button>
     </div>
   </div>`;
 
@@ -48,36 +50,78 @@ export class Manager {
   }
 
   initaliseListeners() {
-    this.container.querySelector(".js-close").addEventListener("click", () => {
-      setCookie("all");
-      setGoogleConsentPreferences("all");
-      this.destroyComponent();
-    });
+    this.container
+      .querySelector(".js-close")
+      .addEventListener("click", async () => {
+        await this.handleAcceptAll();
+      });
 
     this.container
       .querySelector(".js-save-preferences")
-      .addEventListener("click", () => {
-        this.savePreferences();
+      .addEventListener("click", async () => {
+        await this.handleSavePreferences();
         this.destroyComponent();
       });
   }
 
-  savePreferences() {
+  async handleAcceptAll() {
+    // And if we don't have a session??
+    const preference = "all";
+
+    if (
+      this.sessionParams &&
+      this.sessionParams.code &&
+      this.sessionParams.user_uuid
+    ) {
+      const result = await postConsentPreferences(
+        this.sessionParams.code,
+        this.sessionParams.user_uuid,
+        { consent: preference }
+      );
+
+      if (result.success) {
+        setCookiesAcceptedCookie(preference);
+        setGoogleConsentPreferences(preference);
+      }
+    }
+
+    this.destroyComponent();
+  }
+
+  async handleSavePreferences() {
     const checkedControls = this.controlsStore.filter((control) =>
       control.isChecked()
     );
 
+    let preference;
     if (this.controlsStore.length === checkedControls.length) {
-      setCookie("all");
+      preference = "all";
     } else {
-      this.controlsStore.forEach((control) => {
-        if (control.isChecked()) {
-          // Note: this overwrites the previous cookie
-          setCookie(control.getId());
-        }
-      });
+      // Get the last checked control's preference
+      const lastCheckedControl = checkedControls[checkedControls.length - 1];
+      preference = lastCheckedControl
+        ? lastCheckedControl.getId()
+        : "essential";
     }
 
-    setGoogleConsentFromControls(this.controlsStore);
+    // If we have session parameters, save to server
+    if (
+      this.sessionParams &&
+      this.sessionParams.code &&
+      this.sessionParams.user_uuid
+    ) {
+      const result = await postConsentPreferences(
+        this.sessionParams.code,
+        this.sessionParams.user_uuid,
+        { consent: preference }
+      );
+
+      if (result.success) {
+        setCookiesAcceptedCookie(preference);
+        setGoogleConsentFromControls(this.controlsStore); // what is this.controlsStore?
+      }
+    }
+
+    this.destroyComponent();
   }
 }

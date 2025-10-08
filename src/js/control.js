@@ -1,4 +1,4 @@
-import { getControlsContent, getCookie } from "./utils.js";
+import { getControlsContent, getCookiesAcceptedCookie } from "./utils.js";
 
 export class Control {
   constructor(details, container, language) {
@@ -21,18 +21,13 @@ export class Control {
     const control = document.createElement("div");
     control.classList.add("u-sv3");
     control.innerHTML = `
-      ${
-        `<label class="u-float-right p-switch">
+      ${`<label class="u-float-right p-switch">
           <input type="checkbox" class="p-switch__input js-${this.id}-switch" ${
-              (isChecked || !this.enableSwitcher) && 'checked="" '
-            }
-            ${
-              !this.enableSwitcher && `disabled="disabled"`
-
-            }>
-          <span class="p-switch__slider"></span>
-        </label>`
+        (isChecked || !this.enableSwitcher) && 'checked="" '
       }
+            ${!this.enableSwitcher && `disabled="disabled"`}>
+          <span class="p-switch__slider"></span>
+        </label>`}
       <h4>${this.title}</h4>
       <p>${this.description}</p>`;
     this.container.appendChild(control);
@@ -40,7 +35,7 @@ export class Control {
   }
 
   cookieIsTrue() {
-    const cookieValue = getCookie("_cookies_accepted");
+    const cookieValue = getCookiesAcceptedCookie();
 
     // If the cookie value matches the control ID, return true
     if (cookieValue) {

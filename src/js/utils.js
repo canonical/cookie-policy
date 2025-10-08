@@ -33,45 +33,59 @@ const ALL_PREFERENCES = [
   "personalization_storage",
 ];
 
-export const setCookie = (value) => {
-  const d = new Date();
-  d.setTime(d.getTime() + 365 * 24 * 60 * 60 * 1000);
-  const expires = "expires=" + d.toUTCString();
+export const setSessionCookie = (name, value, expiresInDays = null) => {
   const samesite = "samesite=lax;";
   const path = "path=/;";
-  document.cookie =
-    "_cookies_accepted=" + value + "; " + expires + "; " + samesite + path;
-  if (enabledTracking(value)) {
-    pushPageview();
+
+  let cookieString = name + "=" + value + "; " + samesite + path;
+
+  // If expiresInDays is provided, add expiration date
+  if (expiresInDays !== null) {
+    const d = new Date();
+    d.setTime(d.getTime() + expiresInDays * 24 * 60 * 60 * 1000);
+    const expires = "expires=" + d.toUTCString();
+    cookieString = name + "=" + value + "; " + expires + "; " + samesite + path;
   }
+
+  document.cookie = cookieString;
 };
 
-export const getCookie = () => {
-  const toMatch = "_cookies_accepted=";
+export const setUserUuidCookie = (userUuid) => {
+  // Set user_uuid cookie with 365 days expiration
+  setSessionCookie("user_uuid", userUuid, 365);
+};
+
+export const setCookiesAcceptedCookie = (preference) => {
+  // Set _cookies_acceptedd cookie with 365 days expiration
+  setSessionCookie("_cookies_accepted", preference, 365);
+};
+
+export const getCookieByName = (name) => {
+  const toMatch = name + "=";
   const splitArray = document.cookie.split(";");
-  let cookieValue = "";
-  let currentCookieValue = "";
   for (let i = 0; i < splitArray.length; i++) {
     let cookie = splitArray[i];
     while (cookie.charAt(0) == " ") {
       cookie = cookie.substring(1);
     }
-    currentCookieValue = cookie.substring(toMatch.length, cookie.length);
-    if (cookie.indexOf(toMatch) === 0 && currentCookieValue !== "true") {
-      cookieValue = currentCookieValue;
+    if (cookie.indexOf(toMatch) === 0) {
+      return cookie.substring(toMatch.length, cookie.length);
     }
   }
-  return cookieValue;
+  return null;
+};
+
+export const getUserUuidCookie = () => {
+  return getCookieByName("user_uuid");
+};
+
+export const getCookiesAcceptedCookie = () => {
+  return getCookieByName("_cookies_accepted");
 };
 
 export const preferenceNotSelected = () => {
-  const cookieValue = getCookie("_cookies_accepted");
-  // Skip a value of "true" to override old existing cookies
-  if (cookieValue && cookieValue != "true") {
-    return false;
-  } else {
-    return true;
-  }
+  const cookieValue = getCookiesAcceptedCookie();
+  return !cookieValue || cookieValue === "true" || cookieValue === "unset";
 };
 
 export const hideSpecified = () => {
@@ -116,8 +130,10 @@ export const addGoogleConsentMode = () => {
 };
 
 export const loadConsentFromCookie = () => {
-  const cookieValue = getCookie("_cookies_accepted");
-  cookieValue && setGoogleConsentPreferences(cookieValue);
+  const cookieValue = getCookiesAcceptedCookie();
+  if (cookieValue && cookieValue !== "unset") {
+    setGoogleConsentPreferences(cookieValue);
+  }
 };
 
 export const setGoogleConsentFromControls = (controls) => {
@@ -179,10 +195,56 @@ const pushPageview = () => {
   }
 };
 
+const hasValidSession = () => {
+  const cookieValue = getCookiesAcceptedCookie();
+  const userUuid = getUserUuidCookie();
+  // Valid session if cookie exists, is not "unset", and user_uuid exists
+  return cookieValue && cookieValue !== "unset" && userUuid;
+};
+
 const enabledTracking = (selectedPreference) => {
   if (selectedPreference == "all" || selectedPreference == "performance") {
     return true;
   } else {
     return false;
   }
+};
+
+// URL Parameter Extraction Utilities
+export const getUrlParameter = (name) => {
+  const urlParams = new URLSearchParams(window.location.search);
+  return urlParams.get(name);
+};
+
+export const extractSessionParameters = () => {
+  return {
+    code: getUrlParameter("code"),
+    user_uuid: getUrlParameter("user_uuid"),
+    preferences_unset: getUrlParameter("preferences_unset"),
+    action: getUrlParameter("action"),
+  };
+};
+
+export const isReturnFromSession = (sessionParams) => {
+  const { code, user_uuid } = sessionParams;
+  return !!(code && user_uuid);
+};
+
+export const clearUrlParameters = () => {
+  if (history.replaceState) {
+    const url = window.location.pathname + window.location.hash;
+    history.replaceState(null, "", url);
+  }
+};
+
+export const isSessionUnset = () => {
+  const cookieValue = getCookiesAcceptedCookie();
+  return cookieValue === "unset";
+};
+
+export const redirectNeeded = function () {
+  if (hasValidSession() || hideSpecified()) {
+    return false;
+  }
+  return true;
 };

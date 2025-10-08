@@ -1,10 +1,21 @@
-import { setCookie, getContent, setGoogleConsentPreferences } from "./utils.js";
+import {
+  getContent,
+  setGoogleConsentPreferences,
+  setCookiesAcceptedCookie,
+} from "./utils.js";
+import { postConsentPreferences } from "./api.js";
 
 export class Notification {
-  constructor(container, renderManager, destroyComponent) {
+  constructor(
+    container,
+    renderManager,
+    destroyComponent,
+    sessionParams = null
+  ) {
     this.container = container;
     this.renderManager = renderManager;
     this.destroyComponent = destroyComponent;
+    this.sessionParams = sessionParams;
   }
 
   getNotificationMarkup(language) {
@@ -35,15 +46,38 @@ export class Notification {
   }
 
   initaliseListeners() {
-    this.container.querySelector(".js-close").addEventListener("click", (e) => {
-      setCookie("all");
-      setGoogleConsentPreferences("all");
-      this.destroyComponent();
-    });
+    this.container
+      .querySelector(".js-close")
+      .addEventListener("click", async (e) => {
+        await this.handleAcceptAll();
+      });
     this.container
       .querySelector(".js-manage")
       .addEventListener("click", (e) => {
         this.renderManager();
       });
+  }
+
+  async handleAcceptAll() {
+    const preference = "all";
+    // If we have session parameters, save to server
+    if (
+      this.sessionParams &&
+      this.sessionParams.code &&
+      this.sessionParams.user_uuid
+    ) {
+      const result = await postConsentPreferences(
+        this.sessionParams.code,
+        this.sessionParams.user_uuid,
+        { consent: preference }
+      );
+
+      if (result.success) {
+        setCookiesAcceptedCookie(preference);
+        setGoogleConsentPreferences(preference);
+      }
+    }
+
+    this.destroyComponent();
   }
 }

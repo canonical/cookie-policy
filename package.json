@@ -51,6 +51,7 @@
     "build": "npm run test && npm run buildScss && npm run buildJs",
     "lint-js": "eslint src/js/**/*.js",
     "lint-scss": "stylelint src/sass/**/*.scss",
+    "format": "prettier --write src/js/**/*.js",
     "prepublishonly": "npm run build",
     "preversion": "npm test",
     "serve": "python3 -m http.server 8301 && echo 'Demo is running on http://0.0.0.0:8301'",
