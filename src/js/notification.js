@@ -8,7 +8,7 @@ export class Notification {
     container,
     renderManager,
     destroyComponent,
-    sessionParams = null
+    sessionParams
   ) {
     this.container = container;
     this.renderManager = renderManager;
@@ -59,7 +59,6 @@ export class Notification {
   async handleAcceptAll() {
     const preference = "all";
 
-    // If we have session parameters, save to server and session
     storeCookiesPreferences(this.sessionParams, preference);
 
     this.destroyComponent();

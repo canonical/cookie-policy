@@ -76,11 +76,17 @@ export const postConsentPreferences = async (code, userUuid, preferences) => {
 };
 
 // Redirect to session endpoint
-export const redirectToSession = (manageConsent) => {
+export const redirectToSession = ({manageConsent, legacyUserId}) => {
   const params = { return_url: window.location.href };
+
   if (manageConsent) {
     params.action = "manage-cookies";
   }
+
+  if (legacyUserId) {
+    params.previous_uuid = legacyUserId;
+  }
+
   const sessionUrl = buildApiUrl("/cookies/session", params);
   window.location.href = sessionUrl;
 };

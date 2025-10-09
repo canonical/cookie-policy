@@ -11,6 +11,7 @@ import {
   setUserUuidCookie,
   redirectNeeded,
   clearUrlParameters,
+  getLegacyUserId,
 } from "./utils.js";
 import {
   redirectToSession,
@@ -33,22 +34,21 @@ export const cookiePolicy = (callback = null) => {
     if (!code || !user_uuid) {
       return;
     }
-
+    
     if (preferences_unset !== "true" && action !== "manage-cookies") {
       // User has preferences in DB, so we fetch and set them
       const result = await getConsentPreferences(code, user_uuid);
-
+      
       if (result.success && result.data.preferences.consent) {
         setCookiesAcceptedCookie(result.data.preferences.consent);
-        setUserUuidCookie(user_uuid);
       }
     }
 
-    // Clear URL parameters after successfully handling the return
+    setUserUuidCookie(user_uuid);
     clearUrlParameters();
   };
 
-  const renderNotification = function (e, hasCode = true) {
+  const renderNotification = function (e) {
     if (e) {
       e.preventDefault();
     }
@@ -63,7 +63,6 @@ export const cookiePolicy = (callback = null) => {
         renderManager,
         close,
         sessionParams,
-        hasCode
       );
       notifiation.render(language);
       document.getElementById("cookie-policy-button-accept").focus();
@@ -90,7 +89,8 @@ export const cookiePolicy = (callback = null) => {
     }
 
     if (redirectNeeded()) {
-      redirectToSession();
+      const legacyUserId = getLegacyUserId();
+      redirectToSession({ legacyUserId });
       return true;
     }
 
@@ -102,15 +102,13 @@ export const cookiePolicy = (callback = null) => {
     initialised = true;
 
     // Add preferences to gtag from cookie, if available
-    // TODO: SHOULD THIS BE DONE LATER MAYBE?
     loadConsentFromCookie();
 
     const revokeButton = document.querySelector(".js-revoke-cookie-manager");
     if (revokeButton) {
       revokeButton.addEventListener("click", (e) => {
         e.preventDefault();
-        const manageCookies = true;
-        redirectToSession(manageCookies);
+        redirectToSession({ manageConsent : true });
       });
     }
 

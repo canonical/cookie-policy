@@ -262,7 +262,7 @@ export const clearUrlParameters = () => {
   }
 };
 
-export const isSessionUnset = () => {
+export const isPreferenceCookieUnset = () => {
   const cookieValue = getCookiesAcceptedCookie();
   return cookieValue === "unset";
 };
@@ -272,4 +272,8 @@ export const redirectNeeded = function () {
     return false;
   }
   return true;
+};
+
+export const getLegacyUserId = () => {
+  return getCookieByName("user_id");
 };

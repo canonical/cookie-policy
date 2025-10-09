@@ -6,7 +6,7 @@ import { Control } from "./control.js";
 import { controlsContent } from "./content.js";
 
 export class Manager {
-  constructor(container, destroyComponent, sessionParams = null) {
+  constructor(container, destroyComponent, sessionParams) {
     this.container = container;
     this.controlsStore = [];
     this.destroyComponent = destroyComponent;
@@ -62,10 +62,8 @@ export class Manager {
   }
 
   async handleAcceptAll() {
-    // And if we don't have a session??
     const preference = "all";
 
-    // If we have session parameters, save to server and session
     storeCookiesPreferences(this.sessionParams, preference);
 
     this.destroyComponent();
@@ -87,7 +85,6 @@ export class Manager {
         : "essential";
     }
 
-    // If we have session parameters, save to server and session
     storeCookiesPreferences(this.sessionParams, preference, this.controlsStore);
 
     this.destroyComponent();
