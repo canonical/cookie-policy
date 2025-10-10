@@ -40,10 +40,10 @@ export class Notification {
 
   render(language) {
     this.container.innerHTML = this.getNotificationMarkup(language);
-    this.initaliseListeners();
+    this.initialiseListeners();
   }
 
-  initaliseListeners() {
+  initialiseListeners() {
     this.container
       .querySelector(".js-close")
       .addEventListener("click", async (e) => {

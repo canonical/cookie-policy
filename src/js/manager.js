@@ -43,10 +43,10 @@ export class Manager {
       const control = new Control(controlDetails, controlsContainer, language);
       this.controlsStore.push(control);
     });
-    this.initaliseListeners();
+    this.initialiseListeners();
   }
 
-  initaliseListeners() {
+  initialiseListeners() {
     this.container
       .querySelector(".js-close")
       .addEventListener("click", async () => {

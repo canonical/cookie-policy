@@ -58,13 +58,13 @@ export const cookiePolicy = (callback = null) => {
       cookiePolicyContainer.classList.add("cookie-policy");
       cookiePolicyContainer.setAttribute("open", true);
       document.body.appendChild(cookiePolicyContainer);
-      const notifiation = new Notification(
+      const notification = new Notification(
         cookiePolicyContainer,
         renderManager,
         close,
         sessionParams,
       );
-      notifiation.render(language);
+      notification.render(language);
       document.getElementById("cookie-policy-button-accept").focus();
     }
   };
