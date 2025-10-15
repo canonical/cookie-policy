@@ -90,3 +90,22 @@ export const redirectToSession = ({manageConsent, legacyUserId}) => {
   const sessionUrl = buildApiUrl("/cookies/session", params);
   window.location.href = sessionUrl;
 };
+
+// Health check for the central service
+export const checkServiceHealth = async () => {
+  try {
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 1000); // 1-second timeout
+
+    const response = await fetch(buildApiUrl("/health"), {
+      signal: controller.signal,
+    });
+
+    clearTimeout(timeoutId);
+
+    return response.ok;
+  } catch (error) {
+    console.error("Cookie service health check failed:", error);
+    return false;
+  }
+};

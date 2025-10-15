@@ -247,12 +247,12 @@ export const extractSessionParameters = () => {
     user_uuid: getUrlParameter("user_uuid"),
     preferences_unset: getUrlParameter("preferences_unset"),
     action: getUrlParameter("action"),
+    cookie_redirect_success: getUrlParameter("cookie_redirect_success"),
   };
 };
 
-export const isReturnFromSession = (sessionParams) => {
-  const { code, user_uuid } = sessionParams;
-  return !!(code && user_uuid);
+export const isReturnFromSuccessfulSession = (sessionParams) => {
+  return sessionParams.cookie_redirect_success === "true";
 };
 
 export const clearUrlParameters = () => {
@@ -277,3 +277,10 @@ export const redirectNeeded = function () {
 export const getLegacyUserId = () => {
   return getCookieByName("user_id");
 };
+
+export const setSessionLocalMode = (localMode) => {
+  console.warn(
+    "Cookie service is unavailable. Falling back to local mode for this session."
+  );
+  sessionStorage.setItem("cookie_local_mode", "true");
+}

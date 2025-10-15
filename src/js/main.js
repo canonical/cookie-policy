@@ -5,17 +5,19 @@ import {
   hideSpecified,
   addGoogleConsentMode,
   loadConsentFromCookie,
-  isReturnFromSession,
+  isReturnFromSuccessfulSession,
   extractSessionParameters,
   setCookiesAcceptedCookie,
   setUserUuidCookie,
   redirectNeeded,
   clearUrlParameters,
   getLegacyUserId,
+  setSessionLocalMode,
 } from "./utils.js";
 import {
   redirectToSession,
   getConsentPreferences,
+  checkServiceHealth,
 } from "./api.js";
 
 // Add Google Consent Mode as soon as the script is loaded
@@ -26,6 +28,7 @@ export const cookiePolicy = (callback = null) => {
   let language = document.documentElement.lang;
   let initialised = false;
   const sessionParams = extractSessionParameters();
+  let localMode;
 
   // Handle return from session endpoint
   const handleReturnFromSession = async function () {
@@ -34,16 +37,16 @@ export const cookiePolicy = (callback = null) => {
     if (!code || !user_uuid) {
       return;
     }
-    
+
     if (preferences_unset !== "true" && action !== "manage-cookies") {
       // User has preferences in DB, so we fetch and set them
       const result = await getConsentPreferences(code, user_uuid);
-      
+
       if (result.success && result.data.preferences.consent) {
         setCookiesAcceptedCookie(result.data.preferences.consent);
       }
     }
-
+    
     setUserUuidCookie(user_uuid);
     clearUrlParameters();
   };
@@ -83,12 +86,29 @@ export const cookiePolicy = (callback = null) => {
   };
 
   const handleRedirects = async () => {
-    if (isReturnFromSession(sessionParams)) {
+    // First check if we're returning from a successful redirect session
+    if (isReturnFromSuccessfulSession(sessionParams)) {
       await handleReturnFromSession();
       return false;
     }
 
+    // Then we check if we're returning from a failed redirect session
+    if (sessionParams.cookie_redirect_success === "false") {
+      setSessionLocalMode();
+      localMode = true;
+      return false;
+    }
+
+    // Then we check if a redirect is still needed (ie. no local cookies)
     if (redirectNeeded()) {
+      const serviceIsUp = await checkServiceHealth();
+      if (!serviceIsUp) {
+        setSessionLocalMode();
+        localMode = true;
+        return false;
+      }
+
+      // Service is up, proceed with redirect
       const legacyUserId = getLegacyUserId();
       redirectToSession({ legacyUserId });
       return true;
