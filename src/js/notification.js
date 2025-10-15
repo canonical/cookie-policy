@@ -1,19 +1,18 @@
-import {
-  getContent,
-  storeCookiesPreferences
-} from "./utils.js";
+import { getContent, storeCookiesPreferences } from "./utils.js";
 
 export class Notification {
   constructor(
     container,
     renderManager,
     destroyComponent,
-    sessionParams
+    sessionParams,
+    localMode
   ) {
     this.container = container;
     this.renderManager = renderManager;
     this.destroyComponent = destroyComponent;
     this.sessionParams = sessionParams;
+    this.localMode = localMode;
   }
 
   getNotificationMarkup(language) {
@@ -59,7 +58,11 @@ export class Notification {
   async handleAcceptAll() {
     const preference = "all";
 
-    storeCookiesPreferences(this.sessionParams, preference);
+    storeCookiesPreferences({
+      sessionParams: this.sessionParams,
+      preference,
+      localMode: this.localMode,
+    });
 
     this.destroyComponent();
   }

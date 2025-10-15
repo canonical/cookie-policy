@@ -52,38 +52,47 @@ export const setSessionCookie = (name, value, expiresInDays = null) => {
 };
 
 export const setUserUuidCookie = (userUuid) => {
-  // Set user_uuid cookie with 365 days expiration
-  setSessionCookie("user_uuid", userUuid, 365);
+  // Set user_uuid cookie with 10 years expiration
+  setSessionCookie("user_uuid", userUuid, 3650);
 };
 
-export const setCookiesAcceptedCookie = (preference) => {
+export const setCookiesAcceptedCookie = (preference, localMode) => {
   // Set _cookies_accepted cookie with 365 days expiration
-  setSessionCookie("_cookies_accepted", preference, 365);
+  // unless central service is unavailable (localMode = true), 
+  // then set for the session only
+  if (localMode) {
+    setSessionCookie("_cookies_accepted", preference);
+  } else {
+    setSessionCookie("_cookies_accepted", preference, 365);
+  }
 };
 
-export const storeCookiesPreferences = async (sessionParams, preference, controlsStore) => {
-    if (
-      sessionParams &&
-      sessionParams.code &&
-      sessionParams.user_uuid
-    ) {
-      const result = await postConsentPreferences(
-        sessionParams.code,
-        sessionParams.user_uuid,
-        { consent: preference }
-      );
+export const storeCookiesPreferences = async ({
+  sessionParams,
+  preference,
+  controlsStore,
+  localMode,
+}) => {
+  let result;
 
-      if (result.success) {
-        setCookiesAcceptedCookie(preference);
+  if (!localMode && sessionParams.code && sessionParams.user_uuid) {
+    result = await postConsentPreferences(
+      sessionParams.code,
+      sessionParams.user_uuid,
+      { consent: preference }
+    );
+  }
 
-        if (controlsStore) {
-          setGoogleConsentFromControls(controlsStore);
-        } else {
-          setGoogleConsentPreferences(preference);
-        }
-      }
+  if ((result && result.success) || localMode) {
+    setCookiesAcceptedCookie(preference, localMode);
+
+    if (controlsStore) {
+      setGoogleConsentFromControls(controlsStore);
+    } else {
+      setGoogleConsentPreferences(preference);
     }
-}
+  }
+};
 
 export const getCookieByName = (name) => {
   const toMatch = name + "=";
@@ -283,4 +292,4 @@ export const setSessionLocalMode = (localMode) => {
     "Cookie service is unavailable. Falling back to local mode for this session."
   );
   sessionStorage.setItem("cookie_local_mode", "true");
-}
+};

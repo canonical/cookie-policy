@@ -1,16 +1,14 @@
-import {
-  getContent,
-  storeCookiesPreferences
-} from "./utils.js";
+import { getContent, storeCookiesPreferences } from "./utils.js";
 import { Control } from "./control.js";
 import { controlsContent } from "./content.js";
 
 export class Manager {
-  constructor(container, destroyComponent, sessionParams) {
+  constructor(container, destroyComponent, sessionParams, localMode) {
     this.container = container;
     this.controlsStore = [];
     this.destroyComponent = destroyComponent;
     this.sessionParams = sessionParams;
+    this.localMode = localMode;
   }
 
   getManagerMarkup(language) {
@@ -64,7 +62,11 @@ export class Manager {
   async handleAcceptAll() {
     const preference = "all";
 
-    storeCookiesPreferences(this.sessionParams, preference);
+    storeCookiesPreferences({
+      sessionParams: this.sessionParams,
+      preference,
+      localMode: this.localMode,
+    });
 
     this.destroyComponent();
   }
@@ -84,8 +86,13 @@ export class Manager {
         ? lastCheckedControl.getId()
         : "essential";
     }
-
-    storeCookiesPreferences(this.sessionParams, preference, this.controlsStore);
+    console.log("storing prefs in localMode?", this.localMode);
+    storeCookiesPreferences({
+      sessionParams: this.sessionParams,
+      preference,
+      controlsStore: this.controlsStore,
+      localMode: this.localMode,
+    });
 
     this.destroyComponent();
   }

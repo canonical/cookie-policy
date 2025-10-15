@@ -46,7 +46,7 @@ export const cookiePolicy = (callback = null) => {
         setCookiesAcceptedCookie(result.data.preferences.consent);
       }
     }
-    
+
     setUserUuidCookie(user_uuid);
     clearUrlParameters();
   };
@@ -66,6 +66,7 @@ export const cookiePolicy = (callback = null) => {
         renderManager,
         close,
         sessionParams,
+        localMode
       );
       notification.render(language);
       document.getElementById("cookie-policy-button-accept").focus();
@@ -73,7 +74,12 @@ export const cookiePolicy = (callback = null) => {
   };
 
   const renderManager = function () {
-    const manager = new Manager(cookiePolicyContainer, close, sessionParams);
+    const manager = new Manager(
+      cookiePolicyContainer,
+      close,
+      sessionParams,
+      localMode
+    );
     manager.render(language);
   };
 
@@ -94,6 +100,7 @@ export const cookiePolicy = (callback = null) => {
 
     // Then we check if we're returning from a failed redirect session
     if (sessionParams.cookie_redirect_success === "false") {
+      clearUrlParameters();
       setSessionLocalMode();
       localMode = true;
       return false;
@@ -128,7 +135,11 @@ export const cookiePolicy = (callback = null) => {
     if (revokeButton) {
       revokeButton.addEventListener("click", (e) => {
         e.preventDefault();
-        redirectToSession({ manageConsent : true });
+        if (!localMode) {
+          redirectToSession({ manageConsent: true });
+        } else {
+          renderNotification();
+        }
       });
     }
 

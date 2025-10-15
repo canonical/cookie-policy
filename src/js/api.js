@@ -76,7 +76,7 @@ export const postConsentPreferences = async (code, userUuid, preferences) => {
 };
 
 // Redirect to session endpoint
-export const redirectToSession = ({manageConsent, legacyUserId}) => {
+export const redirectToSession = ({ manageConsent, legacyUserId }) => {
   const params = { return_url: window.location.href };
 
   if (manageConsent) {
