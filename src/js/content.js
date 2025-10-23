@@ -4,9 +4,9 @@ export const controlsContent = [
     enableSwitcher: false,
     content: {
       default: {
-        title: 'Essential',
+        title: 'Strictly necessary',
         description:
-          "Enables the site's core functionality, such as navigation, access to secure areas, video players and payments. The site cannot function properly without these cookies; they can only be disabled by changing your browser preferences.",
+          "These are cookies that are required to properly operate our website or provide necessary functions relating to the services you request. They include, for example, cookies enabling you to securely log into our website, subscribe to our services or make use of e-billing services. These cookies cannot be disabled.",
       },
       zh: {
         title: '必要性',
@@ -17,6 +17,27 @@ export const controlsContent = [
         title: 'エッセンシャル',
         description:
           '移動、保護されている情報へのアクセス、動画再生、支払など、サイトの基本的な機能が有効になります。これらのクッキーが有効になっていない（お使いのブラウザの設定を変更することによってクッキーが無効化されている）場合、サイトは正しく表示されません。',
+      },
+    },
+  },
+  {
+    id: 'functionality',
+    enableSwitcher: true,
+    content: {
+      default: {
+        title: 'Functional',
+        description:
+          'Recognises you when you return to our site. This enables us to personalise content, greet you by name, remember your preferences, and helps you share pages on social networks.',
+      },
+      zh: {
+        title: '功能性',
+        description:
+          '当你返回到我们网站时能识别您。这使得我们能个性化内容，欢迎您，记住您的偏好设置，以及帮助您分享网页到社交媒体。',
+      },
+      ja: {
+        title: '機能性',
+        description:
+          'お客様がサイトを再訪問したときに、お客様であることを認識します。この設定では、お客様に合わせたコンテンツの表示、お客様のお名前を用いたあいさつメッセージの表示、お客様の傾向の記録を当社が行えるようになります。また、お客様がソーシャルネットワークでページをシェアできるようになります。',
       },
     },
   },
@@ -39,49 +60,7 @@ export const controlsContent = [
           'サイトの利用状況に関する情報を収集します。例として、どのページの訪問頻度が高いかのような情報です。',
       },
     },
-  },
-  {
-    id: 'functionality',
-    enableSwitcher: true,
-    content: {
-      default: {
-        title: 'Functionality',
-        description:
-          'Recognises you when you return to our site. This enables us to personalise content, greet you by name, remember your preferences, and helps you share pages on social networks.',
-      },
-      zh: {
-        title: '功能性',
-        description:
-          '当你返回到我们网站时能识别您。这使得我们能个性化内容，欢迎您，记住您的偏好设置，以及帮助您分享网页到社交媒体。',
-      },
-      ja: {
-        title: '機能性',
-        description:
-          'お客様がサイトを再訪問したときに、お客様であることを認識します。この設定では、お客様に合わせたコンテンツの表示、お客様のお名前を用いたあいさつメッセージの表示、お客様の傾向の記録を当社が行えるようになります。また、お客様がソーシャルネットワークでページをシェアできるようになります。',
-      },
-    },
-  },
-  {
-    id: 'necessary',
-    enableSwitcher: true,
-    content: {
-      default: {
-        title: 'Strictly Necessary',
-        description:
-          'These are cookies that are required to properly operate our website or provide necessary functions relating to the services you request. They include, for example, cookies enabling you to securely log into our website, subscribe to our services or make use of e-billing services. These cookies cannot be disabled.',
-      },
-      zh: {
-        title: '功能性',
-        description:
-          '当你返回到我们网站时能识别您。这使得我们能个性化内容，欢迎您，记住您的偏好设置，以及帮助您分享网页到社交媒体。',
-      },
-      ja: {
-        title: '機能性',
-        description:
-          'お客様がサイトを再訪問したときに、お客様であることを認識します。この設定では、お客様に合わせたコンテンツの表示、お客様のお名前を用いたあいさつメッセージの表示、お客様の傾向の記録を当社が行えるようになります。また、お客様がソーシャルネットワークでページをシェアできるようになります。',
-      },
-    },
-  },
+  }
 ];
 
 export const content = {
@@ -93,7 +72,7 @@ export const content = {
       body2:
         'You can choose not to allow some types of cookies, by managing your preferences at any time:',
       buttonAccept: 'Accept all',
-      buttonManage: 'Save preferences',
+      buttonSave: 'Save preferences',
     },
     manager: {
       title: 'Tracking choices',

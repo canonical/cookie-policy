@@ -20,7 +20,9 @@
   @include cookie-p-modal;
   @include vf-p-accordion;
   @include vf-p-headings;
-  @include vf-u-text-max-width;
+  @include vf-u-align;
+  @include vf-u-padding-collapse;
+  @include vf-u-text-muted;
 
   /* fix box-sizing that Vanilla sets on html and it doesn't work nested in .cookie-policy */
   box-sizing: border-box;
