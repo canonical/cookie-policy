@@ -61,20 +61,39 @@ export const controlsContent = [
       },
     },
   },
+  {
+    id: 'necessary',
+    enableSwitcher: true,
+    content: {
+      default: {
+        title: 'Strictly Necessary',
+        description:
+          'These are cookies that are required to properly operate our website or provide necessary functions relating to the services you request. They include, for example, cookies enabling you to securely log into our website, subscribe to our services or make use of e-billing services. These cookies cannot be disabled.',
+      },
+      zh: {
+        title: '功能性',
+        description:
+          '当你返回到我们网站时能识别您。这使得我们能个性化内容，欢迎您，记住您的偏好设置，以及帮助您分享网页到社交媒体。',
+      },
+      ja: {
+        title: '機能性',
+        description:
+          'お客様がサイトを再訪問したときに、お客様であることを認識します。この設定では、お客様に合わせたコンテンツの表示、お客様のお名前を用いたあいさつメッセージの表示、お客様の傾向の記録を当社が行えるようになります。また、お客様がソーシャルネットワークでページをシェアできるようになります。',
+      },
+    },
+  },
 ];
 
 export const content = {
   default: {
     notification: {
-      title: 'Your tracker settings',
+      title: 'Privacy choices',
       body1:
-        'We use cookies and similar methods to recognise visitors and remember preferences. We also use them to measure campaign effectiveness and analyse site traffic.',
+        'Our websites use cookies to enhance your user experience, remember your preferences, personalize content and ads, measure campaign effectiveness, and analyze site traffic. Some of these cookies transmit information to third parties. Our <a href="https://canonical.com/legal/data-privacy?cp=hide#cookies">Privacy Policy</a> provides more information about our cookie use and how you can update your choices.',
       body2:
-        'By selecting ‘Accept‘, you consent to the use of these methods by us and trusted third parties.',
-      body3:
-        'For further details or to change your consent choices at any time see our <a href="https://ubuntu.com/legal/data-privacy?cp=hide#cookies">cookie policy</a>.',
-      buttonAccept: 'Accept all and visit site',
-      buttonManage: 'Manage your tracker settings',
+        'You can choose not to allow some types of cookies, by managing your preferences at any time:',
+      buttonAccept: 'Accept all',
+      buttonManage: 'Save preferences',
     },
     manager: {
       title: 'Tracking choices',
