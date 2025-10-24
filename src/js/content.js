@@ -99,7 +99,7 @@ export const content = {
       body3:
         '更多内容或者随时地变更您的同意选择，请点击我们的 <a href="https://ubuntu.com/legal/data-privacy?cp=hide#cookies">cookie策略</a>.',
       buttonAccept: '接受全部和访问网站',
-      buttonManage: '管理您的追踪器设置',
+      buttonSave: '管理您的追踪器设置',
     },
     manager: {
       title: '追踪选项',
@@ -125,7 +125,7 @@ export const content = {
       body3:
         '詳細または同意の変更については、いつでも当社の<a href="https://ubuntu.com/legal/data-privacy?cp=hide#cookies">クッキーに関するポリシー</a>をご覧になることができます。',
       buttonAccept: 'すべて同意してサイトにアクセス',
-      buttonManage: 'トラッキング機能の設定の管理',
+      buttonSave: 'トラッキング機能の設定の管理',
     },
     manager: {
       title: 'トラッキング機能の選択',
