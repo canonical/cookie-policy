@@ -28,11 +28,10 @@ export class Notification {
             <p>${notificationContent.notification.body2}</p>
             ${notificationContent.body3 ? `<p>${notificationContent.body3}</p>` : ''}
             <aside class="p-accordion">
-              <ul class="p-accordion__list">
-                <li class="controls p-accordion__group"></li>                  
+              <ul class="p-accordion__list controls">
               </ul>
             </aside>
-            <p class="u-no-margin--bottom u-align--right">
+            <p class="u-no-margin--bottom u-float-right">
               <button class="p-button--positive js-close" id="cookie-policy-button-accept">${notificationContent.notification.buttonAccept}</button>
               <button class="p-button js-save-preferences">${notificationContent.notification.buttonSave}</button>
             </p>
@@ -79,8 +78,11 @@ export class Notification {
       control.isChecked()
     );
 
-    if (this.controlsStore.length === checkedControls.length) {
+    // "essential" is the default value for only essential cookies
+    if (this.controlsStore.length - 1 === checkedControls.length) {
       setCookie("all");
+    } else if (checkedControls.length === 0) {
+      setCookie("essential");
     } else {
       this.controlsStore.forEach((control) => {
         if (control.isChecked()) {
