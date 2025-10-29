@@ -9,6 +9,7 @@ export class Control {
     this.enableSwitcher = details.enableSwitcher;
     this.container = container;
     this.element;
+    this.onChange = details.onChange || (() => {});
 
     // Rendering off the bat here as this is a dumb component.
     // It saves creating a variable and calling .render() on it.
@@ -52,6 +53,7 @@ export class Control {
     `;
     this.container.appendChild(control);
     this.element = control.querySelector(`.js-${this.id}-switch`);
+    this.element?.addEventListener("change", this.onChange);
   }
 
   cookieIsTrue() {

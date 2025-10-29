@@ -234,3 +234,16 @@ export const setupAccordion = (accordionContainer) => {
     }
   });
 }
+
+
+/**
+ * Handles closing the notification/modal with a specific preference.
+ * @param {string} preference - The cookie preference (e.g., "essential" or "all").
+ * @param {Function} destroyComponent - The function to destroy the component.
+ * @returns {Function} - The event handler function.
+ */
+export const handleClose = (preference, destroyComponent) => (e) => {
+  setCookie(preference);
+  setGoogleConsentPreferences(preference);
+  destroyComponent();
+};

@@ -46,10 +46,23 @@ export class Manager {
     this.container.innerHTML = this.getManagerMarkup(language);
     const controlsContainer = this.container.querySelector(".controls");
     controlsContent.forEach((controlDetails) => {
-      const control = new Control(controlDetails, controlsContainer, language);
+      const control = new Control(
+        { ...controlDetails, onChange: () => this.updateAcceptButton() },
+        controlsContainer,
+        language
+      );
       this.controlsStore.push(control);
     });
+    this.updateAcceptButton();
     this.initaliseListeners();
+  }
+
+  updateAcceptButton() {
+    const allChecked = this.controlsStore
+      .filter((control) => control.getId() !== "essential")
+      .every((control) => control.isChecked());
+    const button = this.container.querySelector(".js-close");
+    button.disabled = allChecked;
   }
 
   initaliseListeners() {
