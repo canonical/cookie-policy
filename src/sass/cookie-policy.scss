@@ -22,6 +22,10 @@
   @include vf-p-headings;
   @include vf-u-padding-collapse;
   @include vf-u-text-muted;
+  @include vf-p-grid-8;
+  @include vf-button-link;
+  @include vf-u-align;
+  @include vf-u-vertically-center;
 
   /* fix box-sizing that Vanilla sets on html and it doesn't work nested in .cookie-policy */
   box-sizing: border-box;

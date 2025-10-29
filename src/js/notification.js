@@ -20,12 +20,12 @@ export class Notification {
         <header class="p-modal__header grid-row">
           <h2 class="p-modal__title p-heading--4" id="cookie-policy-title">${notificationContent.title}</h2>
         </header>
-        <div id="cookie-policy-content" class="grid-row--50-50">
+        <div id="cookie-policy-content" class="grid-row--50-50-on-large">
           <div class="grid-col">
             <p class="u-no-margin--bottom">${notificationContent.body1}</p>
             <p>${notificationContent.body2}</p>
           </div>
-          <div class="grid-col u-align--right u-vertically-center">
+          <div class="cookie-notification-buttons grid-col u-vertically-center">
             <p class="u-no-margin--bottom">
               <button class="p-button--link js-manage">${notificationContent.buttonManage}</button>
               <button class="p-button is-inline js-close-essential" id="cookie-policy-button-accept-essential">${notificationContent.buttonAcceptEssential}</button>

@@ -1,4 +1,44 @@
 @mixin cookie-p-modal {
+  .cookie-notification-modal {
+    align-items: end;
+    background: none;
+
+    .p-modal__dialog {
+      max-width: 100%;
+      width: 100%;
+    }
+
+    // Full width on medium and small screens
+    @media (width < $breakpoint-large) {
+      .p-modal__dialog {
+        left: 0;
+        right: 0;
+        bottom: 0;
+        max-width: 100%;
+        width: 100%;
+      }
+    }
+
+    // Center buttons on large screens
+    @media (min-width: $threshold-6-12-col) {
+      .cookie-notification-buttons {
+        justify-content: center !important;
+        text-align: center !important;
+      }
+    }
+
+    // Add margin-left to is-inline button on medium and large screens
+    @media (width > $breakpoint-small) {
+      .p-button.is-inline {
+        margin-left: $sph--large;
+      }
+    }
+
+    .p-modal__header::after{
+      background-color: $colors--theme--border-low-contrast;
+    }
+  }
+
   .p-modal {
     height: auto;
     width: auto;
