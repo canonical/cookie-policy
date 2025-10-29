@@ -1,4 +1,5 @@
 import { Notification } from "./notification.js";
+import { Manager } from "./manager.js";
 import {
   preferenceNotSelected,
   hideSpecified,
@@ -26,11 +27,17 @@ export const cookiePolicy = (callback = null) => {
       document.body.appendChild(cookiePolicyContainer);
       const notification = new Notification(
         cookiePolicyContainer,
+        renderManager,
         close
       );
       notification.render(language);
-      document.getElementById("cookie-policy-button-accept").focus();
+      document.getElementById("cookie-policy-button-accept-all").focus();
     }
+  };
+
+  const renderManager = function () {
+    const manager = new Manager(cookiePolicyContainer, close);
+    manager.render(language);
   };
 
   const close = function () {

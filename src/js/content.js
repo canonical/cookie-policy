@@ -66,26 +66,22 @@ export const controlsContent = [
 export const content = {
   default: {
     notification: {
+      title: 'We use cookies to provide you with a better online experience',
+      body1:
+        'To learn more about how we use cookies, please see our <a href="https://canonical.com/legal/data-privacy?cp=hide#cookies">Privacy Policy</a>.',
+      body2:
+        'You can choose to accept all cookies, reject all non-essential cookies, or manage your preferences.',
+      buttonManage: 'Manage preferences',
+      buttonAcceptEssential: 'Accept essential cookies only',
+      buttonAcceptAll: 'Accept all',
+    },
+    manager: {
       title: 'Privacy choices',
       body1:
         'Our websites use cookies to enhance your user experience, remember your preferences, personalize content and ads, measure campaign effectiveness, and analyze site traffic. Some of these cookies transmit information to third parties. Our <a href="https://canonical.com/legal/data-privacy?cp=hide#cookies">Privacy Policy</a> provides more information about our cookie use and how you can update your choices.',
       body2:
         'You can choose not to allow some types of cookies, by managing your preferences at any time:',
-      buttonAccept: 'Accept all',
-      buttonSave: 'Save preferences',
-    },
-    manager: {
-      title: 'Tracking choices',
-      body1:
-        'We use cookies to recognise visitors and remember your preferences.',
-      body2:
-        'They enhance user experience, personalise content and ads, provide social media features, measure campaign effectiveness, and analyse site traffic.',
-      body3:
-        'Select the types of trackers you consent to, both by us, and third parties.',
-      body4:
-        'Learn more at <a href="https://ubuntu.com/legal/data-privacy?cp=hide#cookies">data privacy: cookie policy</a> - you can change your choices at any time from the footer of the site.',
       acceptAll: 'Accept all',
-      acceptAllHelp: 'This will switch all toggles "ON".',
       SavePreferences: 'Save preferences',
     },
   },
