@@ -6,7 +6,7 @@ export const controlsContent = [
       default: {
         title: 'Strictly necessary',
         description:
-          "These are cookies that are required to properly operate our website or provide necessary functions relating to the services you request. They include, for example, cookies enabling you to securely log into our website, subscribe to our services or make use of e-billing services. These cookies cannot be disabled.",
+          "These are cookies that are required  to properly operate our website or provide necessary functions relating to the services you request. They include, for example, cookies enabling you to securely log into our website, subscribe to our services or make use of e-billing services.",
       },
       zh: {
         title: '必要性',
@@ -27,7 +27,7 @@ export const controlsContent = [
       default: {
         title: 'Functional',
         description:
-          'Recognises you when you return to our site. This enables us to personalise content, greet you by name, remember your preferences, and helps you share pages on social networks.',
+          'These cookies enable helpful but non-essential website functions that improve your website experience. By recognizing you when you return to our website, they may, for example, allow us to personalize our content for you, greet you by name, or remember your preferences (for example, your choice of language or region).',
       },
       zh: {
         title: '功能性',
@@ -48,7 +48,7 @@ export const controlsContent = [
       default: {
         title: 'Performance',
         description:
-          'Collects information on site usage, for example, which pages are most frequently visited.',
+          'These cookies allow us and our third-party service providers to understand  how visitors move around our website by anonymously collecting and reporting information. This helps us improve how our website works by, for example, ensuring that users can easily find what they need on our website.',
       },
       zh: {
         title: '表现性',
