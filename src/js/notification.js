@@ -27,8 +27,8 @@ export class Notification {
           </div>
           <div class="cookie-notification-buttons grid-col u-vertically-center">
             <p class="u-no-margin--bottom">
-              <button class="p-button--link js-manage">${notificationContent.buttonManage}</button>
-              <button class="p-button is-inline js-close-essential" id="cookie-policy-button-accept-essential">${notificationContent.buttonAcceptEssential}</button>
+              <button class="p-button--link is-inline js-manage">${notificationContent.buttonManage}</button>
+              <button class="p-button js-close-essential" id="cookie-policy-button-accept-essential">${notificationContent.buttonAcceptEssential}</button>
               <button class="p-button--positive js-close-all" id="cookie-policy-button-accept-all">${notificationContent.buttonAcceptAll}</button>
             </p>
           </div>

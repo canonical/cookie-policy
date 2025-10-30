@@ -8,6 +8,20 @@ $modal-large-breakpoint: 1219px;
     }
   }
 
+  .p-accordion__tab {
+    align-items: center;
+    display: flex;
+    
+    .p-accordion__switch {
+      flex-shrink: 1;
+      margin-left: auto;
+    }
+
+    &::before {
+      flex-shrink: 0;
+    }
+  }
+
   .p-modal {
     height: auto;
     width: auto;
@@ -30,6 +44,7 @@ $modal-large-breakpoint: 1219px;
 
     .p-modal__dialog {
       background-color: $colors--theme--background-alt;
+      box-shadow: $box-shadow--deep;
       max-width: 100%;
       width: 100%;
     }
@@ -59,8 +74,8 @@ $modal-large-breakpoint: 1219px;
 
     /* Add margin-left to is-inline button on medium and large screens */
     @media (width > $breakpoint-x-small) {
-      .p-button.is-inline {
-        margin-left: $sph--large;
+      .p-button--link.is-inline {
+        margin-right: $sph--large;
       }
     }
 

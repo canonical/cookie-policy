@@ -24,12 +24,12 @@ export class Control {
     <li class="controls p-accordion__group">                
       <div role="heading" aria-level="3" class="p-accordion__heading">
         <button type="button" class="p-accordion__tab" id="${this.id}-tab" aria-controls="${this.id}-section" aria-expanded="false">
-          <span class="p-heading--5">${this.title}</span>
+          <span class="p-heading--5 u-no-padding--top u-no-margin--bottom" style="margin-right: 1rem;">${this.title}</span>
           ${
             !this.enableSwitcher ? 
-            `<p class="u-text--muted u-float-right u-no-margin--bottom u-no-padding--top">Always active</p>` : `
+            `<span class="p-accordion__switch u-text--muted u-align--right">Always active</span>` : `
             ${
-            `<label class="u-float-right u-no-margin--bottom p-switch">
+            `<label class="p-accordion__switch u-align--right u-no-margin--bottom p-switch">
               <input type="checkbox" class="p-switch__input js-${this.id}-switch" ${
                   (isChecked || !this.enableSwitcher) && 'checked="" '
                 }
