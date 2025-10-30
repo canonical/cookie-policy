@@ -92,21 +92,16 @@ export const content = {
       body1:
         '我们使用cookie和相似的方法来识别访问者和记住偏好设置。我们也用它们来衡量活动的效果和网站流量分析。',
       body2: '选择”接受“，您同意我们和受信的第三方来使用这些方式。',
-      body3:
-        '更多内容或者随时地变更您的同意选择，请点击我们的 <a href="https://ubuntu.com/legal/data-privacy?cp=hide#cookies">cookie策略</a>.',
-      buttonAccept: '接受全部和访问网站',
-      buttonSave: '管理您的追踪器设置',
+      buttonManage: '管理您的追踪器设置',
+      buttonAcceptEssential: '仅接受必要',
+      buttonAcceptAll: '接受全部和访问网站',
     },
     manager: {
       title: '追踪选项',
       body1: '我们使用cookie来识别访问者和记住您的偏好设置',
       body2:
         '它们增强用户体验，使内容和广告个性化，提供社交媒体功能，衡量活动效果和网站流量分析。',
-      body3: '选择您同意授予我们和受信的第三方的追踪类型。',
-      body4:
-        '点击<a href="https://ubuntu.com/legal/data-privacy?cp=hide#cookies">数据隐私：cookie策略</a>了解更多，您可以在网站底部随时更改您的选择。',
       acceptAll: '接受全部',
-      acceptAllHelp: '这将把全部开关变为”开启“。',
       SavePreferences: '保存偏好设置',
     },
   },
@@ -118,10 +113,9 @@ export const content = {
         '当社は、当社のウェブサイトを訪問された方の識別や傾向の記録を行うために、クッキーおよび類似の手法を利用します。また、キャンペーンの効果の測定やサイトのトラフィックの分析にもクッキーを利用します。',
       body2:
         '「同意」を選択すると、当社および信頼できる第三者による上記の手法の利用に同意したものとみなされます。',
-      body3:
-        '詳細または同意の変更については、いつでも当社の<a href="https://ubuntu.com/legal/data-privacy?cp=hide#cookies">クッキーに関するポリシー</a>をご覧になることができます。',
-      buttonAccept: 'すべて同意してサイトにアクセス',
-      buttonSave: 'トラッキング機能の設定の管理',
+      buttonManage: 'トラッキング機能の設定の管理',
+      buttonAcceptEssential: 'エッセンシャルのみ同意',
+      buttonAcceptAll: 'すべて同意してサイトにアクセス',
     },
     manager: {
       title: 'トラッキング機能の選択',
@@ -129,12 +123,7 @@ export const content = {
         '当社は、当社のウェブサイトを訪問された方の識別や傾向の記録を行うために、クッキーを利用します。',
       body2:
         'クッキーは、お客様の利便性の向上、お客様に合わせたコンテンツや広告の表示、ソーシャルメディア機能の提供、キャンペーンの効果の測定、サイトのトラフィックの分析に役立ちます。',
-      body3:
-        '当社および第三者によるトラッキング機能のタイプから、お客様が同意されるものをお選びください。',
-      body4:
-        '詳細は、<a href="https://ubuntu.com/legal/data-privacy?cp=hide#cookies">データプライバシー：クッキーに関するポリシー</a>をご覧ください。お客様が選んだ設定は、本サイトの下部からいつでも変更できます。',
       acceptAll: 'すべて同意',
-      acceptAllHelp: '同意されるとすべての設定が「ON」に切り替わります。',
       SavePreferences: '設定を保存',
     },
   },

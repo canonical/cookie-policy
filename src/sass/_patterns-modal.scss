@@ -1,6 +1,13 @@
 /* stylelint-disable selector-class-pattern */
+$modal-large-breakpoint: 1219px;
 
 @mixin cookie-p-modal {
+  .cookie-notification-modal .grid-row--50-50-on-large > .grid-col {
+    @media (max-width: $modal-large-breakpoint) {
+      grid-column: auto / span 8;
+    }
+  }
+
   .p-modal {
     height: auto;
     width: auto;
@@ -22,8 +29,13 @@
     background: none;
 
     .p-modal__dialog {
+      background-color: $colors--theme--background-alt;
       max-width: 100%;
       width: 100%;
+    }
+
+    .p-modal__header {
+      background-color: $colors--theme--background-alt;
     }
 
     /* Full width on medium and small screens */
@@ -38,7 +50,7 @@
     }
 
     /* Center buttons on large screens */
-    @media (min-width: $threshold-6-12-col) {
+    @media (width > $modal-large-breakpoint) {
       .cookie-notification-buttons {
         justify-content: center !important;
         text-align: center !important;
@@ -46,7 +58,7 @@
     }
 
     /* Add margin-left to is-inline button on medium and large screens */
-    @media (width > $breakpoint-small) {
+    @media (width > $breakpoint-x-small) {
       .p-button.is-inline {
         margin-left: $sph--large;
       }
