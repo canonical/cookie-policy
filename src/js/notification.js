@@ -20,15 +20,14 @@ export class Notification {
         <header class="p-modal__header grid-row">
           <h2 class="p-modal__title p-heading--4" id="cookie-policy-title">${notificationContent.title}</h2>
         </header>
-        <div id="cookie-policy-content" class="grid-row--50-50-on-large">
-          <div class="grid-col">
-            <p class="u-no-margin--bottom">${notificationContent.body1}</p>
-            <p>${notificationContent.body2}</p>
+        <div id="cookie-policy-content" class="grid-row">
+          <div class="grid-col-5">
+            <p class="u-no-max-width${notificationContent.body2 ? ' u-no-margin--bottom' : ''}">${notificationContent.body1}</p>
+            ${notificationContent.body2 ? `<p class="u-no-max-width">${notificationContent.body2}</p> ` : ''}
           </div>
-          <div class="cookie-notification-buttons grid-col u-vertically-center">
-            <p class="u-no-margin--bottom">
+          <div class="cookie-notification-buttons grid-col-3 u-vertically-center">
+            <p class="u-no-margin--bottom u-sv-3">
               <button class="p-button--link is-inline js-manage">${notificationContent.buttonManage}</button>
-              <button class="p-button js-close-essential" id="cookie-policy-button-accept-essential">${notificationContent.buttonAcceptEssential}</button>
               <button class="p-button--positive js-close-all" id="cookie-policy-button-accept-all">${notificationContent.buttonAcceptAll}</button>
             </p>
           </div>
@@ -43,10 +42,6 @@ export class Notification {
   }
 
   initaliseListeners() {
-    this.container
-      .querySelector(".js-close-essential")
-      .addEventListener("click", handleClose("essential", this.destroyComponent));
-
     this.container
       .querySelector(".js-close-all")
       .addEventListener("click", handleClose("all", this.destroyComponent));

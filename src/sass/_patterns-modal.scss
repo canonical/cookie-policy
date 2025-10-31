@@ -1,17 +1,11 @@
 /* stylelint-disable selector-class-pattern */
-$modal-large-breakpoint: 1219px;
+$breakpoint-small-banner: 320px;
 
 @mixin cookie-p-modal {
-  .cookie-notification-modal .grid-row--50-50-on-large > .grid-col {
-    @media (max-width: $modal-large-breakpoint) {
-      grid-column: auto / span 8;
-    }
-  }
-
   .p-accordion__tab {
     align-items: center;
     display: flex;
-    
+
     .p-accordion__switch {
       flex-shrink: 1;
       margin-left: auto;
@@ -64,16 +58,16 @@ $modal-large-breakpoint: 1219px;
       }
     }
 
-    /* Center buttons on large screens */
-    @media (width > $modal-large-breakpoint) {
+    /* Right-align buttons on large screens */
+    @media (width >= $breakpoint-large) {
       .cookie-notification-buttons {
-        justify-content: center !important;
-        text-align: center !important;
+        justify-content: flex-end !important;
+        text-align: right !important;
       }
     }
 
     /* Add margin-left to is-inline button on medium and large screens */
-    @media (width > $breakpoint-x-small) {
+    @media (width > $breakpoint-small-banner) {
       .p-button--link.is-inline {
         margin-right: $sph--large;
       }

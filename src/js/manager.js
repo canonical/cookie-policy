@@ -62,7 +62,7 @@ export class Manager {
       .filter((control) => control.getId() !== "essential")
       .every((control) => control.isChecked());
     const button = this.container.querySelector(".js-close");
-    button.disabled = allChecked;
+    button.style.display = allChecked ? "none" : "inline-block";
   }
 
   initaliseListeners() {

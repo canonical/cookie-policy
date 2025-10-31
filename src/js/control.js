@@ -6,6 +6,7 @@ export class Control {
     this.id = details.id;
     this.title = getControlsContent(details, language).title;
     this.description = getControlsContent(details, language).description;
+    this.activeText = getControlsContent(details, language).activeText;
     this.enableSwitcher = details.enableSwitcher;
     this.container = container;
     this.element;
@@ -27,7 +28,7 @@ export class Control {
           <span class="p-heading--5 u-no-padding--top u-no-margin--bottom" style="margin-right: 1rem;">${this.title}</span>
           ${
             !this.enableSwitcher ? 
-            `<span class="p-accordion__switch u-text--muted u-align--right">Always active</span>` : `
+            `<span class="p-accordion__switch u-text--muted u-align--right">${this.activeText}</span>` : `
             ${
             `<label class="p-accordion__switch u-align--right u-no-margin--bottom p-switch">
               <input type="checkbox" class="p-switch__input js-${this.id}-switch" ${
