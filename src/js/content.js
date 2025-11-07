@@ -78,9 +78,9 @@ export const content = {
     manager: {
       title: 'Tracking choices',
       body1:
-        'Our websites use cookies to enhance your user experience, remember your preferences, personalize content and ads, measure campaign effectiveness, and analyze site traffic. Some of these cookies transmit information to third parties. Our <a href="https://canonical.com/legal/data-privacy?cp=hide#cookies">Privacy Policy</a> provides more information about our cookie use and how you can update your choices.',
+        'We use cookies to recognize visitors and remember your preferences. They enhance user experience, personalize content and ads, provide social media features, measure campaign effectiveness, and analyze site traffic.',
       body2:
-        'You can choose not to allow some types of cookies, by managing your preferences at any time:',
+        'Select the types of trackers you consent to, both by us, and third parties. Learn more at <a href="https://canonical.com/legal/data-privacy?cp=hide#cookies">data privacy: cookie policy</a> - you can change your choices at any time from the footer of the site.',
       acceptAll: 'Accept all',
       SavePreferences: 'Save preferences',
     },
