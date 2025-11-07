@@ -195,7 +195,7 @@ const enabledTracking = (selectedPreference) => {
   @param {Boolean} show Whether to show or hide the accordion panel.
 */
 function toggleExpanded(element, show) {
-  var target = document.getElementById(element.getAttribute('aria-controls'));
+  let target = document.getElementById(element.getAttribute('aria-controls'));
 
   if (target) {
     element.setAttribute('aria-expanded', show);

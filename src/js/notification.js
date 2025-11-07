@@ -1,8 +1,6 @@
 import {
   handleClose,
   getContent,
-  setCookie,
-  setGoogleConsentPreferences,
 } from "./utils.js";
 
 export class Notification {
@@ -26,7 +24,7 @@ export class Notification {
             ${notificationContent.body2 ? `<p class="u-no-max-width">${notificationContent.body2}</p> ` : ''}
           </div>
           <div class="cookie-notification-buttons grid-col-3 u-vertically-center">
-            <p class="u-no-margin--bottom u-sv-3">
+            <p class="u-no-margin--bottom">
               <button class="p-button--link is-inline js-manage">${notificationContent.buttonManage}</button>
               <button class="p-button--positive js-close-all" id="cookie-policy-button-accept-all">${notificationContent.buttonAcceptAll}</button>
             </p>

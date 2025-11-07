@@ -73,7 +73,7 @@ export const content = {
       body1:
         'We use cookies and similar methods to recognize visitors and remember preferences. We also use them to measure campaign effectiveness and analyze site traffic. By selecting ‘Accept‘, you consent to the use of these methods by us and trusted third parties. For further details or to change your consent choices at any time see our <a href="https://canonical.com/legal/data-privacy?cp=hide#cookies">cookie policy</a>.',
       buttonManage: 'Manage your tracker settings',
-      buttonAcceptAll: 'Accept all and visit site',
+      buttonAcceptAll: 'Accept all',
     },
     manager: {
       title: 'Tracking choices',

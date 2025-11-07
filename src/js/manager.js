@@ -73,7 +73,7 @@ export class Manager {
     });
     
     // Setup all accordions on the page
-    var accordions = document.querySelectorAll('.p-accordion');
+    let accordions = document.querySelectorAll('.p-accordion');
     for (let i = 0, l = accordions.length; i < l; i++) {
       setupAccordion(accordions[i]);
     }
