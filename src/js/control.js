@@ -50,7 +50,7 @@ export class Control {
         <p>${this.description}</p>
       </section>
     </li>
-    <hr class="p-rule--muted"/>
+    <hr class="p-rule--muted" />
     `;
     this.container.appendChild(control);
     this.element = control.querySelector(`.js-${this.id}-switch`);

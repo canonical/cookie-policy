@@ -66,7 +66,7 @@ export class Manager {
   }
 
   initaliseListeners() {
-    this.container.querySelector(".js-close").addEventListener("click", (e) => {
+    this.container.querySelector(".js-close").addEventListener("click", () => {
       setCookie("all");
       setGoogleConsentPreferences("all");
       this.destroyComponent();
@@ -74,7 +74,7 @@ export class Manager {
     
     // Setup all accordions on the page
     var accordions = document.querySelectorAll('.p-accordion');
-    for (var i = 0, l = accordions.length; i < l; i++) {
+    for (let i = 0, l = accordions.length; i < l; i++) {
       setupAccordion(accordions[i]);
     }
     this.container

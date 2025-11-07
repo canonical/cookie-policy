@@ -210,9 +210,9 @@ function toggleExpanded(element, show) {
 export const setupAccordion = (accordionContainer) => {
   // Finds any open panels within the container and closes them.
   function closeAllPanels() {
-    var openPanels = accordionContainer.querySelectorAll('[aria-expanded=true]');
+    let openPanels = accordionContainer.querySelectorAll('[aria-expanded=true]');
 
-    for (var i = 0, l = openPanels.length; i < l; i++) {
+    for (let i = 0, l = openPanels.length; i < l; i++) {
       toggleExpanded(openPanels[i], false);
     }
   }
@@ -220,14 +220,14 @@ export const setupAccordion = (accordionContainer) => {
   // Set up an event listener on the container so that panels can be added
   // and removed and events do not need to be managed separately.
   accordionContainer.addEventListener('click', function(event) {
-    var target = event.target;
+    let target = event.target;
 
     if (target.closest) {
       target = target.closest('[class*="p-accordion__tab"]');
     }
 
     if (target) {
-      var isTargetOpen = target.getAttribute('aria-expanded') === 'true';
+      let isTargetOpen = target.getAttribute('aria-expanded') === 'true';
 
       // Toggle visibility of the target panel.
       toggleExpanded(target, !isTargetOpen);
@@ -242,7 +242,7 @@ export const setupAccordion = (accordionContainer) => {
  * @param {Function} destroyComponent - The function to destroy the component.
  * @returns {Function} - The event handler function.
  */
-export const handleClose = (preference, destroyComponent) => (e) => {
+export const handleClose = (preference, destroyComponent) => () => {
   setCookie(preference);
   setGoogleConsentPreferences(preference);
   destroyComponent();
