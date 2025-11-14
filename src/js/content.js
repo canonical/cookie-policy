@@ -7,16 +7,19 @@ export const controlsContent = [
         title: 'Essential',
         description:
           "Enables the site's core functionality, such as navigation, access to secure areas, video players and payments. The site cannot function properly without these cookies; they can only be disabled by changing your browser preferences.",
+        activeText: 'Always active',
       },
       zh: {
         title: '必要性',
         description:
           '启用网站核心功能，例如导航，访问安全区域，视频播放器和支付。没有这些cookie网站不能正常工作；它们仅可通过修改浏览器偏好设置禁用。',
+        activeText: '默认接受',
       },
       ja: {
         title: 'エッセンシャル',
         description:
           '移動、保護されている情報へのアクセス、動画再生、支払など、サイトの基本的な機能が有効になります。これらのクッキーが有効になっていない（お使いのブラウザの設定を変更することによってクッキーが無効化されている）場合、サイトは正しく表示されません。',
+        activeText: '常に有効',
       },
     },
   },
@@ -45,9 +48,9 @@ export const controlsContent = [
     enableSwitcher: true,
     content: {
       default: {
-        title: 'Functionality',
+        title: 'Functional',
         description:
-          'Recognises you when you return to our site. This enables us to personalise content, greet you by name, remember your preferences, and helps you share pages on social networks.',
+          'Recognizes you when you return to our site. This enables us to personalize content, greet you by name, remember your preferences, and helps you share pages on social networks.',
       },
       zh: {
         title: '功能性',
@@ -60,7 +63,7 @@ export const controlsContent = [
           'お客様がサイトを再訪問したときに、お客様であることを認識します。この設定では、お客様に合わせたコンテンツの表示、お客様のお名前を用いたあいさつメッセージの表示、お客様の傾向の記録を当社が行えるようになります。また、お客様がソーシャルネットワークでページをシェアできるようになります。',
       },
     },
-  },
+  }
 ];
 
 export const content = {
@@ -68,26 +71,17 @@ export const content = {
     notification: {
       title: 'Your tracker settings',
       body1:
-        'We use cookies and similar methods to recognise visitors and remember preferences. We also use them to measure campaign effectiveness and analyse site traffic.',
-      body2:
-        'By selecting ‘Accept‘, you consent to the use of these methods by us and trusted third parties.',
-      body3:
-        'For further details or to change your consent choices at any time see our <a href="https://ubuntu.com/legal/data-privacy?cp=hide#cookies">cookie policy</a>.',
-      buttonAccept: 'Accept all and visit site',
+        'We use cookies and similar methods to recognize visitors and remember preferences. We also use them to measure campaign effectiveness and analyze site traffic. By selecting ‘Accept‘, you consent to the use of these methods by us and trusted third parties. For further details or to change your consent choices at any time see our <a href="https://canonical.com/legal/data-privacy?cp=hide#cookies">cookie policy</a>.',
       buttonManage: 'Manage your tracker settings',
+      buttonAcceptAll: 'Accept all',
     },
     manager: {
       title: 'Tracking choices',
       body1:
-        'We use cookies to recognise visitors and remember your preferences.',
+        'We use cookies to recognize visitors and remember your preferences. They enhance user experience, personalize content and ads, provide social media features, measure campaign effectiveness, and analyze site traffic.',
       body2:
-        'They enhance user experience, personalise content and ads, provide social media features, measure campaign effectiveness, and analyse site traffic.',
-      body3:
-        'Select the types of trackers you consent to, both by us, and third parties.',
-      body4:
-        'Learn more at <a href="https://ubuntu.com/legal/data-privacy?cp=hide#cookies">data privacy: cookie policy</a> - you can change your choices at any time from the footer of the site.',
+        'Select the types of trackers you consent to, both by us, and third parties. Learn more at <a href="https://canonical.com/legal/data-privacy?cp=hide#cookies">data privacy: cookie policy</a> - you can change your choices at any time from the footer of the site.',
       acceptAll: 'Accept all',
-      acceptAllHelp: 'This will switch all toggles "ON".',
       SavePreferences: 'Save preferences',
     },
   },
@@ -96,23 +90,16 @@ export const content = {
     notification: {
       title: '您的追踪器设置',
       body1:
-        '我们使用cookie和相似的方法来识别访问者和记住偏好设置。我们也用它们来衡量活动的效果和网站流量分析。',
-      body2: '选择”接受“，您同意我们和受信的第三方来使用这些方式。',
-      body3:
-        '更多内容或者随时地变更您的同意选择，请点击我们的 <a href="https://ubuntu.com/legal/data-privacy?cp=hide#cookies">cookie策略</a>.',
-      buttonAccept: '接受全部和访问网站',
+        '我们使用cookie和相似的方法来识别访问者和记住偏好设置。我们也用它们来衡量活动的效果和网站流量分析。选择”接受“，您同意我们和受信的第三方来使用这些方式。更多内容或者随时地变更您的同意选择，请点击我们的<a href="https://canonical.com/legal/data-privacy?cp=hide#cookies">cookie策略</a>。',
       buttonManage: '管理您的追踪器设置',
+      buttonAcceptAll: '接受全部和访问网站',
     },
     manager: {
       title: '追踪选项',
-      body1: '我们使用cookie来识别访问者和记住您的偏好设置',
+      body1: '我们使用cookie来识别访问者和记住您的偏好设置 它们增强用户体验，使内容和广告个性化，提供社交媒体功能，衡量活动效果和网站流量分析。',
       body2:
-        '它们增强用户体验，使内容和广告个性化，提供社交媒体功能，衡量活动效果和网站流量分析。',
-      body3: '选择您同意授予我们和受信的第三方的追踪类型。',
-      body4:
-        '点击<a href="https://ubuntu.com/legal/data-privacy?cp=hide#cookies">数据隐私：cookie策略</a>了解更多，您可以在网站底部随时更改您的选择。',
+        '选择您同意授予我们和受信的第三方的追踪类型。点击<a href="https://canonical.com/legal/data-privacy?cp=hide#cookies">数据隐私：cookie策略</a>了解更多，您可以在网站底部随时更改您的选择。',
       acceptAll: '接受全部',
-      acceptAllHelp: '这将把全部开关变为”开启“。',
       SavePreferences: '保存偏好设置',
     },
   },
@@ -123,24 +110,17 @@ export const content = {
       body1:
         '当社は、当社のウェブサイトを訪問された方の識別や傾向の記録を行うために、クッキーおよび類似の手法を利用します。また、キャンペーンの効果の測定やサイトのトラフィックの分析にもクッキーを利用します。',
       body2:
-        '「同意」を選択すると、当社および信頼できる第三者による上記の手法の利用に同意したものとみなされます。',
-      body3:
-        '詳細または同意の変更については、いつでも当社の<a href="https://ubuntu.com/legal/data-privacy?cp=hide#cookies">クッキーに関するポリシー</a>をご覧になることができます。',
-      buttonAccept: 'すべて同意してサイトにアクセス',
+        '「同意」を選択すると、当社および信頼できる第三者による上記の手法の利用に同意したものとみなされます。詳細または同意の変更については、いつでも当社の<a href="https://canonical.com/legal/data-privacy?cp=hide#cookies">クッキーに関するポリシー</a>をご覧になることができます',
       buttonManage: 'トラッキング機能の設定の管理',
+      buttonAcceptAll: 'すべて同意してサイトにアクセス',
     },
     manager: {
       title: 'トラッキング機能の選択',
       body1:
-        '当社は、当社のウェブサイトを訪問された方の識別や傾向の記録を行うために、クッキーを利用します。',
+        '当社は、当社のウェブサイトを訪問された方の識別や傾向の記録を行うために、クッキーを利用します。クッキーは、お客様の利便性の向上、お客様に合わせたコンテンツや広告の表示、ソーシャルメディア機能の提供、キャンペーンの効果の測定、サイトのトラフィックの分析に役立ちます。',
       body2:
-        'クッキーは、お客様の利便性の向上、お客様に合わせたコンテンツや広告の表示、ソーシャルメディア機能の提供、キャンペーンの効果の測定、サイトのトラフィックの分析に役立ちます。',
-      body3:
-        '当社および第三者によるトラッキング機能のタイプから、お客様が同意されるものをお選びください。',
-      body4:
-        '詳細は、<a href="https://ubuntu.com/legal/data-privacy?cp=hide#cookies">データプライバシー：クッキーに関するポリシー</a>をご覧ください。お客様が選んだ設定は、本サイトの下部からいつでも変更できます。',
+        '当社および第三者によるトラッキング機能のタイプから、お客様が同意されるものをお選びください。詳細は、<a href="https://canonical.com/legal/data-privacy?cp=hide#cookies">データプライバシー：クッキーに関するポリシー</a>をご覧ください。お客様が選んだ設定は、本サイトの下部からいつでも変更できます。',
       acceptAll: 'すべて同意',
-      acceptAllHelp: '同意されるとすべての設定が「ON」に切り替わります。',
       SavePreferences: '設定を保存',
     },
   },

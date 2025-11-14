@@ -6,9 +6,11 @@ export class Control {
     this.id = details.id;
     this.title = getControlsContent(details, language).title;
     this.description = getControlsContent(details, language).description;
+    this.activeText = getControlsContent(details, language).activeText;
     this.enableSwitcher = details.enableSwitcher;
     this.container = container;
     this.element;
+    this.onChange = details.onChange || (() => {});
 
     // Rendering off the bat here as this is a dumb component.
     // It saves creating a variable and calling .render() on it.
@@ -19,24 +21,40 @@ export class Control {
     const isChecked = this.cookieIsTrue();
 
     const control = document.createElement("div");
-    control.classList.add("u-sv3");
     control.innerHTML = `
-      ${
-        `<label class="u-float-right p-switch">
-          <input type="checkbox" class="p-switch__input js-${this.id}-switch" ${
-              (isChecked || !this.enableSwitcher) && 'checked="" '
-            }
+    <li class="controls p-accordion__group">                
+      <div role="heading" aria-level="3" class="p-accordion__heading">
+        <button type="button" class="p-accordion__tab" id="${this.id}-tab" aria-controls="${this.id}-section" aria-expanded="false">
+          <span class="p-heading--5 u-no-padding--top u-no-margin--bottom" style="margin-right: 1rem;">${this.title}</span>
+          ${
+            !this.enableSwitcher ? 
+            `<span class="p-accordion__switch u-text--muted u-align--right">${this.activeText}</span>` : `
             ${
-              !this.enableSwitcher && `disabled="disabled"`
+            `<label class="p-accordion__switch u-align--right u-no-margin--bottom p-switch">
+              <input type="checkbox" class="p-switch__input js-${this.id}-switch" ${
+                  (isChecked || !this.enableSwitcher) && 'checked="" '
+                }
+                ${
+                  !this.enableSwitcher && `disabled="disabled"`
 
-            }>
-          <span class="p-switch__slider"></span>
-        </label>`
-      }
-      <h4>${this.title}</h4>
-      <p>${this.description}</p>`;
+                }>            
+              <span class="p-switch__slider"></span>
+            </label>
+            `
+          }
+        `}
+        </button>
+        
+      </div>
+      <section class="p-accordion__panel" id="${this.id}-section" aria-hidden="true" aria-labelledby="${this.id}-tab">
+        <p>${this.description}</p>
+      </section>
+    </li>
+    <hr class="p-rule--muted" />
+    `;
     this.container.appendChild(control);
     this.element = control.querySelector(`.js-${this.id}-switch`);
+    this.element?.addEventListener("change", this.onChange);
   }
 
   cookieIsTrue() {

@@ -1,4 +1,21 @@
+/* stylelint-disable selector-class-pattern */
+$breakpoint-small-banner: 320px;
+
 @mixin cookie-p-modal {
+  .p-accordion__tab {
+    align-items: center;
+    display: flex;
+
+    .p-accordion__switch {
+      flex-shrink: 1;
+      margin-left: auto;
+    }
+
+    &::before {
+      flex-shrink: 0;
+    }
+  }
+
   .p-modal {
     height: auto;
     width: auto;
@@ -12,6 +29,52 @@
 
     button {
       box-sizing: border-box;
+    }
+  }
+
+  .cookie-notification-modal {
+    align-items: end;
+    background: none;
+
+    .p-modal__dialog {
+      background-color: $colors--theme--background-alt;
+      box-shadow: $box-shadow--deep;
+      max-width: 100%;
+      width: 100%;
+    }
+
+    .p-modal__header {
+      background-color: $colors--theme--background-alt;
+    }
+
+    /* Full width on medium and small screens */
+    @media (width < $breakpoint-large) {
+      .p-modal__dialog {
+        bottom: 0;
+        left: 0;
+        max-width: 100%;
+        right: 0;
+        width: 100%;
+      }
+    }
+
+    /* Right-align buttons on large screens */
+    @media (width >= $breakpoint-large) {
+      .cookie-notification-buttons {
+        justify-content: flex-end !important;
+        text-align: right !important;
+      }
+    }
+
+    /* Add margin-left to is-inline button on medium and large screens */
+    @media (width > $breakpoint-small-banner) {
+      .p-button--link.is-inline {
+        margin-right: $sph--large;
+      }
+    }
+
+    .p-modal__header::after {
+      background-color: $colors--theme--border-low-contrast;
     }
   }
 }

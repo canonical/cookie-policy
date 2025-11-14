@@ -18,7 +18,41 @@
   @include vf-u-off-screen;
   @include vf-u-floats;
   @include cookie-p-modal;
+  @include vf-p-accordion;
+  @include vf-p-headings;
+  @include vf-u-padding-collapse;
+  @include vf-u-text-muted;
+  @include vf-p-grid-8;
+  @include vf-button-link;
+  @include vf-u-align;
+  @include vf-u-vertically-center;
+  @include vf-u-no-max-width;
 
   /* fix box-sizing that Vanilla sets on html and it doesn't work nested in .cookie-policy */
   box-sizing: border-box;
+}
+
+/* Global styles for all pages */
+body {
+  display: block;
+  font-family: "Ubuntu variable", Ubuntu, Arial, "libra sans", sans-serif;
+  font-weight: 300;
+  height: 100%;
+  line-height: 1.5;
+  margin: 0;
+  width: 100%;
+}
+
+/* Dark theme specific styles */
+.is-dark {
+  background-color: #262626;
+  color: hsl(0deg 0% 100%);
+
+  a {
+    color: #69c;
+
+    &:visited {
+      color: #a679d2;
+    }
+  }
 }

@@ -1,4 +1,7 @@
-import { setCookie, getContent, setGoogleConsentPreferences } from "./utils.js";
+import {
+  handleClose,
+  getContent,
+} from "./utils.js";
 
 export class Notification {
   constructor(container, renderManager, destroyComponent) {
@@ -8,23 +11,25 @@ export class Notification {
   }
 
   getNotificationMarkup(language) {
-    const notificationContent = getContent(language);
+    const notificationContent = getContent(language).notification;
     const notification = `
-      <div class="p-modal" id="modal">
+      <div class="p-modal cookie-notification-modal" id="modal">
         <div class="p-modal__dialog" role="dialog" aria-labelledby="cookie-policy-title" aria-describedby="cookie-policy-content">
-        <header class="p-modal__header">
-          <h2 class="p-modal__title" id="cookie-policy-title">${notificationContent.notification.title}</h2>
+        <header class="p-modal__header grid-row">
+          <h2 class="p-modal__title p-heading--4" id="cookie-policy-title">${notificationContent.title}</h2>
         </header>
-        <div id="cookie-policy-content">
-          <p>${notificationContent.notification.body1}</p>
-          <p>${notificationContent.notification.body2}</p>
-          <p>${notificationContent.notification.body3}</p>
-          <p class="u-no-margin--bottom">
-            <button class="p-button--positive js-close" id="cookie-policy-button-accept">${notificationContent.notification.buttonAccept}</button>
-            <button class="p-button js-manage">${notificationContent.notification.buttonManage}</button>
-          </p>
-        </div>
-      </div>`;
+        <div id="cookie-policy-content" class="grid-row">
+          <div class="grid-col-5">
+            <p class="u-no-max-width${notificationContent.body2 ? ' u-no-margin--bottom' : ''}">${notificationContent.body1}</p>
+            ${notificationContent.body2 ? `<p class="u-no-max-width">${notificationContent.body2}</p> ` : ''}
+          </div>
+          <div class="cookie-notification-buttons grid-col-3 u-vertically-center">
+            <p class="u-no-margin--bottom">
+              <button class="p-button--link is-inline js-manage">${notificationContent.buttonManage}</button>
+              <button class="p-button--positive js-close-all" id="cookie-policy-button-accept-all">${notificationContent.buttonAcceptAll}</button>
+            </p>
+          </div>
+        </div>`;
 
     return notification;
   }
@@ -35,14 +40,13 @@ export class Notification {
   }
 
   initaliseListeners() {
-    this.container.querySelector(".js-close").addEventListener("click", (e) => {
-      setCookie("all");
-      setGoogleConsentPreferences("all");
-      this.destroyComponent();
-    });
+    this.container
+      .querySelector(".js-close-all")
+      .addEventListener("click", handleClose("all", this.destroyComponent));
+
     this.container
       .querySelector(".js-manage")
-      .addEventListener("click", (e) => {
+      .addEventListener("click", () => {
         this.renderManager();
       });
   }

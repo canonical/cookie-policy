@@ -24,14 +24,15 @@ export const cookiePolicy = (callback = null) => {
       cookiePolicyContainer = document.createElement("dialog");
       cookiePolicyContainer.classList.add("cookie-policy");
       cookiePolicyContainer.setAttribute("open", true);
+      cookiePolicyContainer.style.borderStyle = 'none';
       document.body.appendChild(cookiePolicyContainer);
-      const notifiation = new Notification(
+      const notification = new Notification(
         cookiePolicyContainer,
         renderManager,
         close
       );
-      notifiation.render(language);
-      document.getElementById("cookie-policy-button-accept").focus();
+      notification.render(language);
+      document.getElementById("cookie-policy-button-accept-all").focus();
     }
   };
 
