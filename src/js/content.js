@@ -90,9 +90,9 @@ export const content = {
     notification: {
       title: '您的追踪器设置',
       body1:
-        '我们使用cookie和相似的方法来识别访问者和记住偏好设置。我们也用它们来衡量活动的效果和网站流量分析。选择”接受“，您同意我们和受信的第三方来使用这些方式。更多内容或者随时地变更您的同意选择，请点击我们的<a href="https://canonical.com/legal/data-privacy?cp=hide#cookies">cookie策略</a>。',
+        '我们使用cookie和相似的方法来识别访问者和记住偏好设置。我们也用它们来衡量活动的效果和网站流量分析。选择”接受“，您同意我们和受信的第三方来使用这些方式。更多内容或者随时地变更您的同意选择，请点击我们的<a href="https://canonical.com/legal/data-privacy?cp=hide#cookies"> cookie 策略</a>。',
       buttonManage: '管理您的追踪器设置',
-      buttonAcceptAll: '接受全部和访问网站',
+      buttonAcceptAll: '接受',
     },
     manager: {
       title: '追踪选项',
@@ -112,7 +112,7 @@ export const content = {
       body2:
         '「同意」を選択すると、当社および信頼できる第三者による上記の手法の利用に同意したものとみなされます。詳細または同意の変更については、いつでも当社の<a href="https://canonical.com/legal/data-privacy?cp=hide#cookies">クッキーに関するポリシー</a>をご覧になることができます',
       buttonManage: 'トラッキング機能の設定の管理',
-      buttonAcceptAll: 'すべて同意してサイトにアクセス',
+      buttonAcceptAll: '同意する',
     },
     manager: {
       title: 'トラッキング機能の選択',
