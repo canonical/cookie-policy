@@ -69,6 +69,8 @@ $breakpoint-small-banner: 320px;
     /* Add margin-left to is-inline button on medium and large screens */
     @media (width > $breakpoint-small-banner) {
       .p-button--link.is-inline {
+        margin-bottom: 1.25rem;
+        margin-left: 0 !important;
         margin-right: $sph--large;
       }
     }
