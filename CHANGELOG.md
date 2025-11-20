@@ -1,3 +1,7 @@
+### 3.7.4 [20-11-2025]
+**Fix** Cookie banner container
+- Remove the vertical scrollbar
+
 ### 3.7.3 [18-11-2025]
 **Updated** Inline button
 - Remove left margin and added bottom margin to override the default inline button styles
