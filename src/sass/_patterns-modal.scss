@@ -38,6 +38,7 @@ $breakpoint-small-banner: 320px;
 
     .p-modal__dialog {
       background-color: $colors--theme--background-alt;
+      border: 1px solid $colors--theme--border-high-contrast;
       box-shadow: $box-shadow--deep;
       max-width: 100%;
       overflow: hidden;
