@@ -18,7 +18,7 @@ export class Manager {
   getManagerMarkup(language) {
     const managerContent = getContent(language).manager;
     const manager = `
-      <div class="p-modal" id="modal">
+      <div class="p-modal cookie-manager-modal" id="modal">
         <section class="p-modal__dialog" role="dialog" aria-labelledby="cookie-policy-title" aria-describedby="cookie-policy-content">
           <header class="p-modal__header">
             <h2 class="p-modal__title p-heading--4" id="cookie-policy-title">${managerContent.title}</h2>
