@@ -5,6 +5,7 @@ import {
   setCookie,
   setGoogleConsentPreferences,
 } from "./utils.js";
+import { postUpdatedPreferences } from "./api.js";
 
 export class Notification {
   constructor(container, renderManager, destroyComponent) {
@@ -49,7 +50,10 @@ export class Notification {
   initaliseListeners() {
     this.container
       .querySelector(".js-close-all")
-      .addEventListener("click", handleClose("all", this.destroyComponent));
+      .addEventListener("click", () => {
+        handleClose("all", this.destroyComponent)();
+        postUpdatedPreferences();
+      });
 
     this.container
       .querySelector(".js-manage")

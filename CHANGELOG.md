@@ -1,3 +1,7 @@
+### 3.8.0 [21-11-2025]
+**Added** `postUpdatedPreferences()`
+- Posts users cookie preferences to shared cookie service (cookies.canonical.com) providing the application is using the canonicalwebteam.cookies_service package and a connection has been established
+
 ### 3.7.5 [25-11-2025]
 **Updated** Cookie notification banner
 - Enable page interaction with notification banner present

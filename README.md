@@ -84,6 +84,12 @@ Essential cookies are always allowed, unless the user turns them off in their br
 | performance | Performance cookies accepted. | - |
 | functionality | Functionality cookies accepted. | - |
 
+### APIs - /cookies/set-preferences
+
+This package will attempt to post users cookie preferences to our shared cookie service (cookies.canonical.com).
+This is handled by a python package, canonicalwebteam.cookies_service, that expose an internal endpoint '/cookies/set-preferences',
+The attempt to post will only be made providing the cookie `_cookies_service_up=1` exists. Applications not using the aforementioned python package will not attempt to post the users preferences.
+
 ## Contributing
 
 If you would like to help improve this project, here is a list of commands to

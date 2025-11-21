@@ -58,7 +58,7 @@ export class Control {
   }
 
   cookieIsTrue() {
-    const cookieValue = getCookie("_cookies_accepted");
+    const cookieValue = getCookie("_cookies_accepted=");
 
     // If the cookie value matches the control ID, return true
     if (cookieValue) {
