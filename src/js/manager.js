@@ -1,12 +1,13 @@
 import {
   setCookie,
   getContent,
-  setGoogleConsentPreferences,
   setGoogleConsentFromControls,
   setupAccordion,
+  handleClose,
 } from "./utils.js";
 import { Control } from "./control.js";
 import { controlsContent } from "./content.js";
+import { postUpdatedPreferences } from "./api.js";
 
 export class Manager {
   constructor(container, destroyComponent) {
@@ -66,11 +67,12 @@ export class Manager {
   }
 
   initaliseListeners() {
-    this.container.querySelector(".js-close").addEventListener("click", () => {
-      setCookie("all");
-      setGoogleConsentPreferences("all");
-      this.destroyComponent();
-    });
+    this.container
+      .querySelector(".js-close")
+      .addEventListener("click", () => {
+        handleClose("all", this.destroyComponent)();
+        postUpdatedPreferences();
+      });
     
     // Setup all accordions on the page
     let accordions = document.querySelectorAll('.p-accordion');
@@ -81,6 +83,7 @@ export class Manager {
       .querySelector(".js-save-preferences")
       .addEventListener("click", () => {
         this.savePreferences();
+        postUpdatedPreferences();
         this.destroyComponent();
       });
   }

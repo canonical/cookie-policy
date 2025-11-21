@@ -46,8 +46,7 @@ export const setCookie = (value) => {
   }
 };
 
-export const getCookie = () => {
-  const toMatch = "_cookies_accepted=";
+export const getCookie = (targetCookie) => {
   const splitArray = document.cookie.split(";");
   let cookieValue = "";
   let currentCookieValue = "";
@@ -56,8 +55,8 @@ export const getCookie = () => {
     while (cookie.charAt(0) == " ") {
       cookie = cookie.substring(1);
     }
-    currentCookieValue = cookie.substring(toMatch.length, cookie.length);
-    if (cookie.indexOf(toMatch) === 0 && currentCookieValue !== "true") {
+    currentCookieValue = cookie.substring(targetCookie.length, cookie.length);
+    if (cookie.indexOf(targetCookie) === 0 && currentCookieValue !== "true") {
       cookieValue = currentCookieValue;
     }
   }
@@ -65,7 +64,7 @@ export const getCookie = () => {
 };
 
 export const preferenceNotSelected = () => {
-  const cookieValue = getCookie("_cookies_accepted");
+  const cookieValue = getCookie("_cookies_accepted=");
   // Skip a value of "true" and "unset" to override old existing cookies
   if (cookieValue && cookieValue != "true" && cookieValue != "unset") {
     return false;
@@ -116,7 +115,7 @@ export const addGoogleConsentMode = () => {
 };
 
 export const loadConsentFromCookie = () => {
-  const cookieValue = getCookie("_cookies_accepted");
+  const cookieValue = getCookie("_cookies_accepted=");
   cookieValue && setGoogleConsentPreferences(cookieValue);
 };
 
@@ -238,6 +237,7 @@ export const setupAccordion = (accordionContainer) => {
 
 /**
  * Handles closing the notification/modal with a specific preference.
+ * If available, posts the preferences to shared cookie service.
  * @param {string} preference - The cookie preference (e.g., "essential" or "all").
  * @param {Function} destroyComponent - The function to destroy the component.
  * @returns {Function} - The event handler function.
