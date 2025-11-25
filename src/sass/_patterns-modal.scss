@@ -2,33 +2,37 @@
 $breakpoint-small-banner: 320px;
 
 @mixin cookie-p-modal {
-  .p-accordion__tab {
-    align-items: center;
-    display: flex;
+  .cookie-manager-modal {
+    pointer-events: auto;
 
-    .p-accordion__switch {
-      flex-shrink: 1;
-      margin-left: auto;
+    .p-accordion__tab {
+      align-items: center;
+      display: flex;
+
+      .p-accordion__switch {
+        flex-shrink: 1;
+        margin-left: auto;
+      }
+
+      &::before {
+        flex-shrink: 0;
+      }
     }
 
-    &::before {
-      flex-shrink: 0;
-    }
-  }
+    .p-modal {
+      height: auto;
+      width: auto;
 
-  .p-modal {
-    height: auto;
-    width: auto;
+      &__dialog {
+        margin-bottom: 0 !important;
+        max-height: 80vh;
+        overflow: auto;
+        padding-bottom: 0;
+      }
 
-    &__dialog {
-      margin-bottom: 0 !important;
-      max-height: 80vh;
-      overflow: auto;
-      padding-bottom: 0;
-    }
-
-    button {
-      box-sizing: border-box;
+      button {
+        box-sizing: border-box;
+      }
     }
   }
 
@@ -38,9 +42,11 @@ $breakpoint-small-banner: 320px;
 
     .p-modal__dialog {
       background-color: $colors--theme--background-alt;
+      border: 1px solid $colors--theme--border-high-contrast;
       box-shadow: $box-shadow--deep;
       max-width: 100%;
       overflow: hidden;
+      pointer-events: auto;
       width: 100%;
     }
 

@@ -1,6 +1,9 @@
 import {
   handleClose,
   getContent,
+  getCookie,
+  setCookie,
+  setGoogleConsentPreferences,
 } from "./utils.js";
 
 export class Notification {
@@ -36,6 +39,10 @@ export class Notification {
 
   render(language) {
     this.container.innerHTML = this.getNotificationMarkup(language);
+    if (!getCookie()) {
+      setCookie("essential");
+      setGoogleConsentPreferences("essential");
+    }
     this.initaliseListeners();
   }
 
