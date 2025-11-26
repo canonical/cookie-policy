@@ -237,7 +237,7 @@ export const setupAccordion = (accordionContainer) => {
 
 /**
  * Handles closing the notification/modal with a specific preference.
- * If available, posts the preferences to shared cookie service.
+ * If available, POSTs the preferences to shared cookie service.
  * @param {string} preference - The cookie preference (e.g., "essential" or "all").
  * @param {Function} destroyComponent - The function to destroy the component.
  * @returns {Function} - The event handler function.

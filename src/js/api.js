@@ -1,7 +1,7 @@
 import { getCookie } from "./utils.js";
 
 /*
- * Posts updated preferences to the shared cookie service endpoint
+ * POSTs updated preferences to the shared cookie service endpoint
  * via the canonicalwebteam.cookie_service package 
  **/
 export function postUpdatedPreferences() {
@@ -15,8 +15,8 @@ export function postUpdatedPreferences() {
   if (!cookieAcceptanceValue) {
     return;
   }
-  // Post to the backend endpoint
-  // Which then posts to cookies.canonical.com
+  // POST to the backend endpoint
+  // Which then POSTs to cookies.canonical.com
   fetch("/cookies/set-preferences", {
     method: "POST",
     headers: {
