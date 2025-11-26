@@ -40,7 +40,8 @@ export class Notification {
 
   render(language) {
     this.container.innerHTML = this.getNotificationMarkup(language);
-    if (!getCookie()) {
+    const cookieValue = getCookie("_cookies_accepted=");
+    if (!cookieValue || cookieValue === "unset") {
       setCookie("essential");
       setGoogleConsentPreferences("essential");
     }
