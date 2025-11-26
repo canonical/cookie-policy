@@ -1,3 +1,7 @@
+### 3.7.5 [25-11-2025]
+**Updated** Cookie notification banner
+- Enable page interaction with notification banner present
+
 ### 3.7.4 [20-11-2025]
 **Fix** Cookie banner container
 - Remove the vertical scrollbar
