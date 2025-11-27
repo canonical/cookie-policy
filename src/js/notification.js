@@ -5,6 +5,7 @@ import {
   setCookie,
   setGoogleConsentPreferences,
 } from "./utils.js";
+import { postUpdatedPreferences } from "./api.js";
 
 export class Notification {
   constructor(container, renderManager, destroyComponent) {
@@ -39,7 +40,8 @@ export class Notification {
 
   render(language) {
     this.container.innerHTML = this.getNotificationMarkup(language);
-    if (!getCookie()) {
+    const cookieValue = getCookie("_cookies_accepted=");
+    if (!cookieValue || cookieValue === "unset") {
       setCookie("essential");
       setGoogleConsentPreferences("essential");
     }
@@ -49,7 +51,10 @@ export class Notification {
   initaliseListeners() {
     this.container
       .querySelector(".js-close-all")
-      .addEventListener("click", handleClose("all", this.destroyComponent));
+      .addEventListener("click", () => {
+        handleClose("all", this.destroyComponent)();
+        postUpdatedPreferences();
+      });
 
     this.container
       .querySelector(".js-manage")

@@ -6,7 +6,7 @@ export const controlsContent = [
       default: {
         title: 'Essential',
         description:
-          "Enables the site's core functionality, such as navigation, access to secure areas, video players and payments. The site cannot function properly without these cookies; they can only be disabled by changing your browser preferences.",
+          "Enables the core functionality on our websites, such as navigation, access to secure areas, video players and payments. Our websites cannot function properly without these cookies; they can only be disabled by changing your browser preferences.",
         activeText: 'Always active',
       },
       zh: {
@@ -30,7 +30,7 @@ export const controlsContent = [
       default: {
         title: 'Performance',
         description:
-          'Collects information on site usage, for example, which pages are most frequently visited.',
+          'Collects information on usage on our websites, for example, which pages are most frequently visited.',
       },
       zh: {
         title: '表现性',
@@ -50,7 +50,7 @@ export const controlsContent = [
       default: {
         title: 'Functional',
         description:
-          'Recognizes you when you return to our site. This enables us to personalize content, greet you by name, remember your preferences, and helps you share pages on social networks.',
+          'Recognizes you when you return to our websites. This enables us to personalize content, greet you by name, remember your preferences, and helps you share pages on social networks.',
       },
       zh: {
         title: '功能性',
@@ -71,14 +71,14 @@ export const content = {
     notification: {
       title: 'Your tracker settings',
       body1:
-        'We use cookies and similar methods to recognize visitors and remember preferences. We also use them to measure campaign effectiveness and analyze site traffic. By selecting ‘Accept‘, you consent to the use of these methods by us and trusted third parties. For further details or to change your consent choices at any time see our <a href="https://canonical.com/legal/data-privacy?cp=hide#cookies">cookie policy</a>.',
+        'We use cookies and similar methods to recognize visitors and remember preferences. We also use them to measure campaign effectiveness and analyze traffic on our websites. By selecting ‘Accept‘, you consent to the use of these methods by us and trusted third parties. For further details or to change your consent choices at any time see our <a href="https://canonical.com/legal/data-privacy?cp=hide#cookies">cookie policy</a>.',
       buttonManage: 'Manage your tracker settings',
       buttonAcceptAll: 'Accept all',
     },
     manager: {
       title: 'Tracking choices',
       body1:
-        'We use cookies to recognize visitors and remember your preferences. They enhance user experience, personalize content and ads, provide social media features, measure campaign effectiveness, and analyze site traffic.',
+        'We use cookies to recognize visitors and remember your preferences. They enhance user experience, personalize content and ads, provide social media features, measure campaign effectiveness, and analyze traffic on our websites.',
       body2:
         'Select the types of trackers you consent to, both by us, and third parties. Learn more at <a href="https://canonical.com/legal/data-privacy?cp=hide#cookies">data privacy: cookie policy</a> - you can change your choices at any time from the footer of the site.',
       acceptAll: 'Accept all',
