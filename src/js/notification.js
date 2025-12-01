@@ -42,8 +42,8 @@ export class Notification {
     this.container.innerHTML = this.getNotificationMarkup(language);
     const cookieValue = getCookie("_cookies_accepted=");
     if (!cookieValue || cookieValue === "unset") {
-      setCookie("essential");
-      setGoogleConsentPreferences("essential");
+      setCookie("unset");
+      setGoogleConsentPreferences("unset");
     }
     this.initaliseListeners();
   }
