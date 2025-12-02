@@ -1,3 +1,7 @@
+### 3.8.1 [28-11-2025]
+**Updated** CN consent language
+- Updates language used for Chinese version of the consent modal, to reflect our use of cross-domain cookies.
+
 ### 3.8.0 [21-11-2025]
 **Added** `postUpdatedPreferences()`
 - POSTs users cookie preferences to shared cookie service (cookies.canonical.com) providing the application is using the canonicalwebteam.cookies_service package and a connection has been established

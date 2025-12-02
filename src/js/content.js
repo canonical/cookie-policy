@@ -90,7 +90,7 @@ export const content = {
     notification: {
       title: '您的追踪器设置',
       body1:
-        '我们使用cookie和相似的方法来识别访问者和记住偏好设置。我们也用它们来衡量活动的效果和网站流量分析。选择”接受“，您同意我们和受信的第三方来使用这些方式。更多内容或者随时地变更您的同意选择，请点击我们的<a href="https://canonical.com/legal/data-privacy?cp=hide#cookies"> cookie 策略</a>。',
+        '我们使用 cookie 和相似的方法来识别访问者和记住访问者的偏好设置，并用来衡量活动的效果和分析 Canonical 旗下所有网站的流量。选择”接受“，您同意我们和受信的第三方来使用这些资料。更多细节或者随时变更您的选择，请阅读我们的<a href="https://canonical.com/legal/data-privacy?cp=hide#cookies"> cookie 策略</a>。',
       buttonManage: '管理您的追踪器设置',
       buttonAcceptAll: '接受',
     },
