@@ -1,6 +1,6 @@
 ### 3.8.2 [03-12-2025]
-**Updated** Interim cookie banenr
-- Sets "unset" as the default cookie when user have not interacted with the cookie notification banner.
+**Updated** Interim cookie behavior
+- Cookie defaults to none when user have not interacted with the cookie notification banner.
 
 ### 3.8.1 [28-11-2025]
 **Updated** CN consent language
