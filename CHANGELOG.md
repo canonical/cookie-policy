@@ -1,3 +1,7 @@
+### 3.8.2 [03-12-2025]
+**Updated** Interim cookie behavior
+- Cookie defaults to none when user have not interacted with the cookie notification banner.
+
 ### 3.8.1 [28-11-2025]
 **Updated** CN consent language
 - Updates language used for Chinese version of the consent modal, to reflect our use of cross-domain cookies.
