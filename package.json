@@ -32,7 +32,7 @@
     "stylelint": "14.2.0",
     "stylelint-config-standard": "24.0.0",
     "stylelint-order": "6.0.1",
-    "vanilla-framework": "4.34.2"
+    "vanilla-framework": "4.38.0"
   },
   "watch": {
     "buildJs": "src/js/*.js",
