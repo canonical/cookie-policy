@@ -1,3 +1,7 @@
+### 3.8.3 [03-12-2025]
+**Updated** Styles for cookie-modal
+- Added styles for cookie modal to override custom styles in sites.
+
 ### 3.8.2 [03-12-2025]
 **Updated** Interim cookie behavior
 - Cookie defaults to none when user have not interacted with the cookie notification banner.
