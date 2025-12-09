@@ -52,6 +52,8 @@ $breakpoint-small-banner: 320px;
 
     .p-modal__header {
       background-color: $colors--theme--background-alt;
+      display: flex;
+      padding-top: 1rem;
     }
 
     /* Full width on medium and small screens */
@@ -73,10 +75,13 @@ $breakpoint-small-banner: 320px;
       }
     }
 
+    .p-button--link.is-inline {
+      margin-bottom: 1.25rem;
+    }
+
     /* Add margin-left to is-inline button on medium and large screens */
     @media (width > $breakpoint-small-banner) {
       .p-button--link.is-inline {
-        margin-bottom: 1.25rem;
         margin-left: 0 !important;
         margin-right: $sph--large;
       }
@@ -84,6 +89,7 @@ $breakpoint-small-banner: 320px;
 
     .p-modal__header::after {
       background-color: $colors--theme--border-low-contrast;
+      height: 1px;
     }
   }
 }
