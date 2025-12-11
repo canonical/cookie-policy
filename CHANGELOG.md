@@ -1,3 +1,7 @@
+### 3.8.4 [09-12-2025]
+**Updated** JP consent language
+- Updates language used for Japanese version of the consent modal, to reflect our use of cross-domain cookies
+
 ### 3.8.3 [03-12-2025]
 **Updated** Styles for cookie-modal
 - Added styles for cookie modal to override custom styles in sites.
