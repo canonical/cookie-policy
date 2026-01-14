@@ -45,14 +45,14 @@
   },
   "scripts": {
     "clean": "rm -rf build node_modules",
-    "test": "npm run lint-js && npm run lint-scss",
+    "test": "yarn lint-js && yarn lint-scss",
     "buildScss": "sass src/sass/cookie-policy.scss build/css/cookie-policy.css --load-path=node_modules --style=compressed",
     "buildJs": "rollup -c",
-    "build": "npm run test && npm run buildScss && npm run buildJs",
+    "build": "yarn test && yarn buildScss && yarn buildJs",
     "lint-js": "eslint src/js/**/*.js",
     "lint-scss": "stylelint src/sass/**/*.scss",
-    "prepublishonly": "npm run build",
-    "preversion": "npm test",
+    "prepublishonly": "yarn build",
+    "preversion": "yarn test",
     "serve": "python3 -m http.server 8301 && echo 'Demo is running on http://0.0.0.0:8301'",
     "watch": "npm-watch"
   }
