@@ -5,7 +5,34 @@ import {
   hideSpecified,
   addGoogleConsentMode,
   loadConsentFromCookie,
+  setCookie,
+  setGoogleConsentPreferences
 } from "./utils.js";
+import { getCookieStatus } from "./api.js";
+
+const initSharedCookieService = async () => {
+  const data = await getCookieStatus();
+  if (!data) {
+    return;
+  }
+  switch (data.action) {
+    case "redirect":
+      window.location.replace(data.redirect_url + window.location.href);
+      break;
+
+    case "set_preferences":
+      setCookie("_cookies_accepted=", data.consent);
+      setCookie("_cookie_freshness_ts=", data.cookie_freshness_ts);
+      setGoogleConsentPreferences(data.consent);
+      break;
+
+    case "none":
+    default:
+      break;
+  }
+}
+// Store the promise so we can await it in `cookiePolicy`
+const sharedCookiePromise = initSharedCookieService();
 
 // Add Google Consent Mode as soon as the script is loaded
 addGoogleConsentMode();
@@ -50,9 +77,12 @@ export const cookiePolicy = (callback = null) => {
     cookiePolicyContainer = null;
   };
 
-  const init = function () {
+  const init = async function () {
     if (initialised) return;
     initialised = true;
+
+    // Wait for the shared cookie service to initialize
+    await sharedCookiePromise;
 
     // Load the consent from the cookie, if available
     loadConsentFromCookie();

@@ -1,9 +1,6 @@
 import {
   handleClose,
   getContent,
-  getCookie,
-  setCookie,
-  setGoogleConsentPreferences,
 } from "./utils.js";
 import { postUpdatedPreferences } from "./api.js";
 

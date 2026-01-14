@@ -95,14 +95,14 @@ export class Manager {
 
     // "essential" is the default value for only essential cookies
     if (this.controlsStore.length - 1 === checkedControls.length) {
-      setCookie("all");
+      setCookie("_cookies_accepted=", "all");
     } else if (checkedControls.length === 0) {
-      setCookie("essential");
+      setCookie("_cookies_accepted=", "essential");
     } else {
       this.controlsStore.forEach((control) => {
         if (control.isChecked()) {
           // Note: this overwrites the previous cookie
-          setCookie(control.getId());
+          setCookie("_cookies_accepted=", control.getId());
         }
       });
     }

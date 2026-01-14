@@ -33,14 +33,14 @@ const ALL_PREFERENCES = [
   "personalization_storage",
 ];
 
-export const setCookie = (value) => {
+export const setCookie = (key, value) => {
   const d = new Date();
   d.setTime(d.getTime() + 365 * 24 * 60 * 60 * 1000);
   const expires = "expires=" + d.toUTCString();
   const samesite = "samesite=lax;";
   const path = "path=/;";
   document.cookie =
-    "_cookies_accepted=" + value + "; " + expires + "; " + samesite + path;
+    key + value + "; " + expires + "; " + samesite + path;
   if (enabledTracking(value)) {
     pushPageview();
   }
@@ -243,7 +243,7 @@ export const setupAccordion = (accordionContainer) => {
  * @returns {Function} - The event handler function.
  */
 export const handleClose = (preference, destroyComponent) => () => {
-  setCookie(preference);
+  setCookie("_cookies_accepted=", preference);
   setGoogleConsentPreferences(preference);
   destroyComponent();
 };

@@ -26,3 +26,27 @@ export function postUpdatedPreferences() {
   })
   .catch(err => console.error("Error sending preferences:", err));
 }
+
+/*
+ * GET request to initialize shared cookie service
+ * Retrieves whether to redirect user or set preferences (or do nothing)
+ **/
+export async function getCookieStatus() {
+  try {
+    const response = await fetch("/cookies/init", {
+      credentials: "include",
+      cache: "no-store"
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP error ${response.status}`);
+    }
+
+    const data = await response.json();
+
+    return data ?? false;
+  } catch (err) {
+    console.error("Error initializing shared cookie service:", err);
+    return false;
+  }
+}
