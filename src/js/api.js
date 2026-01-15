@@ -1,16 +1,15 @@
-import { getCookie } from "./utils.js";
+import { getCookie, setCookie } from "./utils.js";
+import { isOfflineMode } from "./state.js";
 
 /*
  * POSTs updated preferences to the shared cookie service endpoint
  * via the canonicalwebteam.cookie_service package 
  **/
 export function postUpdatedPreferences() {
-  // Check if cookie service is enabled
-  const cookieServiceUp = getCookie("_cookies_service_up=");
-  if (!cookieServiceUp || cookieServiceUp !== "1") {
+  if (isOfflineMode()) {
     return;
   }
-  // Check if preferences cookie exists
+
   const cookieAcceptanceValue = getCookie("_cookies_accepted=");
   if (!cookieAcceptanceValue) {
     return;
@@ -23,6 +22,11 @@ export function postUpdatedPreferences() {
       "Content-Type": "application/json"
     },
     body: JSON.stringify({"preferences": {"consent": cookieAcceptanceValue}})
+  })
+  .then(response => {
+    if (!response.ok) {
+      setCookie("_cookies_set_offline=", true);
+    }
   })
   .catch(err => console.error("Error sending preferences:", err));
 }
@@ -37,7 +41,7 @@ export async function getCookieStatus() {
       credentials: "include",
       cache: "no-store"
     });
-
+    
     if (!response.ok) {
       throw new Error(`HTTP error ${response.status}`);
     }

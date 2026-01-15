@@ -8,6 +8,7 @@ import {
 import { Control } from "./control.js";
 import { controlsContent } from "./content.js";
 import { postUpdatedPreferences } from "./api.js";
+import { isOfflineMode } from "./state.js";
 
 export class Manager {
   constructor(container, destroyComponent) {
@@ -105,6 +106,11 @@ export class Manager {
           setCookie("_cookies_accepted=", control.getId());
         }
       });
+    }
+    
+    setCookie("_cookies_freshness_ts=", data.cookie_freshness_ts);
+    if (isOfflineMode()) {
+      setCookie("_cookies_set_offline=", true);
     }
 
     setGoogleConsentFromControls(this.controlsStore);

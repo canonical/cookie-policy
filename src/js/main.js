@@ -9,12 +9,15 @@ import {
   setGoogleConsentPreferences
 } from "./utils.js";
 import { getCookieStatus } from "./api.js";
+import { setOfflineMode } from "./state.js";
 
 const initSharedCookieService = async () => {
   const data = await getCookieStatus();
   if (!data) {
+    setOfflineMode(true)
     return;
   }
+
   switch (data.action) {
     case "redirect":
       window.location.replace(data.redirect_url + window.location.href);
@@ -22,7 +25,7 @@ const initSharedCookieService = async () => {
 
     case "set_preferences":
       setCookie("_cookies_accepted=", data.consent);
-      setCookie("_cookie_freshness_ts=", data.cookie_freshness_ts);
+      setCookie("_cookies_freshness_ts=", data.cookie_freshness_ts);
       setGoogleConsentPreferences(data.consent);
       break;
 
