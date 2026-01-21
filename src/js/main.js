@@ -11,6 +11,9 @@ import {
 import { getCookieStatus } from "./api.js";
 import { setOfflineMode } from "./state.js";
 
+// Add Google Consent Mode as soon as the script is loaded
+addGoogleConsentMode();
+
 const initSharedCookieService = async () => {
   const data = await getCookieStatus();
   if (!data) {
@@ -20,12 +23,13 @@ const initSharedCookieService = async () => {
 
   switch (data.action) {
     case "redirect":
-      window.location.replace(data.redirect_url + window.location.href);
+      const currentUrl = window.location.href  ? window.location.href : "/";
+      window.location.replace(data.redirect_url + currentUrl);
       break;
 
     case "set_preferences":
       setCookie("_cookies_accepted=", data.consent);
-      setCookie("_cookies_freshness_ts=", data.cookie_freshness_ts);
+      setCookie("_cookies_freshness_ts=", data.cookies_freshness_ts);
       setGoogleConsentPreferences(data.consent);
       break;
 
@@ -34,16 +38,17 @@ const initSharedCookieService = async () => {
       break;
   }
 }
-// Store the promise so we can await it in `cookiePolicy`
-const sharedCookiePromise = initSharedCookieService();
 
-// Add Google Consent Mode as soon as the script is loaded
-addGoogleConsentMode();
-
-export const cookiePolicy = (callback = null) => {
+export const cookiePolicy = (callback = null, initWithCookieService = false) => {
   let cookiePolicyContainer = null;
   let language = document.documentElement.lang;
   let initialised = false;
+  let sharedCookiePromise = null;
+
+  // Initialize and wait for the shared cookie service
+  if (initWithCookieService && !sharedCookiePromise) {
+    sharedCookiePromise = initSharedCookieService();
+  }
 
   const renderNotification = function (e) {
     if (e) {
@@ -84,8 +89,9 @@ export const cookiePolicy = (callback = null) => {
     if (initialised) return;
     initialised = true;
 
-    // Wait for the shared cookie service to initialize
-    await sharedCookiePromise;
+    if (sharedCookiePromise) {
+      await sharedCookiePromise;
+    }
 
     // Load the consent from the cookie, if available
     loadConsentFromCookie();
