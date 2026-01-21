@@ -2,7 +2,6 @@ import {
   handleClose,
   getContent,
 } from "./utils.js";
-import { postUpdatedPreferences } from "./api.js";
 
 export class Notification {
   constructor(container, renderManager, destroyComponent) {
@@ -45,7 +44,6 @@ export class Notification {
       .querySelector(".js-close-all")
       .addEventListener("click", () => {
         handleClose("all", this.destroyComponent)();
-        postUpdatedPreferences();
       });
 
     this.container

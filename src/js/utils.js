@@ -1,5 +1,5 @@
 import { content } from "./content.js";
-import { isOfflineMode } from "./state.js";
+import { postUpdatedPreferences } from "./api.js";
 
 const DEFAULT_CONSENT = {
   ad_storage: "denied",
@@ -243,12 +243,17 @@ export const setupAccordion = (accordionContainer) => {
  * @param {Function} destroyComponent - The function to destroy the component.
  * @returns {Function} - The event handler function.
  */
-export const handleClose = (preference, destroyComponent) => () => {
-  if (isOfflineMode()) {
-    setCookie("_cookies_set_offline=", true);
-  }
+export const handleClose = (preference, destroyComponent) => async () => {
   setCookie("_cookies_accepted=", preference);
-  setCookie("_cookies_freshness_ts=", data.cookie_freshness_ts);
+
+  try {
+    const data = await postUpdatedPreferences();
+    setCookie("_cookies_freshness_ts=", data.cookies_freshness_ts);
+  } catch (error) {
+    setCookie("_cookies_set_offline=", true);
+    console.error("Error saving preferences:", error);
+  }
+
   setGoogleConsentPreferences(preference);
   destroyComponent();
 };
