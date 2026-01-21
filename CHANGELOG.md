@@ -1,3 +1,7 @@
+### 3.9.0 [21-01-2026]
+**Added** `initSharedCookieService()`
+- Function to initiate cross-domain cookies intergration from the client side (previously initiated server side). It is toggled with a flag on cookie policy instantiation, `initWithCookieService`.
+
 ### 3.8.4 [09-12-2025]
 **Updated** JP consent language
 - Updates language used for Japanese version of the consent modal, to reflect our use of cross-domain cookies

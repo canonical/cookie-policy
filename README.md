@@ -37,6 +37,13 @@ To consume the library directly, add a link to the JS file containing an [IIFE](
 import { cookiePolicy } from '@canonical/cookie-policy';
 ```
 
+### cookiePolicy parameters
+
+The cookie policy function that sets up the cookie policy takes two possible parameters:
+
+1. `callback` (default = null) - a callback function, which is called after a user selects there cookie preferences
+2. `initWithCookieService` (default = false) - a bool, that dictates whether to try and intergrate with our share cookie service
+
 ### Revoking the cookie policy
 
 If you would like users to change their preferences you can add `js-revoke-cookie-manager` class to any element that is present in the document to recall the policy manager.
@@ -65,6 +72,23 @@ function callbackFunction() {
 }
 cpNs.cookiePolicy(callbackFunction);
 ```
+
+### Shared cookie service
+
+If `initWithCookieService = true`, this triggers the calling of the function `initSharedCookieService()`, and means the cookie policy will attempt to retrieve the users cookie preferences from our cookie database. This requires the Flask extension [canonicalwebteam.cookie_service](https://github.com/canonical/canonicalwebteam.cookie_service) to be intergrated into the project.
+
+If `initWithCookieService = false` or is not passed, the cookie policy will only use cookies set on that specific site.
+
+The shared cookie service logic sets the following additional cookies:
+
+- `_cookies_auth_token: <encrypted_token>`: Used to identify the user between different sites. This is stored centrally as https://cookies.canonical.com, as a session cookie.
+- `_cookies_freshness_ts: <timestamp>`: This is used to ensure the cookie that has been set is fresh by 1 day. If it is not, it will query the central service for the most up to date cookie.
+- `_cookies_set_offline: true | null`: This flag is set if a cookie preference was set while the cookie serivce was unavailable. Next time the service is up the cookie preferences will be synced and the flag removed.
+
+An additional cookie is set by the Flask extension [canonicalwebteam.cookie_service](https://github.com/canonical/canonicalwebteam.cookie_service):
+
+- `_cookies_redirect_attempted: 1 | null`: This is a flag to signal that the redirect to the central service, required for authentication and initial setting of `_cookies_auth_token`, was attempted (whether successful or not). It expires at the end of the session.
+
 
 #### Full example via ES6 import
 
