@@ -1,4 +1,5 @@
 ### 3.9.0 [21-01-2026]
+**Requires [cookie_service](https://github.com/canonical/canonicalwebteam.cookie-service) flask extension 2.0.0** if using with shared cookies
 **Added** `initSharedCookieService()`
 - Function to initiate cross-domain cookies intergration from the client side (previously initiated server side). It is toggled with a flag on cookie policy instantiation, `initWithCookieService`.
 

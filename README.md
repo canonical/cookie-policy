@@ -81,12 +81,13 @@ If `initWithCookieService = false` or is not passed, the cookie policy will only
 
 The shared cookie service logic sets the following additional cookies:
 
-- `_cookies_auth_token: <encrypted_token>`: Used to identify the user between different sites. This is stored centrally as https://cookies.canonical.com, as a session cookie.
+- `_cookies_accepted: all|performance|functional|essential|unset`: The preference selected by the user.
 - `_cookies_freshness_ts: <timestamp>`: This is used to ensure the cookie that has been set is fresh by 1 day. If it is not, it will query the central service for the most up to date cookie.
 - `_cookies_set_offline: true | null`: This flag is set if a cookie preference was set while the cookie serivce was unavailable. Next time the service is up the cookie preferences will be synced and the flag removed.
 
 An additional cookie is set by the Flask extension [canonicalwebteam.cookie_service](https://github.com/canonical/canonicalwebteam.cookie_service):
 
+- `_cookies_auth_token: <encrypted_token>`: Used to identify the user between different sites. This is stored centrally as https://cookies.canonical.com, as a session cookie.
 - `_cookies_redirect_attempted: 1 | null`: This is a flag to signal that the redirect to the central service, required for authentication and initial setting of `_cookies_auth_token`, was attempted (whether successful or not). It expires at the end of the session.
 
 
