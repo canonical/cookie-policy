@@ -54,6 +54,7 @@
     "prepublishonly": "npm run build",
     "preversion": "npm test",
     "serve": "python3 -m http.server 8301 && echo 'Demo is running on http://0.0.0.0:8301'",
-    "watch": "npm-watch"
+    "watch": "npm-watch",
+    "prepare": "npm run build"
   }
 }
