@@ -1,4 +1,5 @@
 import { content } from "./content.js";
+import { postUpdatedPreferences } from "./api.js";
 
 const DEFAULT_CONSENT = {
   ad_storage: "denied",
@@ -33,14 +34,14 @@ const ALL_PREFERENCES = [
   "personalization_storage",
 ];
 
-export const setCookie = (value) => {
+export const setCookie = (key, value) => {
   const d = new Date();
   d.setTime(d.getTime() + 365 * 24 * 60 * 60 * 1000);
   const expires = "expires=" + d.toUTCString();
   const samesite = "samesite=lax;";
   const path = "path=/;";
   document.cookie =
-    "_cookies_accepted=" + value + "; " + expires + "; " + samesite + path;
+    key + value + "; " + expires + "; " + samesite + path;
   if (enabledTracking(value)) {
     pushPageview();
   }
@@ -242,8 +243,17 @@ export const setupAccordion = (accordionContainer) => {
  * @param {Function} destroyComponent - The function to destroy the component.
  * @returns {Function} - The event handler function.
  */
-export const handleClose = (preference, destroyComponent) => () => {
-  setCookie(preference);
+export const handleClose = (preference, destroyComponent) => async () => {
+  setCookie("_cookies_accepted=", preference);
+
+  try {
+    const data = await postUpdatedPreferences();
+    setCookie("_cookies_freshness_ts=", data.cookies_freshness_ts);
+  } catch (error) {
+    setCookie("_cookies_set_offline=", true);
+    console.error("Error saving preferences:", error);
+  }
+
   setGoogleConsentPreferences(preference);
   destroyComponent();
 };

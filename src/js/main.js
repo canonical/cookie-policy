@@ -5,15 +5,50 @@ import {
   hideSpecified,
   addGoogleConsentMode,
   loadConsentFromCookie,
+  setCookie,
+  setGoogleConsentPreferences
 } from "./utils.js";
+import { getCookieStatus } from "./api.js";
+import { setOfflineMode } from "./state.js";
 
 // Add Google Consent Mode as soon as the script is loaded
 addGoogleConsentMode();
 
-export const cookiePolicy = (callback = null) => {
+const initSharedCookieService = async () => {
+  const data = await getCookieStatus();
+  if (!data) {
+    setOfflineMode(true)
+    return;
+  }
+
+  switch (data.action) {
+    case "redirect":
+      const currentUrl = window.location.href  ? window.location.href : "/";
+      window.location.replace(data.redirect_url + currentUrl);
+      break;
+
+    case "set_preferences":
+      setCookie("_cookies_accepted=", data.consent);
+      setCookie("_cookies_freshness_ts=", data.cookies_freshness_ts);
+      setGoogleConsentPreferences(data.consent);
+      break;
+
+    case "none":
+    default:
+      break;
+  }
+}
+
+export const cookiePolicy = (callback = null, initWithCookieService = false) => {
   let cookiePolicyContainer = null;
   let language = document.documentElement.lang;
   let initialised = false;
+  let sharedCookiePromise = null;
+
+  // Initialize and wait for the shared cookie service
+  if (initWithCookieService && !sharedCookiePromise) {
+    sharedCookiePromise = initSharedCookieService();
+  }
 
   const renderNotification = function (e) {
     if (e) {
@@ -50,9 +85,13 @@ export const cookiePolicy = (callback = null) => {
     cookiePolicyContainer = null;
   };
 
-  const init = function () {
+  const init = async function () {
     if (initialised) return;
     initialised = true;
+
+    if (sharedCookiePromise) {
+      await sharedCookiePromise;
+    }
 
     // Load the consent from the cookie, if available
     loadConsentFromCookie();

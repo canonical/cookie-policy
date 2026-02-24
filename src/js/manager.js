@@ -71,7 +71,6 @@ export class Manager {
       .querySelector(".js-close")
       .addEventListener("click", () => {
         handleClose("all", this.destroyComponent)();
-        postUpdatedPreferences();
       });
     
     // Setup all accordions on the page
@@ -83,28 +82,34 @@ export class Manager {
       .querySelector(".js-save-preferences")
       .addEventListener("click", () => {
         this.savePreferences();
-        postUpdatedPreferences();
         this.destroyComponent();
       });
   }
 
-  savePreferences() {
+  async savePreferences() {
     const checkedControls = this.controlsStore.filter((control) =>
       control.isChecked()
     );
-
     // "essential" is the default value for only essential cookies
     if (this.controlsStore.length - 1 === checkedControls.length) {
-      setCookie("all");
+      setCookie("_cookies_accepted=", "all");
     } else if (checkedControls.length === 0) {
-      setCookie("essential");
+      setCookie("_cookies_accepted=", "essential");
     } else {
       this.controlsStore.forEach((control) => {
         if (control.isChecked()) {
           // Note: this overwrites the previous cookie
-          setCookie(control.getId());
+          setCookie("_cookies_accepted=", control.getId());
         }
       });
+    }
+
+    try {
+      const data = await postUpdatedPreferences();
+      setCookie("_cookies_freshness_ts=", data.cookies_freshness_ts);
+    } catch (error) {
+      setCookie("_cookies_set_offline=", true);
+      console.error("Error saving preferences:", error);
     }
 
     setGoogleConsentFromControls(this.controlsStore);
