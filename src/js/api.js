@@ -16,7 +16,7 @@ export async function postUpdatedPreferences() {
   }
 
   try {
-    const response = await fetch("/cookies/set-preferences", {
+    const response = await fetch("/_cookies/set-preferences", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -45,7 +45,7 @@ export async function postUpdatedPreferences() {
  **/
 export async function getCookieStatus() {
   try {
-    const response = await fetch("/cookies/init", {
+    const response = await fetch("/_cookies/init", {
       credentials: "include",
       cache: "no-store"
     });

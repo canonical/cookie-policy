@@ -1,3 +1,7 @@
+### 3.10.0 [06-03-2026]
+**Updated** `api.js`
+- Point to new api endpoint `/_cookies`
+
 ### 3.9.0 [21-01-2026]
 **Requires [cookie_service](https://github.com/canonical/canonicalwebteam.cookie-service) flask extension 2.0.0** if using with shared cookies
 **Added** `initSharedCookieService()`
