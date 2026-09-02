@@ -19,7 +19,7 @@
   },
   "homepage": "https://github.com/canonical/cookie-policy#readme",
   "devDependencies": {
-    "@babel/core": "7.20.12",
+    "@babel/core": "7.29.6",
     "@babel/preset-env": "7.20.2",
     "@rollup/plugin-babel": "6.0.3",
     "@rollup/plugin-terser": "0.3.0",
