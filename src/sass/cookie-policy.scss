@@ -2,6 +2,9 @@
 @import "vanilla-framework";
 @import "patterns-modal";
 
+// Use the host site's fonts instead of shipping @font-face rules
+@mixin vf-b-typography-fontfaces {}
+
 /* Include base Vanilla styles */
 @include vf-b-placeholders;
 
