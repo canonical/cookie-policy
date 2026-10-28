@@ -1,3 +1,7 @@
+### 3.10.1 [28-10-2026]
+**Updated** Styles for cookie-policy
+- Stop shipping Vanilla `@font-face` rules, so the host site's fonts are used instead.
+
 ### 3.10.0 [06-03-2026]
 **Updated** `api.js`
 - Point to new api endpoint `/_cookies`
