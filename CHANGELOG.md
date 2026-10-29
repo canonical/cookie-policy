@@ -1,6 +1,6 @@
-### 3.10.1 [28-10-2026]
-**Updated** Styles for cookie-policy
-- Stop shipping Vanilla `@font-face` rules, so the host site's fonts are used instead.
+### 4.0.0 [29-10-2026]
+**Breaking** Styles for cookie-policy
+- The package no longer ships `@font-face` rules for the Ubuntu font. The host page must load the font itself, otherwise the banner falls back to a system font. See [Fonts](README.md#fonts) for how to load it.
 
 ### 3.10.0 [06-03-2026]
 **Updated** `api.js`
